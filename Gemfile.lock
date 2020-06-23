@@ -101,6 +101,7 @@ GEM
     devise-bootstrap-views (1.1.0)
     devise-i18n (1.9.1)
       devise (>= 4.7.1)
+    devise-i18n-views (0.3.7)
     diff-lcs (1.3)
     docile (1.3.2)
     email_spec (2.2.0)
@@ -327,6 +328,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   devise-i18n
+  devise-i18n-views
   email_spec
   enumerize
   factory_bot_rails

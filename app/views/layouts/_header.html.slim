@@ -1,0 +1,14 @@
+nav.navbar
+  =link_to root_path
+    = image_tag 'header_logo.PNG', size: '85x70', class: "navbar-brand"
+  = link_to 'ダンサーチ！', root_path, class: "navbar-brand"
+  .collapse.navbar-collapse
+    ul.navbar-nav
+      li= link_to(new_user_registration_path) do
+        i.fas.fa-home HOME
+      li= link_to(root_path) do
+        i.fas.fa-sticky-note プロフィール
+    .search-form
+      = simple_form_for('#', url: '#') do |f|
+          = f.input :name, label: false, placeholder: "例：ダンサー名/ジャンルを検索！"
+    i.user-icon.fas.fa-user-circle.fa-5x

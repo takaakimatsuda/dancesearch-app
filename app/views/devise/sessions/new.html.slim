@@ -1,0 +1,38 @@
+.devise-wrapper
+  .devise-container
+    .border-line
+
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      /= devise_error_messages!
+      
+
+      .card
+        .card-header
+          h4.text-center ログイン
+        .card-content
+          .label-wrapper
+            = f.label :email,'メールアドレス'
+            = f.input :email, label:false, input_html: { class: 'form_input' }, autofocus: true
+          .label-wrapper
+            = f.label :password
+            = f.input :password, label:false, input_html: { class: 'form_input', autocomplete: 'current_password', id: 'password'}, placeholder:false
+
+        - if devise_mapping.rememberable?
+          .label-wrapper
+            = f.check_box :remember_me
+            = f.label :remember_me
+          .label-wrapper
+            .submit-button
+              = f.submit "ログイン" ,class: "submit-btn"
+            .submit-button
+              = f.submit "新規登録" ,class: "submit-btn"      
+      
+      .border-line
+
+      .more_link_box
+        /= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.hidden_field :email, value: "test@test.com"
+          = f.hidden_field :password, value: "test1234"
+          = f.submit 'テストログイン', class: 'test_login_btn'
+        .forgot-pass
+          = link_to "パスワードを忘れた方", new_password_path(resource_name)

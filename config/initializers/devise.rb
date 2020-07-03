@@ -25,7 +25,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   # Gmailアドレスを設定する
-  config.mailer_sender = 'hamon.memeta@gmail.com'
+  config.mailer_sender = 'takaaki@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

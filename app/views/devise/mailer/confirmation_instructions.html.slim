@@ -1,0 +1,4 @@
+p
+  | ようこそ！ #{@email}様
+p 以下のリンクからアカウントのメールを確認できます。
+p= link_to 'アカウントの確認', confirmation_url(@resource, confirmation_token: @token)

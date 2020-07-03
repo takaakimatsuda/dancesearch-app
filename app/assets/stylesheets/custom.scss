@@ -1,0 +1,164 @@
+//ヘッダー
+
+.navbar-collapse.collapse {
+  display: block !important;
+  height: 70px !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+  background-color: #FF8E26;
+  li {list-style: none;}
+}
+  .logo {
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+  background: url('../images/header_logo.PNG');
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+.navbar-brand {
+  float: left;
+  height: 70px;
+  padding: 0 0;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  -webkit-text-stroke: 0.5px #FFF;
+}
+.navbar-nav li a {
+  list-style: none; 
+  display: inline-block;
+  padding: 0 15px;
+  height: 70px;
+  line-height: 70px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+.search-form {
+  padding: 5px 25px;
+  display: inline;
+}
+.search-form input[type="text"] {
+  border-radius: 50px;
+  width: 270px;
+  height: 30px;
+  margin-left: 150px;
+  padding: 0 10px;
+}
+.user-icon {
+
+}
+
+//ログイン
+
+.devise-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+}
+.devise-container {
+  width: 550px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.devise-container h2 {
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 4px;
+}
+.devise-container h3 {
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 4px;
+}
+.label-wrapper {
+  font-size: 16px;
+  width: 200px;
+  margin:30px auto;
+}
+.label-wrapper input[type="email"] {
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+.label-wrapper input[type="password"] {
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+.label-wrapper input[type="checkbox"] {
+  position: relative;
+  bottom: 30px;  
+}
+
+label.string.optional {
+  position: relative;
+  bottom: 30px; 
+}
+.submit-button {
+  text-align: center;
+  margin:30px auto;
+  position: relative;
+  bottom: 30px; 
+}
+.form_input {
+  width: 200px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #E5E5E5;
+}
+
+.forgot-pass {
+  width: 200px;
+  margin:30px auto;
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 2px 5px #ccc;
+}
+.text-center {
+  color: #fff;
+  font-weight: bold;
+}
+.card-header {
+  background: #FF8E26;
+  padding: 5px 0;
+  border-radius: 50px 50px 0 0;
+}
+.card-content {
+  padding: 20px;
+}
+.card-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+.card-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+

@@ -1,14 +1,42 @@
-nav.navbar
-  =link_to root_path
-    = image_tag 'header_logo.PNG', size: '85x70', class: "navbar-brand"
-  = link_to 'ダンサーチ！', root_path, class: "navbar-brand"
-  .collapse.navbar-collapse
-    ul.navbar-nav
-      li= link_to(new_user_registration_path) do
-        i.fas.fa-home HOME
-      li= link_to(root_path) do
-        i.fas.fa-sticky-note プロフィール
-    .search-form
-      = simple_form_for('#', url: '#') do |f|
-          = f.input :name, label: false, placeholder: "例：ダンサー名/ジャンルを検索！"
-    i.user-icon.fas.fa-user-circle.fa-5x
+header.header
+  nav.nav
+    ul.header_menu
+      li.header_menu_title
+        =link_to root_path, class: "nav-link" do
+          = image_tag 'header_logo.PNG', class: "icon-size mb-1 mr-1 ", size: "85x85"
+          span.hidden-xs ダンサーチ！ 
+      .row.size
+        i.fas.fa-bars.fa-2x.float-left.visible-xs-block
+        .col-2
+          =link_to new_user_registration_path, class: "btn btn-header btn-header-circle" do
+            i.fas.fa-home.fa-2x.hidden-xs
+            p.text-header.hidden-xs HOME
+        .col-2
+          =link_to root_path, class: "btn btn-header btn-header-circle" do
+            i.fas.fa-sticky-note.fa-2x.hidden-xs
+            p.text-header.hidden-xs プロフィール
+        .search-form.hidden-sm.hidden-xs
+          = simple_form_for('#', url: '#') do |f|
+              = f.input :name, label: false, placeholder: "例：ダンサー名/ジャンルを検索！"
+        i.fas.fa-search.fa-2x.visible-xs-block
+        .dropdown
+          .button#dropdown1.btn.btn-light.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+            
+          .dropdown-menu aria-labelledby="dropdown1"
+            li = link_to 'ユーザー一覧', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
+            li = link_to 'ログアウト', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
+        li.dropdown
+          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+            | Dropdown
+            span.caret
+            ul.dropdown-menu
+              li
+                a href="#"  Menu1
+              li
+                a href="#"  Menu2
+              li.divider role="separator" 
+              li.dropdown-header header
+              li
+                a href="#"  Menu3
+              li
+                a href="#"  Menu4

@@ -16,16 +16,18 @@
               required: true,                       
               autofocus: true,                      
               input_html: { autocomplete: "email" }
-             
+            = f.label :password,'パスワード'
             = f.input :password,
               label:false,                                                                     
               required: true,                                                                        
-              input_html: { autocomplete: "new-password" }                                          
+              input_html: { autocomplete: "new-password" } 
+            = f.label :password_confirmation,'パスワード（再確認）'                                         
             = f.input :password_confirmation,
               label:false,               
               required: true,                              
-              input_html: { autocomplete: "new-password" } 
-            = f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'ダンサーネーム'
+              input_html: { autocomplete: "new-password" }
+            = f.label :name,'ダンサーネーム' 
+            = f.text_field :name, autofocus: true, class: 'form-control'
             .submit-button
               = f.button :submit, "登録" ,class: "submit-btn"
         = render "devise/shared/links"

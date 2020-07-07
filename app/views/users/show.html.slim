@@ -1,2 +1,24 @@
 h1 Users#show
-p Find me in app/views/users/show.html.slim
+
+p
+  | メールアドレス : #{@user.email}
+p
+  | 名前 : #{@user.name}
+p
+  | ジャンル : #{@user.genre}
+p
+  | Team : #{@user.team_name}
+p
+  | 地域1 : #{@user.pref1}
+p
+  | 地域2 : #{@user.pref2}
+p
+  | 地域3 : #{@user.pref3}
+p
+  | 経歴 : #{@user.carrer}
+p
+  | レッスン紹介 : #{@user.lesson_comment}
+p
+  | Youtube : #{@user.movie_url}
+p
+  | リンク : #{@user.promotion_url}

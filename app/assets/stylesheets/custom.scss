@@ -31,7 +31,7 @@
         padding: 0;
         a {
           color: black;
-          padding: 2px 8px;
+          padding: 2px 0;
           text-decoration: none;
         }
       }
@@ -44,17 +44,28 @@
           opacity: .6;
           text-decoration: none;
         }
-      .search-form input[type="text"] {
-        border-radius: 50px;
-        width: 270px;
-        height: 30px;
-        margin-left: 150px;
-        padding: 0 10px;
-      }
       }
     }
   }
 }
+.search-form input[type="text"] {
+  border-radius: 50px;
+  width: 160px;
+  height: 30px;
+  margin-left: 150px;
+  padding: 0 10px;
+}
+.fa-user-circle:before {
+  content: "\f2bd";
+  position: relative;
+  bottom: 5px;
+}
+.dropdown.menu.left.show {
+  left:0;
+  right:auto;
+  &::before {right:auto !important; left:9px;}
+  &::after {right:auto !important; left:10px;}
+ }
 //ログイン
 
 .devise-wrapper {
@@ -107,16 +118,19 @@
   position: relative;
   bottom: 30px;  
 }
-
 label.string.optional {
   position: relative;
   bottom: 30px; 
 }
 .submit-button {
   text-align: center;
-  margin:30px auto;
+  margin:15px auto;
   position: relative;
   bottom: 30px; 
+}
+[type=submit] {
+  -webkit-appearance: button;
+  letter-spacing: 1px;
 }
 .form_input {
   width: 200px;
@@ -133,18 +147,19 @@ label.string.optional {
 
 .card {
   width: 100%;
+  height: 500px;
   background: #fff;
   border-radius: 50px;
   box-shadow: 0 2px 5px #ccc;
+  .card-header {
+    background: #FF8E26;
+    padding: 5px 0;
+    border-radius: 50px 50px 0 0;
+  }
 }
 .text-center {
   color: #fff;
   font-weight: bold;
-}
-.card-header {
-  background: #FF8E26;
-  padding: 5px 0;
-  border-radius: 50px 50px 0 0;
 }
 .card-content {
   padding: 20px;

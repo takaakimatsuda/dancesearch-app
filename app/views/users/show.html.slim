@@ -1,24 +1,73 @@
-h1 Users#show
+.container.top-margin
+  .row.mt-4
+    .link-title.col-5
+      | HOME > ダンサーをさがす >  HIP HOP
+      .profile-wrapper
+        .profile-header
+        .profile-contents.text-center
+          div
+            .profile-image.mt-5
+              = image_tag @user.avatar.variant(resize: '350x350'), class: 'mx-auto d-block'
+            h2.my-5.text-center= @user.name
+          .row.mt-3.justify-content-center
+            i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
+            i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
+            i.fab.fa-facebook-square.fa-3x.ml-5.hidden-xs
+            i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
+            i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
+            i.fab.fa-facebook-square.fa-2x.ml-5.visible-xs-block
+          p
+            .col-4
+            | ０
+          p
+            .col-4
+            | スコア
+          p
+            .col-4
+            | ０　　　　　
+            | ０
+          p
+            .col-4
+            | フォロー　　
+            | フォロワー
+          p
+            button.btn.btn-success.my-2 type="button"  フォロー
+          p
+            button.btn.btn-dark.my-2 type="button"  ミュート
+    .col-7.text-left.mt-5
+      p
+        | ジャンル : #{@user.genre}
+      p
+        | Team : #{@user.team_name}
+      p
+        | 地域 : #{@user.pref1},#{@user.pref2},#{@user.pref3}
+      p
+        | 経歴 : #{@user.carrer}
+      p
+        | レッスン紹介 : #{@user.lesson_comment}
+      p
+        | Youtube : #{@user.movie_url}
+      p
+        | リンク : #{@user.promotion_url}
+    .col-12
+      .promotion-title.text-left.mt-5.h4
+        p
+          | ~ プロモーション ~
+      .promotion-comments
+    .col-12
+      .promotion-post.h4
+        p
+          | ~ プロモーションを送る ~
+    .col-12
+      .promotion-form  
+        = simple_form_for @user do |f|
+          = f.input :lesson_comment,
+            label:false,
+            input_html: { class:'form-control', id:'tag', size: "x5"}
+          = f.button :submit, '投稿する',class: 'submit-btn pull-right btn-warning mt-5'
+      
 
-p
-  | メールアドレス : #{@user.email}
-p
-  | 名前 : #{@user.name}
-p
-  | ジャンル : #{@user.genre}
-p
-  | Team : #{@user.team_name}
-p
-  | 地域1 : #{@user.pref1}
-p
-  | 地域2 : #{@user.pref2}
-p
-  | 地域3 : #{@user.pref3}
-p
-  | 経歴 : #{@user.carrer}
-p
-  | レッスン紹介 : #{@user.lesson_comment}
-p
-  | Youtube : #{@user.movie_url}
-p
-  | リンク : #{@user.promotion_url}
+
+
+
+

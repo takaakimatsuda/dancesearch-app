@@ -68,7 +68,7 @@
  }
 //ログイン
 
-.devise-wrapper {
+.devise__wrapper {
   box-sizing: border-box;
   width: 100%;
 }
@@ -129,7 +129,8 @@ label.string.optional {
   bottom: 30px; 
 }
 [type=submit] {
-  -webkit-appearance: button;
+  padding: 6px 12px;
+  border-radius: 4px;
   letter-spacing: 1px;
 }
 .form_input {
@@ -155,10 +156,15 @@ label.string.optional {
     background: #FF8E26;
     padding: 5px 0;
     border-radius: 50px 50px 0 0;
+    &__title {
+      color: white;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }  
   }
 }
+
 .text-center {
-  color: #fff;
   font-weight: bold;
 }
 .card-content {
@@ -174,4 +180,44 @@ label.string.optional {
   color: #777;
   font-size: 14px;
   line-height: 1.5;
+}
+// 新規登録画面
+
+// ユーザー詳細画面
+.profile-wrapper {
+  border: solid;
+  border-color: #FF8E26;
+  border-width: 5px;
+  border-radius: 50px;
+  .profile-header {
+    background: #FF8E26;
+    padding: 20px 0;
+    border-radius: 50px 50px 0 0;
+  }  
+}
+.profile-image img {
+  border-radius: 10px;
+  width: 100%;
+}
+.col-7 p {
+  color: #FF8E26;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.promotion-form {
+  textarea {
+    width: 80%;
+  }
+  [type=submit] {
+    margin-right: 200px;
+  }
+}
+.fa-twitter {
+  color: #00aced ;
+}
+.fa-instagram {
+  color: #db4a39;
+}
+.fa-facebook-square {
+  color: #305097;
 }

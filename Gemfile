@@ -8,6 +8,7 @@ gem 'mysql2', '>= 0.4.4'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'jquery-rails'
+gem "aws-sdk-s3", require: false
 gem 'bootstrap-sass'
 gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
@@ -23,6 +24,7 @@ gem 'slim-rails'
 gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

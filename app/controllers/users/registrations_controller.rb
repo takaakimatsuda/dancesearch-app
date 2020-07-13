@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -10,9 +11,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
 
   # GET /resource/edit
   # def edit
@@ -59,6 +57,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  def user_params
+      params.require(:user).permit(:email, :name, :avatar)
+  end
+
   protected
   # アカウント編集後、プロフィール画面に移動する
   def after_update_path_for(resource)

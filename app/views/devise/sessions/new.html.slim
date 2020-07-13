@@ -1,4 +1,4 @@
-.devise-wrapper
+.devise__wrapper
   .devise-container
     .border-line
 
@@ -8,7 +8,7 @@
 
       .card
         .card-header
-          h4.text-center ログイン
+          h4.card-header__title.text-center ログイン
         .card-content
           .label-wrapper
             = f.label :email,'メールアドレス'
@@ -22,16 +22,16 @@
             = f.check_box :remember_me
             = f.label :remember_me
           .submit-button
-            = f.submit "ログイン" ,class: "submit-btn btn-warning"
+            = f.submit 'ログイン',class: 'submit-btn btn-warning'
           .submit-button
-            = f.submit "新規登録" ,class: "submit-btn btn-warning"      
+            =link_to '新規登録',new_user_registration_path,class: 'btn btn-secondary'      
       
       .border-line
 
-      .more_link_box
-        /= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          = f.hidden_field :email, value: "test@test.com"
-          = f.hidden_field :password, value: "test1234"
-          = f.submit 'テストログイン', class: 'test_login_btn'
+      .more_link_box.text-center.mt-5
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.hidden_field :email, value: 'test@test.com'
+          = f.hidden_field :password, value: 'test1234'
+          = f.submit 'テストログイン', class: 'test_login_btn btn-success'
         .forgot-pass
-          = link_to "パスワードを忘れた方", new_password_path(resource_name)
+          = link_to 'パスワードを忘れた方', new_password_path(resource_name)

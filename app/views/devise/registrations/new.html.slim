@@ -1,13 +1,13 @@
-.devise-wrapper
+.devise__wrapper
   .devise-container
     .border-line
 
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       /= devise_error_messages!
     
-      .card
+      .card.mt-5
         .card-header
-          h4.text-center 新規登録
+          h4.card-header__title.text-center 新規登録
         .card-content
           .label-wrapper
             = f.label :email,'メールアドレス'
@@ -15,19 +15,22 @@
               label:false,                      
               required: true,                       
               autofocus: true,                      
-              input_html: { autocomplete: "email" }
+              input_html: { autocomplete: 'email' }
             = f.label :password,'パスワード'
             = f.input :password,
               label:false,                                                                     
               required: true,                                                                        
-              input_html: { autocomplete: "new-password" } 
+              input_html: { autocomplete: 'new-password' } 
             = f.label :password_confirmation,'パスワード（再確認）'                                         
             = f.input :password_confirmation,
               label:false,               
               required: true,                              
-              input_html: { autocomplete: "new-password" }
+              input_html: { autocomplete: 'new-password' }
             = f.label :name,'ダンサーネーム' 
             = f.text_field :name, autofocus: true, class: 'form-control'
+            = f.label :avatar, 'プロフィール画像'
+            = f.file_field :avatar
+            br
             .submit-button
-              = f.button :submit, "登録" ,class: "submit-btn"
-        = render "devise/shared/links"
+              = f.button :submit, '登録' ,class: 'submit-btn btn-warning mt-5'
+        = render 'devise/shared/links'

@@ -68,7 +68,7 @@
  }
 //ログイン
 
-.devise__wrapper {
+.devise-wrapper {
   box-sizing: border-box;
   width: 100%;
 }
@@ -193,7 +193,7 @@ label.string.optional {
     background: #FF8E26;
     padding: 20px 0;
     border-radius: 50px 50px 0 0;
-  }  
+  }
 }
 .profile-image img {
   border-radius: 10px;
@@ -220,4 +220,23 @@ label.string.optional {
 }
 .fa-facebook-square {
   color: #305097;
+}
+// ユーザーエディット画面
+form#edit_user {
+  width: 100%;
+  display: inline-flex;
+}
+.edit-wrapper {
+  border: solid;
+  border-color: #FF8E26;
+  border-width: 5px;
+  border-radius: 50px;
+  padding: 0;
+  margin: 0;
+  .edit-header {
+    background: #FF8E26;
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 50px 50px 0 0;
+  } 
 }

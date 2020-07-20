@@ -31,6 +31,6 @@ header.header
             li = link_to 'マイページ', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
             li = link_to 'メールアドレス変更', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
             li = link_to 'パスワード変更', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
-            li = link_to 'ログアウト', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
+            li = link_to 'ログアウト',"/users/sign_out", method: :delete, class: 'text-dark font-weight-bold dropdown-item bg-light'
         
         

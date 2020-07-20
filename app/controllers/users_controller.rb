@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   def index
   end
 
-  def show;end
+  def show
+    @user = User.find(params[:id])
+    @promotions = @user.promotions
+    @promotion = Promotion.new
+    @promotions = Promotion.page(params[:page]).per(3)
+  end
 
   def edit
   end

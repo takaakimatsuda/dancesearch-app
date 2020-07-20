@@ -5,15 +5,15 @@
       .profile-wrapper
         .profile-header
         .profile-contents.text-center
-          div
-            .profile-image.mt-5
-              = image_tag @user.avatar.variant(resize: '350x350'), class: 'mx-auto d-block'
-            h2.my-5.text-center= @user.name
+          .profile-image.mt-5
+            = image_tag @user.avatar.variant(resize: '350x350'), class: 'mx-auto d-block'
+          h2.my-5.text-center= @user.name
           .row.mt-3.justify-content-center
-            i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
+            =link_to "#{@user.instagram_url}" do
+              i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
+              i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
             i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
             i.fab.fa-facebook-square.fa-3x.ml-5.hidden-xs
-            i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
             i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
             i.fab.fa-facebook-square.fa-2x.ml-5.visible-xs-block
           p
@@ -36,7 +36,10 @@
             button.btn.btn-dark.my-2 type="button"  ミュート
     .col-7.text-left.mt-5
       p
-        | ジャンル : #{@user.genre}
+        - if @user.genre
+          | ジャンル : #{@user.genre.upcase}
+        - else
+          | ジャンル :
       p
         | Team : #{@user.team_name}
       p

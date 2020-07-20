@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'promotions/index'
+  get 'promotions/show'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

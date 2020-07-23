@@ -49,7 +49,11 @@
       p
         | レッスン紹介 : #{@user.lesson_comment}
       p
-        | Youtube : #{@user.movie_url}
+        - if @user.movie_url
+          | Youtube :
+          iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url}" width="560" 
+        - else
+          | Youtube :
       p
         | リンク : #{@user.promotion_url}
     .col-12
@@ -66,6 +70,7 @@
               = link_to c.user.name, user_path(c.user), class: 'text-dark'
             - if c.user == current_user
               .right-side
+                = link_to icon('fas', 'trash-alt', '削除する'), user_promotion_path(c.user.id, c.id), method: :delete, class: 'text-dark'
           .comment-down-content.pt-3
             = simple_format(c.content)
             hr

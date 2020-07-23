@@ -5,10 +5,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    url = @user[:movie_url]
+    if url.present?
+      url = url.last(11)
+    end
+    @user.movie_url = url
     @promotions = @user.promotions
     @promotion = Promotion.new
-    @promotions = Promotion.page(params[:page]).per(3)
+    @promotions = Promotion.page(params[:page]).per(5)
   end
 
   def edit

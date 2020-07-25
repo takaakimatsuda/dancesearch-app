@@ -3,7 +3,6 @@ class PromotionsController < ApplicationController
     user = User.find(params[:user_id])
     @promotion = user.promotions.build(promotion_params)
     @promotion.writer_id = current_user.id
-    binding.pry
     if @promotion.save
       redirect_back(fallback_location: root_path)
     else

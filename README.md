@@ -36,6 +36,8 @@ $ gem install bundler
 
 ```
 $ bundle install
+$ yarn install --check-files
+$ bundle update
 ```
 ### データベースの設定
 

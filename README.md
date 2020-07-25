@@ -24,7 +24,7 @@
 
 # 環境構築
 
-* takaakimatsuda/dancesearch-app リポジトリをForkして、git cloneしてください。
+* takaakimatsuda/dancesearch-app リポジトリをforkしてください。
 
 ### Bundlerの導入
 
@@ -44,8 +44,14 @@ $ bundle exec rails db:create
 $ bundle exec rails db:migrate
 ```
 
-### localhost:3000 にアクセス
+### localhost:3000にアクセス
 
 ```
 $ bundle exec rails s
 ```
+
+[localhost:3000](http://localhost:3000)でログイン画面が出ていればOK
+
+### メールの確認について
+ローカル環境での処理としてはメールは実際には送信されません。
+gemの `letter_opener_web` を利用しているため送信したメールは `http://localhost:3000/letter_opener` にアクセスしてブラウザから確認することができます。

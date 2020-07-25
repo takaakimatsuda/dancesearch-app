@@ -221,6 +221,11 @@ label.string.optional {
 .fa-facebook-square {
   color: #305097;
 }
+.col-6 {
+  display: inline-block;
+  max-width: 50%;
+  font-size: 1.6rem;
+}
 // ユーザーエディット画面
 form#edit_user {
   width: 100%;

@@ -9,13 +9,12 @@
             = image_tag @user.avatar.variant(resize: '350x350'), class: 'mx-auto d-block'
           h2.my-5.text-center= @user.name
           .row.mt-3.justify-content-center
-            =link_to "#{@user.instagram_url}" do
+            =link_to "https://www.instagram.com/#{@user.instagram_url}" do
               i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
               i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
-            i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
-            i.fab.fa-facebook-square.fa-3x.ml-5.hidden-xs
-            i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
-            i.fab.fa-facebook-square.fa-2x.ml-5.visible-xs-block
+            =link_to "https://twitter.com/#{@user.twitter_url}" do
+              i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
+              i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
           p
             .col-4
             | ０
@@ -69,7 +68,7 @@
           .comment-up-content.d-flex.justify-content-between
             .left-side
               = link_to c.writer.name, user_path(c.writer), class: 'text-dark'
-            - if c.user == current_user
+            - if c.writer == current_user
               .right-side
                 = link_to icon('fas', 'trash-alt', '削除する'), user_promotion_path(c.user.id, c.id), method: :delete, class: 'text-dark'
           .comment-down-content.pt-3
@@ -77,11 +76,12 @@
             hr
         = form_for [@user, @promotion] do |f|
           = paginate @promotions
-          h4 ~ プロモーションを送る ~
-          = f.text_area :content, rows: 3, class: 'form-control'
-          br
-          .text-right
-            = f.submit '投稿する', class: 'btn btn-warning text-white'
+          - if current_user != @user
+            h4 ~ プロモーションを送る ~
+            = f.text_area :content, rows: 3, class: 'form-control'
+            br
+            .text-right
+              = f.submit '投稿する', class: 'btn btn-warning text-white'
       
 
 

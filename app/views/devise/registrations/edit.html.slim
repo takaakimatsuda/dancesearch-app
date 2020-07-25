@@ -12,19 +12,27 @@
                   | Currently waiting confirmation for: #{resource.unconfirmed_email}
               = f.input :name, required: true
       .col-7
-        = f.input :genre, required: false
-        = f.input :team_name, required: false
-        = f.input :pref1, required: false
-        = f.input :pref2, required: false
-        = f.input :pref3, required: false
-        = f.input :carrer, required: false
-        = f.input :lesson_comment, required: false
-        = f.input :movie_url, required: false
-        = f.input :promotion_url, required: false
-        = f.input :twitter_url, required: false
-        = f.input :instagram_url, required: false
-        = f.input :facebook_url, required: false
-        = f.input :password,                                     
+        = f.label :genre,'ジャンル'
+        = f.input :genre, required: false, label:false
+        = f.label :team_name,'チーム名'
+        = f.input :team_name, required: false, label:false
+        = f.label :pref1,'地域'
+        = f.input :pref1, required: false, label:false
+        = f.input :pref2, required: false, label:false
+        = f.input :pref3, required: false, label:false
+        = f.label :carrer,'実績'
+        = f.input :carrer, required: false, label:false
+        = f.label :lesson_comment,'レッスン紹介'
+        = f.input :lesson_comment, required: false, label:false
+        = f.label :movie_url,'YouTube'
+        = f.input :movie_url, required: false, label:false
+        = f.label :promotion_url,'外部リンク'
+        = f.input :promotion_url, required: false, label:false
+        = f.label :twitter_url,'TwitterID'
+        = f.input :twitter_url, required: false, label:false, placeholder: "@example"
+        = f.label :instagram_url,'InstagramID'
+        = f.input :instagram_url, required: false, label:false, placeholder: "Username"
+        = f.input :password,                
           hint: "変更しない場合は空白のままにします", 
           required: false,                                       
           input_html: { autocomplete: "new-password" }           
@@ -35,7 +43,7 @@
           hint: "変更するには、現在のパスワードが必要です", 
           required: true,                                                
           input_html: { autocomplete: "current-password" }              
-        = f.button :submit, "Update"
+        = f.button :submit, "更新する", class: 'btn btn-warning text-white'
         h3 Cancel my account
         p
           | アカウントの削除 #{link_to "アカウントを消す", registration_path(resource_name), data: { confirm: "本当によろしいですか?" }, method: :delete}

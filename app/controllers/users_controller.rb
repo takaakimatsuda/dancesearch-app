@@ -5,14 +5,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    url = @user[:movie_url]
-    if url.present?
-      url = url.last(11)
+    movie_url = @user[:movie_url]
+    if movie_url.present?
+      movie_url = movie_url.last(11)
     end
-    @user.movie_url = url
-    @promotions = @user.promotions
+    @user.movie_url = movie_url
+    twitter_url = @user[:twitter_url]
+    if twitter_url.present?
+      twitter_url = twitter_url.delete("@")
+    end
+    @user.twitter_url = twitter_url
+    @promotions = @user.promotions.page(params[:page]).per(5)
     @promotion = Promotion.new
-    @promotions = Promotion.page(params[:page]).per(5)
   end
 
   def edit

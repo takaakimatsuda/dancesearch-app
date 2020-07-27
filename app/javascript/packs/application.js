@@ -12,7 +12,8 @@
 //= require_tree .
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
-require("channels")
+require('channels')
+require('custom/jquery_raty')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :promotions, dependent: :destroy
+  has_many :lessons, dependent: :destroy
+  has_many :scores, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
   has_many :followings, through: :active_relationships, source: :follower

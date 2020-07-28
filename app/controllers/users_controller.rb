@@ -16,7 +16,11 @@ class UsersController < ApplicationController
     end
     @user.twitter_url = twitter_url
     @promotions = @user.promotions.page(params[:page]).per(5)
+    # formで呼び出すときに使う
     @promotion = Promotion.new
+    @scores = @user.scores.all.sum(:point)
+    # formで呼び出すときに使う
+    @score = Score.new
   end
 
   def edit

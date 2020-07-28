@@ -17,7 +17,7 @@
               i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
           p
             .col-4
-            | ０
+            = @scores
           p
             .col-4
             | スコア
@@ -82,6 +82,20 @@
             br
             .text-right
               = f.submit '投稿する', class: 'btn btn-warning text-white'
+        = form_for [@user, @score] do |p|
+          #star.form-group.field
+            = p.label :point, 'スコア'
+            = p.hidden_field :point, id: :review_star 
+            .text-left
+              = p.submit '投稿する', class: 'btn btn-warning text-white'
+        
+javascript:
+  $('#star').raty({
+    size: 36,
+    starOff: "#{asset_path('star-off.png')}",
+    starOn: "#{asset_path('star-on.png')}",
+    scoreName: 'score[point]',
+  });
       
 
 

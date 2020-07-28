@@ -66,6 +66,15 @@
   &::before {right:auto !important; left:9px;}
   &::after {right:auto !important; left:10px;}
  }
+// フッター
+nav.navbar.text-center.footer {
+  padding: 0;
+  background-color: #FF8E26;
+  margin: 0;
+}
+.navbar-brand.logo-main {
+  color: black;
+}
 //ログイン
 
 .devise-wrapper {

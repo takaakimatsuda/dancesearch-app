@@ -203,15 +203,28 @@ label.string.optional {
     padding: 20px 0;
     border-radius: 50px 50px 0 0;
   }
+  .col-xl-6.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+    display: contents;
+}
+  .btn{
+    width: 40%;
+  }
 }
 .profile-image img {
   border-radius: 10px;
   width: 100%;
 }
+.prfile-name.text-center {
+  font-size: 2.5rem;
+}
 .col-7 p {
   color: #FF8E26;
   font-weight: bolder;
   font-size: 20px;
+}
+.profile-description {
+  font-size: 2rem;
+  font-weight: bold;
 }
 .promotion-form {
   textarea {
@@ -221,19 +234,18 @@ label.string.optional {
     margin-right: 200px;
   }
 }
+.score-count {
+  font-size: 3rem;
+  color: #FF8E26;
+}
 .fa-twitter {
-  color: #00aced ;
+  color: #00aced;
 }
 .fa-instagram {
   color: #db4a39;
 }
 .fa-facebook-square {
   color: #305097;
-}
-.col-6 {
-  display: inline-block;
-  max-width: 50%;
-  font-size: 1.6rem;
 }
 // ユーザーエディット画面
 form#edit_user {

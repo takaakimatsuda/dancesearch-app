@@ -18,8 +18,6 @@ class ApplicationController < ActionController::Base
       :name,
       :genre,
       :avatar,
-      :avata_cache,
-      :remove_avatar,
       :team_name,
       :pref1,
       :pref2,

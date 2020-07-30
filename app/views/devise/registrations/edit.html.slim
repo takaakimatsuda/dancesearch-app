@@ -5,12 +5,23 @@
       .edit-wrapper.col-5
         .edit-header
         .profile-contents.text-center
-            .edit-image
-              = f.input :email, required: true, autofocus: true
-              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-                p
-                  | Currently waiting confirmation for: #{resource.unconfirmed_email}
-              = f.input :name, required: true
+          - if current_user.persisted? && current_user.avatar.attached?
+            .edit-image.my-5
+                = image_tag current_user.avatar.variant(resize: "350x350"), class: "mx-auto d-block"
+                label
+                  .edit-check
+                    = f.file_field :avatar
+          - else
+            .edit-image.my-5
+              i.user-icon.fas.fa-user-circle.fa-5x  
+              = f.file_field :avatar
+          
+          .edit-name
+            = f.input :email, required: true, autofocus: true
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              p
+                | Currently waiting confirmation for: #{resource.unconfirmed_email}
+            = f.input :name, required: true
       .col-7
         = f.label :genre,'ジャンル'
         = f.input :genre, required: false, label:false

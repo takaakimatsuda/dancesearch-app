@@ -37,7 +37,9 @@
         = f.input :lesson_comment, required: false, label:false
         = f.label :movie_url,'YouTube'
         = f.input :movie_url, required: false, label:false
-        = f.label :promotion_url,'外部リンク'
+        = f.label :promotion_title,'外部リンク(タイトル)'
+        = f.input :promotion_title, required: false, label:false
+        = f.label :promotion_url,'外部リンク(URL)'
         = f.input :promotion_url, required: false, label:false
         = f.label :twitter_url,'TwitterID'
         = f.input :twitter_url, required: false, label:false, placeholder: "@example"

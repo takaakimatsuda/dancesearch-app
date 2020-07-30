@@ -89,7 +89,7 @@
           | リンク :
         p
           .profile-description    
-            = link_to "#{@user.promotion_url}"
+            = link_to "#{@user.promotion_title}", "#{@user.promotion_url}"
     .col-12
       .promotion-title.text-left.mt-5.h4
         p

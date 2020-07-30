@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
       :lesson_comment,
       :movie_url,
       :promotion_url,
+      :promotion_title,
       :twitter_url,
       :instagram_url,
       :facebook_url])

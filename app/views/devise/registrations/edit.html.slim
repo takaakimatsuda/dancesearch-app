@@ -32,9 +32,13 @@
         = f.input :pref2, required: false, label:false
         = f.input :pref3, required: false, label:false
         = f.label :carrer,'実績'
-        = f.input :carrer, required: false, label:false
+        p
+        = f.text_area :carrer, required: false, label:false, rows: 5
+        p
         = f.label :lesson_comment,'レッスン紹介'
-        = f.input :lesson_comment, required: false, label:false
+        p
+        = f.text_area :lesson_comment, required: false, label:false, rows: 5
+        p
         = f.label :movie_url,'YouTube'
         = f.input :movie_url, required: false, label:false
         = f.label :promotion_title,'外部リンク(タイトル)'
@@ -45,19 +49,24 @@
         = f.input :twitter_url, required: false, label:false, placeholder: "@example"
         = f.label :instagram_url,'InstagramID'
         = f.input :instagram_url, required: false, label:false, placeholder: "Username"
+        p
         = f.input :password,                
           hint: "変更しない場合は空白のままにします", 
           required: false,                                       
-          input_html: { autocomplete: "new-password" }           
+          input_html: { autocomplete: "new-password" }   
+        p        
         = f.input :password_confirmation,              
           required: false,                             
           input_html: { autocomplete: "new-password" } 
+        p
         = f.input :current_password,                                     
           hint: "変更するには、現在のパスワードが必要です", 
           required: true,                                                
-          input_html: { autocomplete: "current-password" }              
+          input_html: { autocomplete: "current-password" }
+        p          
         = f.button :submit, "更新する", class: 'btn btn-warning text-white'
         h3 Cancel my account
         p
           | アカウントの削除 #{link_to "アカウントを消す", registration_path(resource_name), data: { confirm: "本当によろしいですか?" }, method: :delete}
+        p
         = link_to "Back", :back

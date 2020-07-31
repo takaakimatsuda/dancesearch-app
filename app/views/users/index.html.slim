@@ -1,9 +1,10 @@
 .search.d-flex.justify-content-start
   .search-wrapper.mt-5.sticky-top
     .search-info.text-center.my-5
-      = simple_form_for('#', url: '#') do |f|
+      = search_form_for(@q, url:users_path) do |f|
         = f.label :name,'キーワード検索'
-        = f.input :name, label: false, placeholder: "ダンサー・チーム名"
+        = f.search_field :name_cont, label: false, placeholder: "ダンサー・チーム名"
+        = f.submit
     .search-info-genre.text-center.my-5
       = simple_form_for('#', url: '#') do |f|
         = f.label :genre,'ジャンル'
@@ -39,7 +40,7 @@
               p
               = user.pref3_text
             - else
-              | 
+              |
           .user-score.pt-3.mx-5
             .score-count.text-right
               = user.scores.count

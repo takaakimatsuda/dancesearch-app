@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show stocks favoites edit follows followers]
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    if @q
+    @users = @q.result(distinct: true)
+    else
+      @users = User.all
+    end
   end
 
   def show
@@ -33,4 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def search_params
+    params.require(:q).permit!
+  end
 end

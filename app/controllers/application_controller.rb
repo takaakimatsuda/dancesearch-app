@@ -29,7 +29,9 @@ class ApplicationController < ActionController::Base
       :promotion_title,
       :twitter_url,
       :instagram_url,
-      :facebook_url])
+      :facebook_url,
+      lessons_attributes:[:id, :title, :fee, :level, :place, :url, :online, :_destroy]]
+      )
     end
 
   private

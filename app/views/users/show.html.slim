@@ -4,8 +4,8 @@
       = link_to "HOME", root_path
       |  > 
       = link_to "ダンサー検索", "#"
-      .profile-wrapper
-        .profile-header
+      .devise-wrapper
+        .devise-header
         .profile-contents.text-center
           .profile-image.mt-5
             = image_tag @user.avatar.variant(resize: "350x350"), class: "mx-auto d-block"

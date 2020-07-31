@@ -1,2 +1,50 @@
-h1 Users#index
-p Find me in app/views/users/index.html.slim
+.search.d-flex.justify-content-start
+  .search-wrapper.mt-5.sticky-top
+    .search-info.text-center.my-5
+      = simple_form_for('#', url: '#') do |f|
+        = f.label :name,'キーワード検索'
+        = f.input :name, label: false, placeholder: "ダンサー・チーム名"
+    .search-info-genre.text-center.my-5
+      = simple_form_for('#', url: '#') do |f|
+        = f.label :genre,'ジャンル'
+        = f.input :genre, label: false
+    .search-info-pref.text-center.my-5
+      = simple_form_for('#', url: '#') do |f|
+        = f.label :pref1,'地域'
+        = f.input :pref1, label: false
+    .search-info-fee.text-center.my-5
+      = simple_form_for('#', url: '#') do |f|
+        = f.label :name,'価格'
+        = f.input :name, label: false
+    .search-info-edit.text-center.my-5
+      = link_to '検索', edit_user_registration_path, class: 'btn btn-warning text-white'
+  .user-content.my-5
+    - if @users.present?
+      - @users.each do |user|
+        hr
+        .top-user-section-left.ml-3.mb-0.d-flex
+          p.mt-3 = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
+          .user-name.pt-3.pl-3
+            p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold'
+          .user-genre.pt-3.pl-3
+            - if user.genre.present?
+              = user.genre.upcase
+            - else
+              |
+          .user-pref.pt-3.mx-5
+            - if user.pref1.present? || user.pref2.present? || user.pref3.present?
+              = user.pref1_text
+              p
+              = user.pref2_text
+              p
+              = user.pref3_text
+            - else
+              | 
+          .user-score.pt-3.mx-5
+            .score-count.text-right
+              = user.scores.count
+              span スコア
+      hr
+    - else
+      p ユーザーがいません
+    .pagi

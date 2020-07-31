@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :scores, only: [:create, :destroy]
     resources :lessons, only: [:create, :destroy, :update]
   end
-  root 'home#index'
+  root 'users#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

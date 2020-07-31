@@ -22,7 +22,7 @@ header.header
             p.text-header.hidden-xs プロフィール
         .search-form.hidden-sm.hidden-xs
           = simple_form_for('#', url: '#') do |f|
-              = f.input :name, label: false, placeholder: "キーワードで検索！"
+            = f.input :name, label: false, placeholder: "キーワードで検索！"
         i.fas.fa-search.fa-2x.visible-xs-block
         .dropdown.dropleft
           .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"

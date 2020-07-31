@@ -6,6 +6,7 @@ class ScoresController < ApplicationController
     if @score.save
       redirect_back(fallback_location: root_path)
     else
+      flash[:alert] = @score.errors.full_messages.join('。')
       redirect_back(fallback_location: root_path)
     end
   end

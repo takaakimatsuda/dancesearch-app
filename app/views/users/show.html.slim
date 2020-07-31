@@ -4,6 +4,10 @@
       = link_to "HOME", root_path
       |  > 
       = link_to "ダンサー検索", "#"
+      - if flash.present?
+        .alert.alert-danger
+          - flash.each do |name, message|
+            = message
       .devise-wrapper
         .devise-header
         .profile-contents.text-center

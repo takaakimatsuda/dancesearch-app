@@ -1,4 +1,8 @@
 ja:
+  activerecord:
+    attributes:
+      score:
+        point: スコア
   enumerize:
     user:
       pref1: 

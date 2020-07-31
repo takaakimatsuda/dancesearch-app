@@ -9,6 +9,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require cocoon
 //= require_tree .
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
@@ -22,3 +23,17 @@ require('custom/jquery_raty')
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$('.js-project').on('cocoon:before-insert', function(e, task_to_be_added) {
+  console.log('before insert');
+  return task_to_be_added.fadeIn('slow');
+}).on('cocoon:after-insert', function(e, added_task) {
+  console.log('after insert');
+  return added_task.css("background", "red");
+}).on('cocoon:before-remove', function(e, task_to_be_removed) {
+  console.log('before remove');
+  return task_to_be_removed.fadeOut('slow');
+}).on('cocoon:after-remove', function(e, removed_task) {
+  return console.log('after remove');
+});
+

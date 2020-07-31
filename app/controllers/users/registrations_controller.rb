@@ -13,9 +13,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   def edit
+     super
+     current_user.lessons.build
+   end
 
   # PUT /resource
   # def update
@@ -59,7 +60,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   private
   def user_params
-      params.require(:user).permit(:email, :name, :avatar)
+      params.require(:user).permit(:email, :name, :avatar, lessons_attributes: 
+      [:id, :title, :fee, :level, :place, :url, :online, :_destroy])
   end
 
   protected

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :promotions, dependent: :destroy
-  has_many :lessons, dependent: :destroy
+  has_many :lessons, dependent: :destroy, inverse_of: :user
   has_many :scores, dependent: :destroy
   has_many :writer_scores, class_name: "Score", foreign_key: :writer_id, dependent: :destroy
 
@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
+  accepts_nested_attributes_for :lessons, allow_destroy: true
 
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?

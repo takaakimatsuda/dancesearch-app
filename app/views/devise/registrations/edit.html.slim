@@ -25,24 +25,27 @@
       .col-7
         = f.label :genre,'ジャンル'
         = f.input :genre, required: false, label:false
+        p
         = f.label :team_name,'チーム名'
         = f.input :team_name, required: false, label:false
+        p
         = f.label :pref1,'地域'
+        p
         = f.input :pref1, required: false, label:false
         = f.input :pref2, required: false, label:false
         = f.input :pref3, required: false, label:false
-        .js-project
-          .field
-            h2 レッスン
-          = f.simple_fields_for :lessons do |lesson|
-            = render 'lesson_fields', f: lesson
-            br
-            br
-          .field
-            = link_to_add_association 'レッスン追加', f, :lessons
+        p
         = f.label :carrer,'実績'
         p
         = f.text_area :carrer, required: false, label:false, rows: 5
+        p
+        .js-project.text-left
+          .field
+          = f.label :lessons, 'レッスン'  
+          = f.simple_fields_for :lessons do |lesson|
+            = render 'lesson_fields', f: lesson
+          .field
+              = link_to_add_association 'レッスン項目の追加', f, :lessons
         p
         = f.label :lesson_comment,'レッスン紹介'
         p

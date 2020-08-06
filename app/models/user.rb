@@ -21,7 +21,8 @@ class User < ApplicationRecord
     passive_relationships.find_by(following_id: user.id).present?
   end
 
-  PREF_NAMES = [:hokkaido,
+  PREF_NAMES = [:'',
+                :hokkaido,
                 :aomori,
                 :iwate,
                 :miyagi,
@@ -70,9 +71,10 @@ class User < ApplicationRecord
                 :okinawa]
   validate :require_unique_pref, on: :update
   validates :name, presence: true #空文字でないこと
+  
 
   extend Enumerize
-  enumerize :genre, in: [:hiphop, :pop, :break, :waack, :lock, :tut, :jazz, :freestyle]
+  enumerize :genre, in: [:'', :hiphop, :pop, :break, :waack, :lock, :tut, :jazz, :freestyle]
   enumerize :pref1, in: PREF_NAMES
   enumerize :pref2, in: PREF_NAMES
   enumerize :pref3, in: PREF_NAMES

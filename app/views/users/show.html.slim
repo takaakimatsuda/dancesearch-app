@@ -12,13 +12,15 @@
         .devise-header
         .profile-contents.text-center
           .profile-image.mt-5
-            = image_tag @user.avatar.variant(resize: "350x350"), class: "mx-auto d-block"
+            = image_tag @user.avatar, :height => '350px', class: "mx-auto d-block"
           .prfile-name.text-center
             = @user.name
           .row.mt-3.justify-content-center
+          - if @user.instagram_url.present?
             =link_to "https://www.instagram.com/#{@user.instagram_url}" do
               i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
               i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
+          - if @user.twitter_url.present?
             =link_to "https://twitter.com/#{@user.twitter_url}" do
               i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
               i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
@@ -50,12 +52,7 @@
                     = p.submit "スコア", class: "btn btn-warning text-white"
           p
             #follow_button.text-center
-              = render "follow_form", user: @user
-          p
-            - if current_user != @user
-              button.btn.btn-dark.my-2 type="button"  ミュート
-            else
-             |                         
+              = render "follow_form", user: @user                        
     .col-7
       .profile-list.text-left.mt-5
         p
@@ -79,12 +76,35 @@
           .profile-description  
             | #{@user.carrer}
         p
+          | レッスン :
+        p
+          .pforile-description
+            - if @lessons.present?
+              - @lessons.each do |lesson|
+                p
+                | レッスン内容
+                p
+                = lesson.title
+                p
+                | #{lesson.fee} 円
+                p
+                = lesson.time
+                p
+                = lesson.level_text
+                p
+                = lesson.place
+                p
+                = link_to "#{lesson.url}"
+                p
+                = lesson.online_text
+            - else
+        p
           | レッスン紹介 : 
         p
           .profile-description  
             | #{@user.lesson_comment}
         p
-          - if @user.movie_url
+          - if @user.movie_url.present?
             | Youtube :
             iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url}" width="560" 
           - else
@@ -94,10 +114,10 @@
         p
           .profile-description    
             = link_to "#{@user.promotion_title}", "#{@user.promotion_url}"
-    .col-12
-      .promotion-title.text-left.mt-5.h4
-        p
-          | ~ プロモーション ~
+  .col-12
+    .promotion-title.text-left.mt-5.h4
+      p
+        | ~ プロモーション ~
     .col-12
       .promotion-post.h4
         .comments
@@ -112,17 +132,18 @@
               .comment-down-content.pt-3
                 = simple_format(c.content)
                 hr
-            = form_for [@user, @promotion] do |f|
+            .promotions-pagi.text-center
               = paginate @promotions
-               - if current_user != @user
+          - else
+            .comment-down-content.text-center.py-5.my-5
+              | プロモーションコメントはありません。
+          - if current_user != @user
+            = form_for [@user, @promotion] do |f|
               h4 ~ プロモーションを送る ~
               = f.text_area :content, rows: 3, class: "form-control"
               br
               .text-right.mb-5
                 = f.submit "投稿する", class: "btn btn-warning text-white"
-          - else
-            .comment-down-content.text-center.py-5
-              | プロモーションコメントはありません。
         
 javascript:
   $("#star").raty({

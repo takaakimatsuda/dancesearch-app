@@ -4,7 +4,25 @@ ja:
       score:
         point: スコア
   enumerize:
+    lesson:
+      level:
+        introduction: 入門
+        beginner: 初級
+        intermediate: 中級
+        advanced: 上級
+        demon: 鬼級
+      online:
+        online: オンライン
     user:
+      genre:
+        hiphop: HIPHOP
+        pop: POP
+        break: BREAK
+        waack: WAACK
+        lock: LOCK
+        tut: TUT
+        jazz: JAZZ
+        freestyle: FREESTYLE
       pref1: 
         hokkaido: 北海道
         aomori: 青森

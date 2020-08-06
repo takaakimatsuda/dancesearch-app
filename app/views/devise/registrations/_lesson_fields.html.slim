@@ -1,9 +1,17 @@
 .nested-fields.field
-  = f.input :title
-  = f.input :fee
-  = f.input :level
-  = f.input :place
-  = f.input :url
-  = f.input :online
+  = f.label :title, 'レッスン名'
+  = f.input :title, required: false, label:false
+  = f.label :fee, '価格'
+  = f.input :fee, required: false, label:false
+  = f.label :time, '時間'
+  = f.input :time, required: false, label:false
+  = f.label :level, 'レベル'
+  = f.input :level, required: false, label:false
+  = f.label :place, '場所'
+  = f.input :place, required: false, label:false
+  = f.label :url, 'レッスンURL'
+  = f.input :url, required: false, label:false
+  = f.label :online, 'オンライン'
+  = f.input :online, required: false, label:false
 
   = link_to_remove_association 'レッスン削除', f

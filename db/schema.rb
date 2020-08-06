@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 2020_08_06_073044) do
   end
 
   create_table "announcements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "user_id"
     t.text "content"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "created_at"], name: "index_announcements_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_announcements_on_user_id"
   end
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -106,4 +108,5 @@ ActiveRecord::Schema.define(version: 2020_08_06_073044) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "announcements", "users"
 end

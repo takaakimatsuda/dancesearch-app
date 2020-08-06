@@ -1,2 +1,6 @@
-h1 Announcements#index
-p Find me in app/views/announcements/index.html.slim
+.col-3
+  .users-image
+      = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
+.col-7
+  .user-name
+    p.mb-0 = link_to current_user.name, class: 'text-dark font-weight-bold h4'

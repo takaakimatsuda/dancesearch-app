@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :promotions, only: [:create, :destroy]
     resources :scores, only: [:create, :destroy]
     resources :lessons, only: [:create, :destroy, :update]
+    resources :announcements, only: [:index, :show, :create, :destroy]
   end
   root 'users#index'
 

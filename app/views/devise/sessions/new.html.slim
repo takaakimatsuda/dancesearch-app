@@ -1,25 +1,25 @@
-.devise-wrapper
-  .devise-container
-    .border-line
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      /= devise_error_messages!
-      
 
-      .card
-        .card-header
-          h4.card-header__title.text-center ログイン
-        .card-content
-          .label-wrapper
-            = f.label :email,'メールアドレス'
-            = f.input :email, label:false, input_html: { class: 'form_input' }, autofocus: true
-          .label-wrapper
-            = f.label :password
-            = f.input :password, label:false, input_html: { class: 'form_input', autocomplete: 'current_password', id: 'password'}, placeholder:false
-          .label-wrapper
-            = f.check_box :remember_me
-            = f.label :remember_me
-          .submit-button
-            = f.submit 'ログイン',class: 'submit-btn btn-warning'
-          .submit-button
-            =link_to '新規登録',new_user_registration_path,class: 'btn btn-secondary'      
-      
+.devise-container
+  .border-line
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    /= devise_error_messages!
+    
+
+    .card
+      .card-header
+        h4.card-header__title.text-center ログイン
+      .card-content
+        .label-wrapper
+          = f.label :email,'メールアドレス'
+          = f.input :email, label:false, input_html: { class: 'form_input' }, autofocus: true
+        .label-wrapper
+          = f.label :password
+          = f.input :password, label:false, input_html: { class: 'form_input', autocomplete: 'current_password', id: 'password'}, placeholder:false
+        .label-wrapper
+          = f.check_box :remember_me
+          = f.label :remember_me
+        .submit-button
+          = f.submit 'ログイン',class: 'submit-btn btn-warning'
+        .submit-button
+          =link_to '新規登録',new_user_registration_path,class: 'btn btn-secondary'      
+    

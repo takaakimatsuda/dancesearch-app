@@ -47,13 +47,10 @@
       }
     }
   }
-}
-.search-form input[type="text"] {
-  border-radius: 50px;
-  width: 160px;
-  height: 30px;
-  margin-left: 150px;
-  padding: 0 10px;
+  input#q_name_or_team_name_cont {
+    width: 200px;
+    border-radius: 30px;
+  }
 }
 .fa-user-circle:before {
   content: "\f2bd";
@@ -79,10 +76,6 @@ nav.navbar.text-center.footer {
 }
 //ログイン
 
-.devise-wrapper {
-  box-sizing: border-box;
-  width: 100%;
-}
 .devise-container {
   width: 550px;
   margin: 30px auto;
@@ -201,7 +194,7 @@ label.string.optional {
   border-width: 5px;
   border-radius: 50px;
   width: 100%;
-  height: 100%;
+  height: 800px;
   .devise-header {
     background: #FF8E26;
     padding: 20px 0;
@@ -216,7 +209,6 @@ label.string.optional {
 }
 .profile-image img {
   border-radius: 10px;
-  width: 100%;
 }
 .prfile-name.text-center {
   font-size: 2.5rem;
@@ -253,6 +245,9 @@ label.string.optional {
   color: #305097;
 }
 // ユーザーエディット画面
+.edit-wrapper.col-5 {
+  height: 600px;
+}
 form#edit_user {
   width: 100%;
   display: inline-flex;
@@ -289,4 +284,27 @@ input#user_movie_url,input#user_promotion_url {
 }
 .user-content.my-5 {
   width: 100%;
+}
+.user-team_name {
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+.user-score-follower.pl-3.pt-3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.top-user-section-left.ml-3.mb-0.d-flex {
+  border: outset;
+  border-radius: 50px;
+  margin: 10px;
+}
+.user-lesson_comment.pt-3.pl-5 {
+  font-family: monospace;
+  color: orange;
+  width: 300px;
+}
+select#q_genre_cont, 
+select#q_pref1_or_pref2_or_pref3_cont, 
+select#q_sorts  {
+  width: 174px;
 }

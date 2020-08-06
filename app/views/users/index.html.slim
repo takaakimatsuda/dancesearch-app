@@ -1,51 +1,55 @@
 .search.d-flex.justify-content-start
-  .search-wrapper.mt-5.sticky-top
+  .search-wrapper.mt-5.mr-5.sticky-top
     .search-info.text-center.my-5
       = search_form_for(@q, url:users_path) do |f|
         = f.label :name,'キーワード検索'
-        = f.search_field :name_cont, label: false, placeholder: "ダンサー・チーム名"
-        = f.submit
-    .search-info-genre.text-center.my-5
-      = simple_form_for('#', url: '#') do |f|
-        = f.label :genre,'ジャンル'
-        = f.input :genre, label: false
-    .search-info-pref.text-center.my-5
-      = simple_form_for('#', url: '#') do |f|
-        = f.label :pref1,'地域'
-        = f.input :pref1, label: false
-    .search-info-fee.text-center.my-5
-      = simple_form_for('#', url: '#') do |f|
-        = f.label :name,'価格'
-        = f.input :name, label: false
-    .search-info-edit.text-center.my-5
-      = link_to '検索', edit_user_registration_path, class: 'btn btn-warning text-white'
+        p
+        = f.search_field :name_or_team_name_cont, label: false, placeholder: "ダンサー・チーム名"
+        .search-info-genre.text-center.my-3
+          = f.label :genre,'ジャンル'
+          p
+          = f.select :genre_cont, User.genre.options, label: false
+        .search-info-pref.text-center.my-3
+          = f.label :pref1,'地域'
+          p
+          = f.select :pref1_or_pref2_or_pref3_cont, User.pref1.options, label: false
+        .search-info-sort
+          = f.label :sorts,'並べ替え'
+          p
+          = f.select( :sorts, { '': 'id desc', 'フォロワーの多い順': 'followers_count desc', 'スコアの高い順': 'scores_point desc', '更新の新しい順': 'updated_at desc' } , { selected: params[:q] } )
+        .search-button.text-center.mt-5
+          = f.submit('検索',class: 'btn btn-warning btn-lg text-center')
   .user-content.my-5
     - if @users.present?
       - @users.each do |user|
-        hr
         .top-user-section-left.ml-3.mb-0.d-flex
-          p.mt-3 = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
+          .users-image.my-3.mx-3
+            = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
           .user-name.pt-3.pl-3
-            p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold'
-          .user-genre.pt-3.pl-3
+            p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold h4'
             - if user.genre.present?
               = user.genre.upcase
             - else
               |
-          .user-pref.pt-3.mx-5
-            - if user.pref1.present? || user.pref2.present? || user.pref3.present?
-              = user.pref1_text
-              p
-              = user.pref2_text
-              p
-              = user.pref3_text
-            - else
-              |
-          .user-score.pt-3.mx-5
-            .score-count.text-right
-              = user.scores.count
-              span スコア
+            p.mt-1
+            .user-team_name
+              = user.team_name
+            .user-lesson-fee.pt-3.mx-5
+            - if user.lessons.first.present?
+              | レッスン料金:
+              = user.lessons.max[:fee]
+              | 円〜
+          .user-score-follower.pl-3.pt-3
+            .score-count
+              = user.scores.all.sum(:point)
+              | スコア
+            .user-followers.pt-3
+              = user.followers.count
+              | フォロワー
+          .user-lesson_comment.pt-3.pl-5
+            = user.lesson_comment
       hr
     - else
       p ユーザーがいません
     .pagi
+      = paginate @users

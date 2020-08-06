@@ -9,4 +9,9 @@ class Score < ApplicationRecord
       errors.add(:point, 'の入力は1日３回までです')
     end
   end
+
+  ransacker :scores_point do
+    query = '(SELECT SUM(point) FROM scores GROUP BY scores.user_id)'
+    Arel.sql(query)
+  end
 end

@@ -2,10 +2,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_search
 
   # ログイン後の遷移先を変更
   def after_sign_in_path_for(resource)
     root_path
+  end
+
+  def set_search
+    @q = User.ransack(params[:q])
+    if @q
+    @users = @q.result(distinct: true).page(params[:page]).per(20)
+    else
+      @users = User.all.page(params[:page]).per(20)
+    end
   end
 
   protected
@@ -30,7 +40,7 @@ class ApplicationController < ActionController::Base
       :twitter_url,
       :instagram_url,
       :facebook_url,
-      lessons_attributes:[:id, :title, :fee, :level, :place, :url, :online, :_destroy]]
+      lessons_attributes:[:id, :title, :fee, :time, :level, :place, :url, :online, :_destroy]]
       )
     end
 

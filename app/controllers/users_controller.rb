@@ -4,9 +4,12 @@ class UsersController < ApplicationController
   def index
     @q = User.ransack(params[:q])
     if @q
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).page(params[:page]).per(20)
     else
-      @users = User.all
+      # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @q = User.ransack()
+      @users = User.all.page(params[:page]).per(20)
     end
   end
 
@@ -27,7 +30,21 @@ class UsersController < ApplicationController
     @scores = @user.scores.all.sum(:point)
     # formで呼び出すときに使う
     @score = Score.new
+    @lessons = @user.lessons.all
   end
+
+  # def search
+  #   if params[:q].present?
+  #   # 検索フォームからアクセスした時の処理
+  #     @q = User.ransack(search_params)
+  #     @users = @q.result
+  #   else
+  #   # 検索フォーム以外からアクセスした時の処理
+  #     params[:q] = { sorts: 'id desc' }
+  #     @q = User.ransack()
+  #     @users = User.all
+  #   end
+  # end
 
   def edit
   end
@@ -40,5 +57,8 @@ class UsersController < ApplicationController
 
   def search_params
     params.require(:q).permit!
+    params[:q] || {
+      genre_in: User.public_genres.values
+    }
   end
 end

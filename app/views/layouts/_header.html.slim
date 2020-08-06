@@ -21,16 +21,14 @@ header.header
             i.fas.fa-sticky-note.fa-2x.hidden-xs
             p.text-header.hidden-xs プロフィール
         .search-form.hidden-sm.hidden-xs
-          = simple_form_for('#', url: '#') do |f|
-            = f.input :name, label: false, placeholder: "キーワードで検索！"
+          = search_form_for(@q, url:users_path) do |f|
+            = f.search_field :name_or_team_name_cont, label: false, placeholder: "ダンサー・チーム名で検索！"
         i.fas.fa-search.fa-2x.visible-xs-block
         .dropdown.dropleft
           .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
             i.user-icon.fas.fa-user-circle.fa-3x
           .dropdown-menu aria-labelledby="dropdown1"
-            li = link_to 'マイページ', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
-            li = link_to 'メールアドレス変更', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
-            li = link_to 'パスワード変更', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
+            li = link_to 'アカウント変更',"/users/edit", class: 'text-dark font-weight-bold dropdown-item bg-light'
             li = link_to 'ログアウト',"/users/sign_out", method: :delete, class: 'text-dark font-weight-bold dropdown-item bg-light'
         
         

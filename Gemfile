@@ -47,7 +47,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'

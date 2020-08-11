@@ -14,8 +14,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
-     super
-     current_user.lessons.build
+    @promotions = current_user.promotions.page(params[:page]).per(5)
+    super
+    current_user.lessons.build
    end
 
   # PUT /resource

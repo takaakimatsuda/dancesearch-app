@@ -1,6 +1,28 @@
-.col-3
-  .users-image
-      = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
-.col-7
-  .user-name
-    p.mb-0 = link_to current_user.name, class: 'text-dark font-weight-bold h4'
+.container.top-margin
+  .col-3
+    .users-image.text-center.pt-5
+        = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
+    .user-name.text-center.pt-3
+      = link_to current_user.name, user_path(current_user), class: 'text-warning font-weight-bold h4'
+    .row.mt-3.justify-content-center
+      - if current_user.instagram_url.present?
+        =link_to "https://www.instagram.com/#{current_user.instagram_url}" do
+          i.fab.fa-instagram.fa-2x.mr-5.hidden-xs
+      - if current_user.twitter_url.present?
+        =link_to "https://twitter.com/#{current_user.twitter_url}" do
+          i.fab.fa-twitter.fa-2x.mx-2.hidden-xs
+    .profile-edit-link.text-center.mt-2
+      =link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-success text-white' 
+  .col-9
+    .announcement-wrapper.ml-3
+      = simple_form_for @announcement do |f|
+        = f.text_area :content, required: false, label:false, rows: 4, placeholder: '今、伝えたいことを発信しよう！'
+        .text-right.mt-3
+          = f.submit "アナウンスする", class: "btn btn-warning text-white"
+  .col-12
+    .bg-white.py-3.px-3.rounded
+      ul.nav.nav-tabs
+        li.nav-item
+          a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  ホーム
+        li.nav-item
+          = link_to 'マイアナウンス', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'

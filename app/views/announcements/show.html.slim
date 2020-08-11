@@ -1,2 +1,51 @@
-h1 Announcements#show
-p Find me in app/views/announcements/show.html.slim
+.container.top-margin
+  .col-3
+    .users-image.text-center.pt-5
+      = image_tag @user.avatar, :size => '180x180', class: 'rounded-circle'
+    .user-name.text-center.pt-3
+      = link_to @user.name, user_path, class: 'text-warning font-weight-bold h4'
+    .row.mt-3.justify-content-center
+      - if @user.instagram_url.present?
+        =link_to "https://www.instagram.com/#{@user.instagram_url}" do
+          i.fab.fa-instagram.fa-2x.mr-5.hidden-xs
+      - if @user.twitter_url.present?
+        =link_to "https://twitter.com/#{@user.twitter_url}" do
+          i.fab.fa-twitter.fa-2x.mx-2.hidden-xs
+    - if current_user == @user
+      .profile-edit-link.text-center.mt-2
+        =link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-success text-white' 
+  .col-9
+    - if current_user == @user
+      .announcement-wrapper.ml-3
+        = simple_form_for @announcement do |f|
+          = f.text_area :content, required: false, label:false, rows: 4, placeholder: '今、伝えたいことを発信しよう！'
+          .text-right.mt-3
+            = f.submit "アナウンスする", class: "btn btn-warning text-white"
+    - else
+      .col-4
+        .point-status.text-center.h3
+          = @scores
+          p
+            | スコア
+      .col-4
+        .point-status.text-center.h3
+          = @user.followings.count
+          p
+            | フォロー
+      .col-4
+        .point-status.text-center.h3
+          = @user.followers.count
+          p
+            | フォロワー
+  .col-12
+    - if @user.announcements.any?
+      .bg-white.py-3.px-3.rounded
+        ul.nav.nav-tabs
+          li.nav-item
+            = link_to 'ホーム', announcements_path, class: 'text-dark font-weight-bold nav-link'
+          li.nav-item
+            a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  マイアナウンス
+      ol.announcements
+        = render @announcements
+        .pagi.text-center
+          = paginate @announcements

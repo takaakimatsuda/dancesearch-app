@@ -1,0 +1,11 @@
+ol id="announcement-#{announcement.id}" 
+  .announcement-image
+    = image_tag announcement.user.avatar, :size => '50x50', class: 'rounded-circle'
+    span.user.pl-3= link_to announcement.user.name, announcement.user
+  p
+  .announcement-content.pt-3
+    = announcement.content
+  p
+  .announcement-time.text-right
+    | #{time_ago_in_words(announcement.created_at)}前に投稿
+hr

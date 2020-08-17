@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[show]
   before_action :set_user, only: %i[show stocks favoites edit follows followers]
 
   def index
@@ -31,6 +32,16 @@ class UsersController < ApplicationController
     # formで呼び出すときに使う
     @score = Score.new
     @lessons = @user.lessons.all
+  end
+
+  def follows
+    @scores = @user.scores.all.sum(:point)
+    @users = @user.followings.page(params[:page]).per(20)
+  end
+
+  def followers
+    @scores = @user.scores.all.sum(:point)
+    @users = @user.followers.page(params[:page]).per(20)
   end
 
   # def search

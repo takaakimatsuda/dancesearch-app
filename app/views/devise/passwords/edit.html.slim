@@ -1,0 +1,26 @@
+.devise-container
+  .border-line
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    .password-card.my-5
+      .card-header
+        h4.card-header__title.text-center パスワード再設定
+      .card-content.text-center.my-3
+        .label-wrapper
+          = f.error_notification
+          = f.input :reset_password_token, as: :hidden
+          = f.full_error :reset_password_token
+        .form-inputs.text-left
+          = f.label :password,"新しいパスワード"
+          = f.input :password,                                                                    
+          label: false,                                                             
+          required: true,                                                                       
+          autofocus: true,                                                                      
+          hint: ("#{@minimum_password_length}文字以上" if @minimum_password_length), 
+          input_html: { autocomplete: "new-password" } 
+          = f.label :password_confirmation,"※確認のため再入力してください"                                         
+          = f.input :password_confirmation,              
+          label: false,         
+          required: true,                              
+          input_html: { autocomplete: "new-password" } 
+        .form-actions.my-5
+          = f.button :submit, "再設定する",class: 'submit-btn btn-warning'

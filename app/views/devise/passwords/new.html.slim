@@ -1,0 +1,18 @@
+.devise-container
+  .border-line
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    .password-card.my-5
+      .card-header
+        h4.card-header__title.text-center パスワードを忘れた方
+      .card-content.text-center.my-3
+        .label-wrapper
+          = f.error_notification
+        .form-inputs.my-3.text-left
+          = f.label :input,'メールアドレス'
+          = f.input :email,                       
+            required: true,                       
+            autofocus: true,
+            label: false,                   
+            input_html: { autocomplete: "email" } 
+        .form-actions.mt-5
+          = f.button :submit, "送信",class: 'submit-btn btn-warning'

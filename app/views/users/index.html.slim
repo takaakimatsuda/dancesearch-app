@@ -25,7 +25,7 @@
         .top-user-section-left.ml-3.mb-0.d-flex
           .users-image.my-3.mx-3
             = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
-          .user-name.pt-3.pl-3
+          .user-name.pt-4.pl-3
             p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold h4'
             - if user.genre.present?
               = user.genre.upcase
@@ -39,14 +39,16 @@
               | レッスン料金:
               = user.lessons.max[:fee]
               | 円〜
-          .user-score-follower.pl-3.pt-3
+          .user-score-follower.text-center.pl-3.pt-4
             .score-count
               = user.scores.all.sum(:point)
+              br
               | スコア
-            .user-followers.pt-3
+            .user-followers.text-center.pt-4
               = user.followers.count
+              br
               | フォロワー
-          .user-lesson_comment.pt-3.pl-5
+          .user-lesson_comment.pt-4.px-5
             = user.lesson_comment
       hr
     - else

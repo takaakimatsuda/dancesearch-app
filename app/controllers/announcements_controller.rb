@@ -1,11 +1,10 @@
 class AnnouncementsController < ApplicationController
+  before_action :authenticate_user!, only: %i[index show]
   before_action :set_user, only: [:show]
 
   def index
     @announcement = Announcement.new
-    if @announcements.present?
-      @announcements = @user.announcements.page(params[:page]).per(10)
-    end
+    @feed_items = current_user.feed.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
@@ -25,6 +24,8 @@ class AnnouncementsController < ApplicationController
   end
 
   def destroy
+    Announcement.find_by(id: params[:id]).destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private

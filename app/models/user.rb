@@ -22,6 +22,13 @@ class User < ApplicationRecord
     passive_relationships.find_by(following_id: user.id).present?
   end
 
+  def feed
+    following_ids = "SELECT follower_id FROM relationships
+                    WHERE following_id = :user_id"
+    Announcement.where("user_id IN (#{following_ids})
+                    OR user_id = :user_id", user_id: self.id)
+  end
+
   PREF_NAMES = [:'',
                 :hokkaido,
                 :aomori,

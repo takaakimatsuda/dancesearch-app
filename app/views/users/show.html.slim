@@ -1,9 +1,8 @@
 .container.top-margin
   .row.mt-4
     .link-title.col-5
+      | > 
       = link_to "HOME", root_path
-      |  > 
-      = link_to "ダンサー検索", "#"
       - if flash.present?
         .alert.alert-danger
           - flash.each do |name, message|
@@ -12,7 +11,7 @@
         .devise-header
         .profile-contents.text-center
           .profile-image.mt-5
-            = image_tag @user.avatar, :height => '350px', class: "mx-auto d-block"
+            = image_tag @user.avatar, :size => '350x350', class: "mx-auto d-block"
           .prfile-name.text-center
             = @user.name
           .row.mt-3.justify-content-center

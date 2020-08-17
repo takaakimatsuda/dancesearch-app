@@ -1,10 +1,8 @@
 .devise__wrapper
   .devise-container
     .border-line
-
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       /= devise_error_messages!
-    
       .card.mt-5
         .card-header
           h4.card-header__title.text-center 新規登録
@@ -33,4 +31,3 @@
             br
             .submit-button
               = f.button :submit, '登録' ,class: 'submit-btn btn-warning mt-5'
-        = render 'devise/shared/links'

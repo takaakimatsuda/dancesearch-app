@@ -25,6 +25,9 @@
           opacity: .6;
         }
       }
+      // i.fas.fa-search.fa-2x.visible-xs-block {
+      //   color: black;
+      //   text-decoration: none;}
       li {
         list-style: none;
         margin: 0 5px;
@@ -67,11 +70,11 @@
   &::before {right:auto !important; left:9px;}
   &::after {right:auto !important; left:10px;}
  }
- i.fas.fa-sticky-note.fa-2x.hidden-xs {
+ i.fas.fa-bullhorn.fa-2x.hidden-xs {
   position: relative;
-  left: 40px;
+  left: 30px;
 }
-i.fas.fa-home.fa-2x.hidden-xs {
+i.fas.fa-search.fa-2x.hidden-xs {
   position: relative;
   left: 6px;
 }
@@ -177,6 +180,10 @@ label.string.optional {
       letter-spacing: 3px;
     }  
   }
+  a.btn.btn-outline-primary {
+    border: 1px solid;
+    width: 30%;
+  }
 }
 
 .text-center {
@@ -205,7 +212,7 @@ label.string.optional {
   border-width: 5px;
   border-radius: 50px;
   width: 100%;
-  height: 800px;
+  height: auto;
   .devise-header {
     background: #FF8E26;
     padding: 20px 0;
@@ -313,7 +320,7 @@ input#user_movie_url,input#user_promotion_url {
   border-radius: 50px;
   margin: 10px;
 }
-.user-lesson_comment.pt-3.pl-5 {
+.user-lesson_comment.pt-4.px-5 {
   font-family: monospace;
   color: orange;
   width: 300px;
@@ -322,6 +329,9 @@ select#q_genre_cont,
 select#q_pref1_or_pref2_or_pref3_cont, 
 select#q_sorts  {
   width: 174px;
+}
+input#q_name_or_team_name_cont {
+  border-radius: 50px;
 }
 // マイプロフィール画面
 .col-3 {
@@ -372,15 +382,26 @@ select#q_sorts  {
   .point-status {
     position: relative;
     right: 20px;
-    bottom: 50px;
+    bottom: 80px;
+    color: #FF8E26;
   }
-}   
+}  
 .announce-title.h3 {
   font-weight: bold;
   color: orange;
   padding-top: 30px;
   padding-left: 50px;
 } 
+.feed-time.text-right {
+  padding-right: 30px;
+}
+.feed-image {
+  span.trash {
+    float: right;
+    padding-right: 60px;
+    padding-top: 10px;
+  }
+}
 // マイアナウンス画面
 .nav-tabs {
   border-bottom: 1px solid #FF8E26;
@@ -388,10 +409,70 @@ select#q_sorts  {
 a.nav-link.text-dark.font-weight-bold.active {
   border-color: #FF8E26 #FF8E26 #FFF #FF8E26;
 }
+span.trash {
+  float: right;
+  padding-right: 30px;
+  padding-top: 10px;
+}
+ol.announcements {
+  padding-left: 0;
+  position: relative;
+  right: 15px;
+}
+.point-status > p {
+  color: black;
+}
 // ページネーション
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
   background-color: lightseagreen;
   border-color: lightseagreen;
+}
+
+// フォロー画面
+.follow-list {
+  .col-8 {
+    display: inline-block;
+  }
+  .col-4 {
+    position: relative;
+    bottom: 20px;
+  }
+  p {
+    color: dimgray;
+    margin: 5px 0 10px;
+    color: dimgray;
+  }
+}
+
+//パスワード忘れた時用画面
+.password-card.my-5 {
+  width: 100%;
+  height: 300px;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 2px 5px #ccc;
+  .card-header {
+  background: #FF8E26;
+  padding: 5px 0;
+  border-radius: 50px 50px 0 0;
+  &__title {
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+    }  
+  }
+  .form-inputs.my-3.text-left {
+    position: relative;
+    left: 168px;
+  }
+  input.btn.submit-btn.btn-warning {
+    width: 20%;
+  }
+}
+//パスワード再設定画面
+.form-inputs.text-left {
+  position: relative;
+  left: 168px;
 }

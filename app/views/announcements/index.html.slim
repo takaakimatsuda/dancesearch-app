@@ -12,7 +12,7 @@
         =link_to "https://twitter.com/#{current_user.twitter_url}" do
           i.fab.fa-twitter.fa-2x.mx-2.hidden-xs
     .profile-edit-link.text-center.mt-2
-      =link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-success text-white' 
+      =link_to 'アカウント編集', edit_user_registration_path, class: 'btn btn-success text-white' 
   .col-9
     .announcement-wrapper.ml-3
       = simple_form_for @announcement do |f|
@@ -26,3 +26,22 @@
           a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  ホーム
         li.nav-item
           = link_to 'マイアナウンス', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
+  - if @feed_items.present?
+    - @feed_items.each do |feed_item|
+      ol id="announcement-#{feed_item.id}" 
+        .feed-image
+          = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle'
+          span.user.pl-3= link_to feed_item.user.name, feed_item.user
+          - if feed_item.user == current_user
+            span.trash= link_to icon("fas", "trash-alt"), announcement_path(feed_item), method: :delete, class: "text-dark"
+        p
+        .announcement-content.pt-3
+          = feed_item.content
+        p
+        .feed-time.text-right
+          | #{time_ago_in_words(feed_item.created_at)}前に投稿
+        hr
+  - else
+    p タイムラインがありません。
+  .pagi.pt-3.text-center
+    = paginate @feed_items

@@ -6,29 +6,33 @@ header.header
           = image_tag 'header_logo.PNG', class: "icon-size mb-1 mr-1 ", size: "85x85"
           span.hidden-xs ダンサーチ！ 
       .row.size
-        .dropdown
-          .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
-            i.fas.fa-bars.fa-2x.float-left.visible-xs-block
-          .dropdown-menu aria-labelledby="dropdown1"
-            li = link_to 'HOME', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
-            li = link_to 'プロフィール', root_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
         .col-2
-          =link_to new_user_registration_path, class: "btn btn-header btn-header-circle" do
-            i.fas.fa-home.fa-2x.hidden-xs
-            p.text-header.hidden-xs HOME
+          =link_to root_path, class: "btn btn-header btn-header-circle" do
+            i.fas.fa-search.fa-2x.hidden-xs
+            p.text-header.hidden-xs さがす！
         .col-2
           =link_to announcements_path, class: "btn btn-header btn-header-circle" do
-            i.fas.fa-sticky-note.fa-2x.hidden-xs
-            p.text-header.hidden-xs プロフィール
+            i.fas.fa-bullhorn.fa-2x.hidden-xs
+            p.text-header.hidden-xs アナウンス
         .search-form.hidden-sm.hidden-xs
           = search_form_for(@q, url:users_path) do |f|
             = f.search_field :name_or_team_name_cont, label: false, placeholder: "ダンサー・チーム名で検索！"
-        i.fas.fa-search.fa-2x.visible-xs-block
+        .visible-icon.pb-2
+          =link_to users_path, class: "btn" do
+            i.fas.fa-search.fa-2x.visible-xs-block
+          =link_to announcements_path, class: "btn" do
+            i.fas.fa-bullhorn.fa-2x.visible-xs-block
+        .dropdown.dropleft
         .dropdown.dropleft
           .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
             i.user-icon.fas.fa-user-circle.fa-3x
           .dropdown-menu aria-labelledby="dropdown1"
-            li = link_to 'アカウント変更',"/users/edit", class: 'text-dark font-weight-bold dropdown-item bg-light'
+            - if user_signed_in?
+              li = link_to 'マイプロフィール', user_path(current_user), class: 'text-dark font-weight-bold dropdown-item bg-light'
+            - else
+              li = link_to 'マイプロフィール', "/users/sign_in", class: 'text-dark font-weight-bold dropdown-item bg-light'
+            li = link_to 'プロフィール編集',"/users/edit", class: 'text-dark font-weight-bold dropdown-item bg-light'
+            li = link_to 'パスワードを忘れた方',"/users/password/new", class: 'text-dark font-weight-bold dropdown-item bg-light'
             li = link_to 'ログアウト',"/users/sign_out", method: :delete, class: 'text-dark font-weight-bold dropdown-item bg-light'
         
         

@@ -6,6 +6,39 @@
           | ステキなダンサーが、きっと見つかる。
       .btn-box.text-center.d-flex.flex-column
         div = link_to 'ダンサーチ！をはじめる', root_path, class: 'btn btn-warning w-40 my-2'
+.index.my-5.text-center.col-12
+  .genre-wrapper.col-3
+    i.fas.fa-map.fa-5x
+    p
+      |地域でさがす
+  .genre-wrapper.col-3
+    i.fas.fa-user-alt.fa-5x
+    p
+      |ジャンルでさがす
+  .genre-wrapper.col-3
+    i.fas.fa-coins.fa-5x
+    p
+      |料金でさがす
 .header.about
   h2.about-title.font-weight-bold.text-white
     | ダンサーチとは？
+.section.about.h3
+  | ダンサー専用の情報シェアリングサイトです。
+
+    プロフィールを充実させておくと、あなたのタイムリーな情報をPRすることができます！
+    また、気になるダンサーをフォローしておくことでレッスン情報やイベント情報をまとめて知ることも！
+
+    さあ、あなたのダンスライフの輪を広げよう！
+.header.news
+  h2.news-title.font-weight-bold.text-white
+    | 更新情報
+.news.text-center.col-12
+  - @users.each do |user|
+    .news-image.col-3
+      = image_tag user.avatar, :size => '200x260', class: 'rounded-circle'
+      p
+        .news-text
+          | #{user.name}さんが
+            更新しました！
+  .news-detail.text-center.my-5
+    = button_to '詳細を見る', users_path, class: 'btn-success'

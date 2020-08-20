@@ -52,6 +52,36 @@ h2.about-title.font-weight-bold.text-white {
   margin: 0;
   padding: 10px;
 }
+.section.about.h3 {
+  white-space: pre-wrap;
+  padding: 20px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+.genre-wrapper.col-3 {
+  border: solid;
+  border-color: #FF8E26;
+  border-width: 5px;
+  border-radius: 50px;
+  margin: 20px;
+  padding: 10px;
+  font-size: 2rem;
+}
+h2.news-title.font-weight-bold.text-white {
+  margin: 0;
+  padding: 10px;
+}
+.news-image.col-3 {
+  margin: 20px;
+}
+.news-text {
+  white-space: pre-wrap;
+  color: darkorange;
+}
+input.btn-success {
+  font-size: 2rem;
+  width: 30%;
+}
 //ヘッダー
 .header {
   background: #FF8E26;
@@ -342,6 +372,10 @@ form#edit_user {
     width: 100%;
     border-radius: 50px 50px 0 0;
   } 
+}
+.comment-down-content.pt-3 p {
+  position: relative;
+  left: 55px;
 }
 textarea#user_carrer,textarea#user_lesson_comment {
   width: 80%;

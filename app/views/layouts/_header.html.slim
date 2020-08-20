@@ -23,9 +23,12 @@ header.header
           =link_to announcements_path, class: "btn" do
             i.fas.fa-bullhorn.fa-2x.visible-xs-block
         .dropdown.dropleft
-        .dropdown.dropleft
           .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
-            i.user-icon.fas.fa-user-circle.fa-3x
+            - if user_signed_in?
+              .hedder-image.mb-2
+                = image_tag current_user.avatar, :size => '52x54', class: 'rounded-circle'
+            - else
+              i.user-icon.fas.fa-user-circle.fa-3x
           .dropdown-menu aria-labelledby="dropdown1"
             - if user_signed_in?
               li = link_to 'マイプロフィール', user_path(current_user), class: 'text-dark font-weight-bold dropdown-item bg-light'

@@ -105,6 +105,7 @@
         p
           - if @user.movie_url.present?
             | Youtube :
+            p
             iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url}" width="560" 
           - else
             | Youtube :

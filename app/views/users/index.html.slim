@@ -37,8 +37,9 @@
             .user-lesson-fee.pt-3.mx-5
             - if user.lessons.first.present?
               | レッスン料金:
-              = user.lessons.max[:fee]
-              | 円〜
+              p
+                = user.lessons.max[:fee]
+                | 円〜
           .user-score-follower.text-center.pl-3.pt-4
             .score-count
               = user.scores.all.sum(:point)

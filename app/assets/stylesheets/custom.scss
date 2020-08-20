@@ -1,3 +1,57 @@
+//ログイン前画面
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  height: 100%;
+  margin-bottom: 150px;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: 1279px;
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  background-image: image-url("home_cover.JPG");
+  height: 500px;
+  background-size: cover;
+}
+.bg-mask {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+.container.mx-auto {
+  width: 500px;
+  height: 350px;
+  background-color: white;
+  position: relative;
+  top: 80px;
+  border-radius: 50px;
+  transition: 0.5s;
+  opacity: 0.6;
+}
+.container.mx-auto:hover {
+  opacity: 1;
+}
+p.top_text.font-weight-bold {
+  margin: 50px;
+  font-size: 1.8rem;
+}
+a.btn.btn-warning.w-40.my-2 {
+  position: relative;
+  top: 30px;
+  width: 60%;
+  height: auto;
+  font-size: 1.8rem;
+}
+h2.about-title.font-weight-bold.text-white {
+  margin: 0;
+  padding: 10px;
+}
 //ヘッダー
 .header {
   background: #FF8E26;
@@ -296,6 +350,9 @@ input#user_movie_url,input#user_promotion_url {
   width: 70%;
 }
 // 検索画面
+.search.d-flex.justify-content-start {
+  padding: 20px;
+}
 .search-wrapper {
   border: solid;
   border-color: #FF8E26;
@@ -333,6 +390,9 @@ select#q_sorts  {
 input#q_name_or_team_name_cont {
   border-radius: 50px;
 }
+img.rounded-circle {
+  object-fit: cover;
+}
 // マイプロフィール画面
 .col-3 {
   display: inline-block;
@@ -360,6 +420,7 @@ input#q_name_or_team_name_cont {
 }
 // アナウンス一覧画面
 .container.top-margin {
+  padding: 50px 100px;
   .col-5 {
     display: inline-block;
   }

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :scores, only: [:create, :destroy]
     resources :lessons, only: [:create, :destroy, :update]
   end
+  resources :home, only: [:index]
   resources :announcements, only: [:index, :show, :create, :destroy]
   root 'users#index'
 

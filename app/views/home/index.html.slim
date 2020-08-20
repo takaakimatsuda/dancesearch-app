@@ -1,2 +1,11 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+.wrapper
+  .bg-mask
+    .container.mx-auto
+      .text-box.text-center
+        p.top_text.font-weight-bold
+          | ステキなダンサーが、きっと見つかる。
+      .btn-box.text-center.d-flex.flex-column
+        div = link_to 'ダンサーチ！をはじめる', root_path, class: 'btn btn-warning w-40 my-2'
+.header.about
+  h2.about-title.font-weight-bold.text-white
+    | ダンサーチとは？

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :home, only: [:index]
   resources :announcements, only: [:index, :show, :create, :destroy]
+  resources :notifications, only: :index
   root 'users#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

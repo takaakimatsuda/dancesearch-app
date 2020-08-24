@@ -1,7 +1,9 @@
 class PromotionsController < ApplicationController
+
   def create
     user = User.find(params[:user_id])
     @promotion = user.promotions.build(promotion_params)
+    @promotion.create_notification_by(current_user)
     @promotion.writer_id = current_user.id
     if @promotion.save
       redirect_back(fallback_location: root_path)

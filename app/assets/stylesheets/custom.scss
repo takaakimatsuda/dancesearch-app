@@ -477,7 +477,7 @@ img.rounded-circle {
   .point-status {
     position: relative;
     right: 20px;
-    bottom: 80px;
+    bottom: 120px;
     color: #FF8E26;
   }
 }  
@@ -527,6 +527,22 @@ ol.announcements {
 
 // フォロー画面
 .follow-list {
+  .col-8 {
+    display: inline-block;
+  }
+  .col-4 {
+    position: relative;
+    top: 15px;
+  }
+  p {
+    color: dimgray;
+    margin: 5px 0 10px;
+    color: dimgray;
+  }
+}
+
+// フォロワー画面
+.follower-list {
   .col-8 {
     display: inline-block;
   }

@@ -8,7 +8,6 @@ class AnnouncementsController < ApplicationController
   end
 
   def show
-    @announcement = Announcement.new
     @announcements = @user.announcements.all.page(params[:page]).per(10)
     @scores = @user.scores.all.sum(:point)
   end

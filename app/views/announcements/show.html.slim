@@ -38,6 +38,8 @@
             = link_to 'ホーム', announcements_path, class: 'text-dark font-weight-bold nav-link'
           li.nav-item
             a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  マイアナウンス
+          li.nav-item
+            = link_to '通知', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
       ol.announcements
         = render @announcements
         .pagi.text-center

@@ -1,8 +1,7 @@
 .container.top-margin
   .row.mt-4
     .link-title.col-5
-      | > 
-      = link_to "HOME", root_path
+      = link_to ">  戻る", :back
       - if flash.present?
         .alert.alert-danger
           - flash.each do |name, message|
@@ -24,7 +23,7 @@
               i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
               i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
           p
-            .score-count
+            .score-count.h4
               = @scores
           p
             .score-title
@@ -32,9 +31,9 @@
           p
             .following-count.h4
               = @user.followings.count
-              p
-                .following-name
-                  | フォロー　
+          p
+            .following-name.h4
+            | フォロー　
             .col-xl-6.col-lg-6.col-md-6.col-sm-12.col-xs-12
               .follower-count.h4
                 = @user.followers.count
@@ -77,12 +76,9 @@
         p
           | レッスン :
         p
-          .pforile-description
+          .profile-description
             - if @lessons.present?
               - @lessons.each do |lesson|
-                p
-                | レッスン内容
-                p
                 = lesson.title
                 p
                 | #{lesson.fee} 円
@@ -96,6 +92,7 @@
                 = link_to "#{lesson.url}"
                 p
                 = lesson.online_text
+                hr
             - else
         p
           | レッスン紹介 : 

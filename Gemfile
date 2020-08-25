@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'image_processing', '~> 1.2'
 gem 'annotate'
 gem 'cocoon'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -47,7 +48,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'

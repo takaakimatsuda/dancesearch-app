@@ -1,7 +1,10 @@
 .container.top-margin
   .col-3
     .users-image.text-center.pt-5
-      = image_tag @user.avatar, :size => '180x180', class: 'rounded-circle'
+      - if @user.avatar.present?
+        = image_tag @user.avatar, :size => '180x180', class: 'rounded-circle'
+      - else
+        i.user-icon.fas.fa-user-circle.fa-8x
     .user-name.text-center.pt-3
       = link_to @user.name, user_path, class: 'text-warning font-weight-bold h4'
     .row.mt-3.justify-content-center
@@ -42,7 +45,10 @@
       ol id="announcement-#{user.id}" 
         .follow-list
           .col-8
-            = image_tag user.avatar, :size => '50x50', class: 'rounded-circle'
+            - if user.avatar.present?
+              = image_tag user.avatar, :size => '50x50', class: 'rounded-circle'
+            - else
+              i.user-icon.fas.fa-user-circle.fa-3x.mt-1
             span.user.pl-3= link_to user.name
             span.user.pl-3= user.genre
             p

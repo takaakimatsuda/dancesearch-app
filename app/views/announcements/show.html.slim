@@ -1,7 +1,10 @@
 .container.top-margin
   .col-3
     .users-image.text-center.pt-5
-      = image_tag @user.avatar, :size => '180x180', class: 'rounded-circle'
+      - if @user.avatar.present?
+        = image_tag @user.avatar, :size => '180x180', class: 'rounded-circle'
+      - else
+          i.user-icon.fas.fa-user-circle.fa-8x
     .user-name.text-center.pt-3
       = link_to @user.name, user_path, class: 'text-warning font-weight-bold h4'
     .row.mt-3.justify-content-center
@@ -31,16 +34,18 @@
         p
           = link_to "フォロワー", followers_user_path(@user.id), class: 'text-dark font-weight-bold'
   .col-12
+    .bg-white.pt-5.pb-3.px-3.rounded
+      ul.nav.nav-tabs
+        li.nav-item
+          = link_to 'ホーム', announcements_path, class: 'text-dark font-weight-bold nav-link'
+        li.nav-item
+          a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  マイアナウンス
+        li.nav-item
+          = link_to '通知', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
     - if @user.announcements.any?
-      .bg-white.pt-5.pb-3.px-3.rounded
-        ul.nav.nav-tabs
-          li.nav-item
-            = link_to 'ホーム', announcements_path, class: 'text-dark font-weight-bold nav-link'
-          li.nav-item
-            a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  マイアナウンス
-          li.nav-item
-            = link_to '通知', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
       ol.announcements
         = render @announcements
         .pagi.text-center
           = paginate @announcements
+    - else
+      p マイアナウンスはありません。

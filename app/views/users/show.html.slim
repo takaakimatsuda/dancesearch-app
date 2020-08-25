@@ -10,7 +10,10 @@
         .devise-header
         .profile-contents.text-center
           .profile-image.mt-5
-            = image_tag @user.avatar, :size => '350x350', class: "mx-auto d-block"
+            - if @user.avatar.present?
+              = image_tag @user.avatar, :size => '350x350', class: "mx-auto d-block"
+            - else
+              i.user-icon.fas.fa-user-circle.fa-10x
           .prfile-name.text-center
             = @user.name
           .row.mt-3.justify-content-center
@@ -122,7 +125,10 @@
             - @promotions.each do |c|
               .comment-up-content.d-flex.justify-content-between
                 .left-side
-                  = image_tag c.writer.avatar, :size => '50x50', class: 'rounded-circle'
+                  - if c.writer.avatar.present?
+                    = image_tag c.writer.avatar, :size => '50x50', class: 'rounded-circle'
+                  - else
+                    i.user-icon.fas.fa-user-circle.fa-3x.mt-1
                   = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
                 - if c.writer == current_user
                   .right-side

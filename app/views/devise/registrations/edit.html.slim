@@ -13,7 +13,7 @@
                     = f.file_field :avatar
           - else
             .edit-image.my-5
-              i.user-icon.fas.fa-user-circle.fa-5x  
+              i.user-icon.fas.fa-user-circle.fa-10x  
               = f.file_field :avatar
           
           .edit-name
@@ -77,10 +77,10 @@
           input_html: { autocomplete: "current-password" }
         p          
         = f.button :submit, "更新する", class: 'btn btn-warning text-white'
-      .col-12
-        .promotion-title.text-left.mt-5.h4
-      p
-        | ~ プロモーション ~
+    .col-12
+      .promotion-title.text-left.mt-5.h4
+        p
+          | ~ プロモーション ~
     .col-12
       .promotion-post.h4
         .comments

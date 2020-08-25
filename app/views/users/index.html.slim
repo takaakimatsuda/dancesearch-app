@@ -28,7 +28,10 @@
       - @users.each do |user|
         .top-user-section-left.ml-3.mb-0.d-flex
           .users-image.my-3.mx-3
-            = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
+            - if user.avatar.present?
+              = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
+            - else
+              i.user-icon.fas.fa-user-circle.fa-9x
           .user-name.pt-4.pl-3
             p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold h4'
             - if user.genre.present?

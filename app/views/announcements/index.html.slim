@@ -1,7 +1,10 @@
 .container.top-margin
   .col-3
     .users-image.text-center.pt-5
-        = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
+        - if current_user.avatar.present?
+          = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
+        - else
+          i.user-icon.fas.fa-user-circle.fa-8x
     .user-name.text-center.pt-3
       = link_to current_user.name, user_path(current_user), class: 'text-warning font-weight-bold h4'
     .row.mt-3.justify-content-center
@@ -32,7 +35,10 @@
     - @feed_items.each do |feed_item|
       ol id="announcement-#{feed_item.id}" 
         .feed-image
-          = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle'
+          - if feed_item.user.avatar.present?
+            = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle'
+          - else
+            i.user-icon.fas.fa-user-circle.fa-3x.mt-1
           span.user.pl-3= link_to feed_item.user.name, feed_item.user
           - if feed_item.user == current_user
             span.trash= link_to icon("fas", "trash-alt"), announcement_path(feed_item), method: :delete, class: "text-dark"

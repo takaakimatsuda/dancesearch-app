@@ -2,12 +2,12 @@ header.header
   nav.nav
     ul.header_menu
       li.header_menu_title
-        =link_to root_path, class: "nav-link" do
+        =link_to users_path, class: "nav-link" do
           = image_tag 'header_logo.PNG', class: "icon-size mb-1 mr-1 ", size: "85x85"
           span.hidden-xs ダンサーチ！ 
       .row.size
         .col-2
-          =link_to root_path, class: "btn btn-header btn-header-circle" do
+          =link_to users_path, class: "btn btn-header btn-header-circle" do
             i.fas.fa-search.fa-2x.hidden-xs
             p.text-header.hidden-xs さがす！
         .col-2
@@ -24,7 +24,7 @@ header.header
             i.fas.fa-bullhorn.fa-2x.visible-xs-block
         .dropdown.dropleft
           .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
-            - if user_signed_in?
+            - if user_signed_in? && current_user.avatar.present?
               .hedder-image.mb-2
                 = image_tag current_user.avatar, :size => '52x54', class: 'rounded-circle'
             - else

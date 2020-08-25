@@ -5,7 +5,8 @@
         p.top_text.font-weight-bold
           | ステキなダンサーが、きっと見つかる。
       .btn-box.text-center.d-flex.flex-column
-        div = link_to 'ダンサーチ！をはじめる', root_path, class: 'btn btn-warning w-40 my-2'
+        div = link_to 'ダンサーチ！をはじめる', new_user_registration_path, class: 'btn btn-warning w-40 my-2'
+        div = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-success w-40 mt-5'
 .index.my-5.text-center.col-12
   .genre-wrapper.col-3
     i.fas.fa-map.fa-5x
@@ -35,7 +36,10 @@
 .news.text-center.col-12
   - @users.each do |user|
     .news-image.col-3
-      = image_tag user.avatar, :size => '200x260', class: 'rounded-circle'
+      - if user.avatar.present?
+        = image_tag user.avatar, :size => '200x260', class: 'rounded-circle'
+      - else
+        i.user-icon.fas.fa-user-circle.fa-10x
       p
         .news-text
           | #{user.name}さんが

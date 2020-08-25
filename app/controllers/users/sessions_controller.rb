@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  layout 'unauthorized'
   # before_action :configure_sign_in_params, only: [:create]
 
+  def new_guest
+    user = User.guest
+    user.skip_confirmation!
+    user.save
+    sign_in user
+    redirect_to users_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
   # GET /resource/sign_in
   # def new
   #   super

@@ -48,6 +48,13 @@ a.btn.btn-warning.w-40.my-2 {
   height: auto;
   font-size: 1.8rem;
 }
+a.btn.btn-success.w-40.mt-5 {
+  position: relative;
+  top: 30px;
+  width: 60%;
+  height: auto;
+  font-size: 1.8rem;
+}
 h2.about-title.font-weight-bold.text-white {
   margin: 0;
   padding: 10px;
@@ -421,6 +428,11 @@ select#q_pref1_or_pref2_or_pref3_cont,
 select#q_sorts  {
   width: 174px;
 }
+i.user-icon.fas.fa-user-circle.fa-9x {
+  position: relative;
+  top: 5px;
+  left: 1px;
+}
 input#q_name_or_team_name_cont {
   border-radius: 50px;
 }
@@ -529,16 +541,21 @@ ol.announcements {
 .follow-list {
   .col-8 {
     display: inline-block;
+    height: 80px;
   }
   .col-4 {
-    position: relative;
-    top: 15px;
+    position: absolute;
+    margin: 30px;
   }
   p {
     color: dimgray;
     margin: 5px 0 10px;
     color: dimgray;
   }
+  .fa-user-circle {
+    content: "\f2bd";
+    font-size: 5rem;
+}
 }
 
 // フォロワー画面
@@ -554,6 +571,9 @@ ol.announcements {
     color: dimgray;
     margin: 5px 0 10px;
     color: dimgray;
+  }
+  i.user-icon.fas.fa-user-circle.fa-3x.mt-1 {
+    font-size: 5rem;
   }
 }
 

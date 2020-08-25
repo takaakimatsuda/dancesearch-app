@@ -31,6 +31,10 @@ class User < ApplicationRecord
                     OR user_id = :user_id", user_id: self.id)
   end
 
+  def follow(other_user)
+    followings << other_user
+  end
+
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
@@ -39,6 +43,12 @@ class User < ApplicationRecord
         action: 'follow'
       )
       notification.save! if notification.valid?
+    end
+  end
+
+  def self.guest
+    find_or_initialize_by(name: 'テストダンサー', email: 'guest@example.com') do |user|
+    user.password = SecureRandom.urlsafe_base64
     end
   end
 

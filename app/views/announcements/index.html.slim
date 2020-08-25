@@ -30,7 +30,7 @@
         li.nav-item
           = link_to 'マイアナウンス', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
         li.nav-item
-          = link_to '通知', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
+          = link_to '通知', notifications_path, class: 'text-dark font-weight-bold nav-link'
   - if @feed_items.present?
     - @feed_items.each do |feed_item|
       ol id="announcement-#{feed_item.id}" 

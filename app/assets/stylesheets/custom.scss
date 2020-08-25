@@ -607,3 +607,22 @@ ol.announcements {
   position: relative;
   left: 168px;
 }
+// 通知一覧画面
+.form-inline {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 25px;
+  p {
+    font-size: 1.8rem;
+    margin-top: 10px;
+    color: darkgrey;
+  }
+}
+// アラート画面
+.alert.alert-success {
+  margin: 0;
+}

@@ -1,0 +1,24 @@
+- visitor = notification.visitor
+- visited = notification.visited
+.col-12.mx-auto
+  .form-inline
+    span
+      - if visitor.avatar.present?
+        = image_tag avatar_url(visitor).to_s, class: "icon_mini"
+      - else
+        i.user-icon.fas.fa-user-circle.fa-3x.mt-1
+      strong
+        = link_to visitor.name, user_path(visitor)
+      = 'さんが'
+
+      - case notification.action
+      - when 'follow' then
+        = "あなたをフォローしました"
+      - when 'promotion' then
+        = "あなたの投稿にコメントしました"
+        p
+          = notification.promotion[:content]
+
+  .small.text-muted.text-right
+    = time_ago_in_words(notification.created_at).upcase
+  hr

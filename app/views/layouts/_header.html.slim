@@ -6,21 +6,31 @@ header.header
           = image_tag 'header_logo.PNG', class: "icon-size mb-1 mr-1 ", size: "85x85"
           span.hidden-xs ダンサーチ！ 
       .row.size
-        .col-2
-          =link_to users_path, class: "btn btn-header btn-header-circle" do
+        .col-1
+          = link_to users_path, class: "btn btn-header btn-header-circle" do
             i.fas.fa-search.fa-2x.hidden-xs
             p.text-header.hidden-xs さがす！
-        .col-2
-          =link_to announcements_path, class: "btn btn-header btn-header-circle" do
+        .col-1
+          = link_to announcements_path, class: "btn btn-header btn-header-circle" do
             i.fas.fa-bullhorn.fa-2x.hidden-xs
             p.text-header.hidden-xs アナウンス
+        .col-1
+          .notification-icon
+            = link_to notifications_path, class: "btn btn-header btn-header-circle"  do
+              - if user_signed_in? && unchecked_notifications.any?
+                i.far.fa-bell.fa-2x.hidden-xs
+                i.fas.fa-circle.n-circle.fa-stack-1x.hidden-xs
+                p.text-header.hidden-xs 通知
+              - else 
+                i.far.fa-bell.fa-2x.hidden-xs
+                p.text-header.hidden-xs 通知
         .search-form.hidden-sm.hidden-xs
           = search_form_for(@q, url:users_path) do |f|
             = f.search_field :name_or_team_name_cont, label: false, placeholder: "ダンサー・チーム名で検索！"
         .visible-icon.pb-2
-          =link_to users_path, class: "btn" do
+          = link_to users_path, class: "btn" do
             i.fas.fa-search.fa-2x.visible-xs-block
-          =link_to announcements_path, class: "btn" do
+          = link_to announcements_path, class: "btn" do
             i.fas.fa-bullhorn.fa-2x.visible-xs-block
         .dropdown.dropleft
           .button#dropdown1.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"

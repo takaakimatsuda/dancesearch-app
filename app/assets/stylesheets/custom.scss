@@ -144,11 +144,27 @@ input.btn-success {
         }
       }
     }
+    i.far.fa-bell.fa-lg.hidden-xs {
+      font-size: 3.8rem;
+    }
+  .fa-circle:before {
+    content: "\f111";
+    position: relative;
+    left: 15px;
+    color: cyan;
+}
   }
   input#q_name_or_team_name_cont {
     width: 200px;
     border-radius: 30px;
+    position: relative;
+    left: 50px;
   }
+  .notification-icon {
+    position: relative;
+    top: 1px;
+    left: 35px;
+}
 }
 .fa-user-circle:before {
   content: "\f2bd";
@@ -274,6 +290,15 @@ label.string.optional {
   a.btn.btn-outline-primary {
     border: 1px solid;
     width: 30%;
+  }
+  .login-button {
+    text-align: center;
+    margin:15px auto;
+    position: relative;
+    bottom: 30px; 
+    input.submit-btn.btn-warning {
+      width: 30%;
+    }
   }
 }
 
@@ -617,7 +642,6 @@ ol.announcements {
   align-items: center;
   margin-left: 25px;
   p {
-    font-size: 1.8rem;
     margin-top: 10px;
     color: darkgrey;
   }

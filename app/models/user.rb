@@ -52,8 +52,7 @@ class User < ApplicationRecord
     end
   end
 
-  PREF_NAMES = [:'',
-                :hokkaido,
+  PREF_NAMES = [:hokkaido,
                 :aomori,
                 :iwate,
                 :miyagi,
@@ -105,15 +104,15 @@ class User < ApplicationRecord
   
 
   extend Enumerize
-  enumerize :genre, in: [:'', :hiphop, :pop, :break, :waack, :lock, :tut, :jazz, :freestyle]
+  enumerize :genre, in: [:hiphop, :pop, :break, :waack, :lock, :tut, :jazz, :freestyle]
   enumerize :pref1, in: PREF_NAMES
   enumerize :pref2, in: PREF_NAMES
   enumerize :pref3, in: PREF_NAMES
 
   def require_unique_pref
     if pref1 == pref2 || pref1 == pref3 || pref2 == pref3
+       binding.pry
        errors.add(:pref1, '地域が重複しています')
     end 
   end
-
 end

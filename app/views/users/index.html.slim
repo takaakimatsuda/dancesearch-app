@@ -8,11 +8,11 @@
         .search-info-genre.text-center.mt-3
           = f.label :genre,'ジャンル'
           p
-          = f.select :genre_cont, User.genre.options, label: false
+          = f.select :genre_cont, User.genre.options, label: false, :include_blank => true
         .search-info-pref.text-center.mt-3
           = f.label :pref1,'地域'
           p
-          = f.select :pref1_or_pref2_or_pref3_cont, User.pref1.options, label: false
+          = f.select :pref1_or_pref2_or_pref3_cont, User.pref1.options, label: false, :include_blank => true
         .search-info-sort.mt-3
           = f.label :sorts,'並べ替え'
           p
@@ -20,7 +20,7 @@
         .search-online.mt-3
           = f.label :online,'オンラインを含む'
           p
-          = f.select :lessons_online_cont, Lesson.online.options, label: false
+          = f.select :lessons_online_cont, Lesson.online.options, label: false, :include_blank => true
         .search-button.text-center.mt-5
           = f.submit('検索',class: 'btn btn-warning btn-lg text-center')
   .user-content.my-5

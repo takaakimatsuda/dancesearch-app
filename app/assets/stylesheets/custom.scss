@@ -116,9 +116,7 @@ input.btn-success {
           opacity: .6;
         }
       }
-      // i.fas.fa-search.fa-2x.visible-xs-block {
-      //   color: black;
-      //   text-decoration: none;}
+
       li {
         list-style: none;
         margin: 0 5px;
@@ -188,8 +186,10 @@ i.fas.fa-search.fa-2x.hidden-xs {
 
 // フッター
 nav.navbar.text-center.footer {
-  padding: 0;
   background-color: #FF8E26;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   margin: 0;
 }
 .navbar-brand.logo-main {
@@ -379,8 +379,8 @@ label.string.optional {
   color: #305097;
 }
 // ユーザーエディット画面
-.edit-wrapper.col-5 {
-  height: 600px;
+.edit-wrapper.col-4 {
+  height: 500px;
 }
 img.mx-auto.d-block {
   width: 80%;
@@ -649,4 +649,8 @@ ol.announcements {
 // アラート画面
 .alert.alert-success {
   margin: 0;
+}
+// ユーザー編集エラー文
+span.error {
+  color: red;
 }

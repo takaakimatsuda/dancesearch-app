@@ -38,6 +38,15 @@ Rails.application.configure do
 
   # デフォルトURLを設定
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :domain => 'smtp.gmail.com',
+  :user_name => Settings.gmail[:user_name], #gmailアドレス
+  :password => Settings.gmail[:password], #gmailパスワード
+  :authentication => 'login',
+}
   config.action_mailer.delivery_method = :letter_opener_web
 
   # Print deprecation notices to the Rails logger.

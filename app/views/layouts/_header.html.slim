@@ -46,6 +46,7 @@ header.header
               li = link_to 'マイプロフィール', "/users/sign_in", class: 'text-dark font-weight-bold dropdown-item bg-light'
             li = link_to 'プロフィール編集',"/users/edit", class: 'text-dark font-weight-bold dropdown-item bg-light'
             li = link_to 'パスワードを忘れた方',"/users/password/new", class: 'text-dark font-weight-bold dropdown-item bg-light'
-            li = link_to 'ログアウト',"/users/sign_out", method: :delete, class: 'text-dark font-weight-bold dropdown-item bg-light'
+            - if user_signed_in?
+              li = link_to 'ログアウト',"/users/sign_out", method: :delete, class: 'text-dark font-weight-bold dropdown-item bg-light'
         
         

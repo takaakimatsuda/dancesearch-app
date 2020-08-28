@@ -7,6 +7,12 @@ ja:
       previous: "&lsaquo; 前"
       truncate: "&hellip;"
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "入力は必須です。"
     attributes:
       score:
         point: スコア

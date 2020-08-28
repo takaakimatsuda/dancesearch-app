@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
   has_many :promotions, dependent: :destroy
@@ -110,9 +110,10 @@ class User < ApplicationRecord
   enumerize :pref3, in: PREF_NAMES
 
   def require_unique_pref
-    if pref1 == pref2 || pref1 == pref3 || pref2 == pref3
-       binding.pry
-       errors.add(:pref1, '地域が重複しています')
-    end 
+    prefs = [pref1, pref2, pref3]
+    prefs.each.with_index(1) do |pref, index|
+      count = prefs.compact.select { |value| pref == value}.count
+      errors.add("pref#{index}", '地域が重複しています') if count >= 2
+    end
   end
 end

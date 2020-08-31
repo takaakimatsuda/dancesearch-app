@@ -17,7 +17,7 @@ body {
 }
 .wrapper {
   background-image: image-url("home_cover.JPG");
-  height: 700px;
+  height: 600px;
   background-size: cover;
 }
 .bg-mask {
@@ -93,6 +93,10 @@ input.btn-success {
 .header {
   background: #FF8E26;
   padding: 0px 10px;
+  .dropup, .dropdown {
+    position: relative;
+    padding-bottom: 10px;
+  }
   .nav {
     .header_menu {
       display: flex;
@@ -144,6 +148,7 @@ input.btn-success {
     }
     i.far.fa-bell.fa-lg.hidden-xs {
       font-size: 3.8rem;
+      color: white;
     }
   .fa-circle:before {
     content: "\f111";
@@ -164,11 +169,6 @@ input.btn-success {
     left: 35px;
 }
 }
-.fa-user-circle:before {
-  content: "\f2bd";
-  position: relative;
-  bottom: 5px;
-}
 .dropdown.menu.left.show {
   left:0;
   right:auto;
@@ -177,13 +177,18 @@ input.btn-success {
  }
  i.fas.fa-bullhorn.fa-2x.hidden-xs {
   position: relative;
-  left: 30px;
+  color: white;
 }
 i.fas.fa-search.fa-2x.hidden-xs {
   position: relative;
-  left: 6px;
+  color: white;
 }
-
+i.far.fa-bell.fa-2x.hidden-xs {
+  color: white;
+}
+p.text-header.hidden-xs {
+  color: white;
+}
 // フッター
 nav.navbar.text-center.footer {
   background-color: #FF8E26;
@@ -193,7 +198,7 @@ nav.navbar.text-center.footer {
   margin: 0;
 }
 .navbar-brand.logo-main {
-  color: black;
+  color: white;
 }
 //ログイン
 
@@ -273,7 +278,7 @@ label.string.optional {
 
 .card {
   width: 100%;
-  height: 500px;
+  height: auto;
   background: #fff;
   border-radius: 50px;
   box-shadow: 0 2px 5px #ccc;
@@ -299,6 +304,9 @@ label.string.optional {
     input.submit-btn.btn-warning {
       width: 30%;
     }
+  }
+  input#user_name {
+    width: 100%;
   }
 }
 
@@ -339,7 +347,7 @@ label.string.optional {
     display: contents;
 }
 .btn{
-  width: 40%;
+  width: auto;
 }
 .profile-image img {
   border-radius: 10px;
@@ -353,8 +361,7 @@ label.string.optional {
   font-size: 20px;
 }
 .profile-description {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.6rem;
   white-space: pre-wrap;
 }
 .promotion-form {
@@ -378,9 +385,12 @@ label.string.optional {
 .fa-facebook-square {
   color: #305097;
 }
+.score-input.text-center p{
+  color: gold;
+}
 // ユーザーエディット画面
 .edit-wrapper.col-4 {
-  height: 500px;
+  height: 60%;
 }
 img.mx-auto.d-block {
   width: 80%;
@@ -415,6 +425,14 @@ textarea#user_carrer,textarea#user_lesson_comment {
 input#user_movie_url,input#user_promotion_url {
   width: 70%;
 }
+.col-8{
+  input.btn.btn.btn-warning.text-white {
+    float: right;
+    margin-top: 50px;
+    margin-right: 100px;
+  }
+}
+
 // 検索画面
 .search.d-flex.justify-content-start {
   padding: 20px;
@@ -485,7 +503,7 @@ img.rounded-circle {
     white-space: pre-wrap;
 }
   input.btn.btn-warning.text-white {
-    width: 20%;
+    width: auto;
   }
 
 }
@@ -554,6 +572,16 @@ ol.announcements {
 .point-status > p {
   color: black;
 }
+.announcement-image.col-1, .announcement-name.col-11 {
+  display: inline-block;
+}
+.announcement-image.col-1 {
+  i.user-icon.fas.fa-user-circle.fa-3x {
+    position: relative;
+    bottom: 15px;
+    font-size: 5rem;
+  }
+}
 // ページネーション
 .page-item.active .page-link {
   z-index: 3;
@@ -569,8 +597,8 @@ ol.announcements {
     height: 80px;
   }
   .col-4 {
-    position: absolute;
-    margin: 30px;
+    position: relative;
+    bottom: 20px;
   }
   p {
     color: dimgray;
@@ -641,9 +669,17 @@ ol.announcements {
   -ms-flex-align: center;
   align-items: center;
   margin-left: 25px;
-  p {
-    margin-top: 10px;
-    color: darkgrey;
+}
+.notification-promotion {
+  padding-left: 10px;
+  color: darkgrey;
+}
+.feed-image.col-1, .feed-name.col-11 {
+  display: inline-block;
+  i.user-icon.fas.fa-user-circle.fa-3x {
+    position: relative;
+    bottom: 20px;
+    font-size: 5rem;
   }
 }
 // アラート画面

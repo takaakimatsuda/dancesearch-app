@@ -51,7 +51,8 @@
           | #{time_ago_in_words(feed_item.created_at)}前に投稿
         hr
   - else
-    p タイムラインがありません。
+    .none-timeline
+     | タイムラインがありません。
   .pagi.pt-3.text-center
     - if @feed_items.present?
       = paginate @feed_items

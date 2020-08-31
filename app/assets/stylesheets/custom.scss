@@ -335,13 +335,16 @@ label.string.optional {
   border-color: #FF8E26;
   border-width: 5px;
   border-radius: 50px;
-  width: 100%;
+  width: 80%;
   height: auto;
   .devise-header {
     background: #FF8E26;
     padding: 20px 0;
     border-radius: 50px 50px 0 0;
   }
+}
+.score-input.text-center {
+  width: 80%;
 }
 .col-xl-6.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
     display: contents;
@@ -552,6 +555,9 @@ img.rounded-circle {
     padding-top: 10px;
   }
 }
+.none-timeline {
+  margin: 10px 0 0 30px;
+}
 // マイアナウンス画面
 .nav-tabs {
   border-bottom: 1px solid #FF8E26;
@@ -578,9 +584,11 @@ ol.announcements {
 .announcement-image.col-1 {
   i.user-icon.fas.fa-user-circle.fa-3x {
     position: relative;
-    bottom: 15px;
-    font-size: 5rem;
+    font-size: 5.5rem;
   }
+}
+.none-myanouncement {
+  margin: 10px 0 0 15px;
 }
 // ページネーション
 .page-item.active .page-link {
@@ -610,6 +618,9 @@ ol.announcements {
     font-size: 5rem;
 }
 }
+.none-follows {
+  margin: 10px 0 0 30px;
+}
 
 // フォロワー画面
 .follower-list {
@@ -629,7 +640,9 @@ ol.announcements {
     font-size: 5rem;
   }
 }
-
+.none-followers {
+  margin: 10px 0 0 30px;
+}
 //パスワード忘れた時用画面
 .password-card.my-5 {
   width: 100%;
@@ -678,9 +691,11 @@ ol.announcements {
   display: inline-block;
   i.user-icon.fas.fa-user-circle.fa-3x {
     position: relative;
-    bottom: 20px;
-    font-size: 5rem;
+    font-size: 5.5rem;
   }
+}
+.none-notification {
+  margin: 10px 0 0 30px;
 }
 // アラート画面
 .alert.alert-success {

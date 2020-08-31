@@ -57,6 +57,7 @@
             #follow_button.text-center
               = render "follow_form", user: user  
   - else
-    p フォローしている人がいません。
+    .none-follows   
+      | フォローしている人がいません。
   .pagi.pt-3.text-center
     = paginate @users  

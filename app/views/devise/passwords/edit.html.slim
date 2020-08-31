@@ -6,7 +6,7 @@
         h4.card-header__title.text-center パスワード再設定
       .card-content.text-center.my-3
         .label-wrapper
-          = f.error_notification
+          / = f.error_notification
           = f.input :reset_password_token, as: :hidden
           = f.full_error :reset_password_token
         .form-inputs.text-left

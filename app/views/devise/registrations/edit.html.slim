@@ -5,9 +5,9 @@
       .edit-wrapper.col-4
         .edit-header
         .profile-contents.text-center
-          .edit-image.my-5.ml-5
+          .edit-image.my-5
             - if current_user.persisted? && current_user.avatar.attached?
-              = image_tag current_user.avatar.variant(resize: "350x350"), class: "mx-auto d-block"
+              = image_tag current_user.avatar.variant(combine_options:{gravity: :center, resize:"160x160^", crop:"160x160+0+0"}).processed, class: "rounded-circle mx-auto d-block"
               label
                 .edit-check
                   = f.file_field :avatar
@@ -54,12 +54,16 @@
         p
         = f.label :movie_url,"YouTube"
         = f.input :movie_url, required: false, label:false
+        p
         = f.label :promotion_title,"外部リンク(タイトル)"
         = f.input :promotion_title, required: false, label:false
+        p
         = f.label :promotion_url,"外部リンク(URL)"
         = f.input :promotion_url, required: false, label:false
+        p
         = f.label :twitter_url,"TwitterID"
         = f.input :twitter_url, required: false, label:false, placeholder: "@example"
+        p
         = f.label :instagram_url,"InstagramID"
         = f.input :instagram_url, required: false, label:false, placeholder: "Username"
         p
@@ -84,33 +88,7 @@
           input_html: { autocomplete: "current-password" }
         p          
         = f.button :submit, "更新する", class: "btn btn-warning text-white"
-    .col-12
-      .promotion-title.text-left.mt-5.h4
-        p
-          | ~ プロモーション ~
-    .col-12
-      .promotion-post.h4
-        .comments
-          - if @promotions.present?
-            - @promotions.each do |c|
-              .comment-up-content.d-flex.justify-content-between
-                .left-side
-                  - if c.writer.avatar.present?
-                    = image_tag c.writer.avatar, :size => "50x50", class: "rounded-circle"
-                  - else
-                    i.user-icon.fas.fa-user-circle.fa-3x.mt-1
-                  = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
-                .right-side
-                  = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
-              .comment-down-content.pt-3
-                = simple_format(c.content)
-                hr
-            .promotions-pagi.text-center
-              = paginate @promotions
-          - else
-            .comment-down-content.text-center.py-5.my-5
-              | プロモーションコメントはありません。
-        p
-        h3 退会
-        p
-          = link_to "アカウントを消す", registration_path(resource_name), data: { confirm: "本当によろしいですか?" }, method: :delete
+  .col-12
+    h3 退会
+    p
+      = link_to "アカウントを消す", registration_path(resource_name), data: { confirm: "本当によろしいですか?" }, method: :delete

@@ -10,8 +10,11 @@
               - if current_user.persisted? && current_user.avatar.attached?
                 = image_tag current_user.avatar.variant(combine_options:{gravity: :center, resize:"160x160^", crop:"160x160+0+0"}).processed, class: "rounded-circle mx-auto d-block"
                 label
+                  .edit-remove
+                    = link_to "画像を削除", registration_path(resource_name), method: :update
                   .edit-check
                     = f.file_field :avatar
+                    
               - else
                 i.user-icon.fas.fa-user-circle.fa-10x  
                 = f.file_field :avatar, label:false

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_search
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_search
 
   # ログイン後の遷移先を変更
   def after_sign_in_path_for(resource)
@@ -20,14 +20,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # サインアップ時にnameとavatarのストロングパラメータを追加
+  
     def configure_permitted_parameters
+      # サインアップ時にnameとavatarのストロングパラメータを追加
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
       devise_parameter_sanitizer.permit(:account_update, 
       keys: [
       :name,
       :genre,
       :avatar,
+      :remove_avatar,
       :team_name,
       :pref1,
       :pref2,

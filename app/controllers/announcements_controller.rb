@@ -18,7 +18,7 @@ class AnnouncementsController < ApplicationController
       flash[:success] = "announcement created!"
       redirect_to announcements_path
     else
-      render 'announcements/index'
+      redirect_to announcements_path, notice: "アナウンスを入力してください"
     end
   end
 

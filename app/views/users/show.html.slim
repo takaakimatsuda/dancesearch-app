@@ -2,10 +2,6 @@
   .row.mt-4
     .link-title.col-5
       = link_to ">  戻る", :back
-      - if flash.present?
-        .alert.alert-danger
-          - flash.each do |name, message|
-            = message
       .devise-wrapper
         .devise-header
         .profile-contents.text-center
@@ -44,42 +40,44 @@
                 .follower-name
                   | フォロワー
           p
-            .score-input
-              - if current_user != @user
-                = form_for [@user, @score] do |p|
-                  #star.form-group.field
-                    = p.hidden_field :point, id: :review_star
-                  p
-                    = p.submit "スコア", class: "btn btn-warning text-white"
-          p
             #follow_button.text-center
-              = render "follow_form", user: @user                        
+              = render "follow_form", user: @user
+      p
+        .score-input.text-center
+          - if current_user != @user
+            p
+              |好きなダンサーにスコアを入れよう！   
+            = form_for [@user, @score] do |p|
+              #star.form-group.field
+                = p.hidden_field :point, id: :review_star
+              p
+                = p.submit "スコア", class: "btn btn-warning text-white"                    
     .col-7
       .profile-list.text-left.mt-5
         p
           - if @user.genre
             | ジャンル : 
-            .profile-description
+            .profile-description.mb-5
               | #{@user.genre.upcase}
           - else
             | ジャンル :
         p
           | Team : 
-          .profile-description  
+          .profile-description.mb-5
             | #{@user.team_name}
         p
           | 地域 : 
-          .profile-description  
+          .profile-description.mb-5
             | #{@user.pref1_text} #{@user.pref2_text} #{@user.pref3_text}
         p
           | 経歴 : 
         p
-          .profile-description  
+          .profile-description.mb-5
             | #{@user.carrer}
         p
           | レッスン :
         p
-          .profile-description
+          .profile-description.mb-5
             - if @lessons.present?
               - @lessons.each do |lesson|
                 = lesson.title
@@ -100,7 +98,7 @@
         p
           | レッスン紹介 : 
         p
-          .profile-description  
+          .profile-description.mb-5
             | #{@user.lesson_comment}
         p
           - if @user.movie_url.present?
@@ -112,7 +110,7 @@
         p
           | リンク :
         p
-          .profile-description    
+          .profile-description.mb-5    
             = link_to "#{@user.promotion_title}", "#{@user.promotion_url}"
   .col-12
     .promotion-title.text-left.mt-5.h4
@@ -130,7 +128,7 @@
                   - else
                     i.user-icon.fas.fa-user-circle.fa-3x.mt-1
                   = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
-                - if c.writer == current_user
+                - if c.writer == current_user or current_user == @user
                   .right-side
                     = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
               .comment-down-content.pt-3

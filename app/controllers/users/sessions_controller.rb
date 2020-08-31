@@ -5,7 +5,6 @@ class Users::SessionsController < Devise::SessionsController
 
   def new_guest
     user = User.guest
-    user.skip_confirmation!
     user.save
     sign_in user
     redirect_to users_path, notice: 'ゲストユーザーとしてログインしました。'

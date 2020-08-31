@@ -41,16 +41,14 @@ p.top_text.font-weight-bold {
   margin: 50px;
   font-size: 1.8rem;
 }
-a.btn.btn-warning.w-40.my-2 {
+a.btn.btn-warning.w-40.mb-5 {
   position: relative;
-  top: 30px;
   width: 60%;
   height: auto;
   font-size: 1.8rem;
 }
-a.btn.btn-success.w-40.mt-5 {
+a.btn.btn-success.w-40 {
   position: relative;
-  top: 30px;
   width: 60%;
   height: auto;
   font-size: 1.8rem;
@@ -85,9 +83,11 @@ h2.news-title.font-weight-bold.text-white {
   white-space: pre-wrap;
   color: darkorange;
 }
-input.btn-success {
-  font-size: 2rem;
-  width: 30%;
+.news-detail.text-center.my-5 {
+  a.btn.btn-success {
+    font-size: 1.8rem;
+    width: 30%;
+  }
 }
 //ヘッダー
 .header {

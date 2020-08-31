@@ -1,65 +1,66 @@
-.search.d-flex.justify-content-start
-  .search-wrapper.mt-5.mr-5.sticky-top
-    .search-info.text-center.my-5
-      = search_form_for(@q, url:users_path) do |f|
-        = f.label :name,'キーワード検索'
-        p
-        = f.search_field :name_or_team_name_cont, label: false, placeholder: "ダンサー・チーム名"
-        .search-info-genre.text-center.mt-3
-          = f.label :genre,'ジャンル'
+.contents-block
+  .search.d-flex.justify-content-start
+    .search-wrapper.mt-5.mr-5.sticky-top
+      .search-info.text-center.my-5
+        = search_form_for(@q, url:users_path) do |f|
+          = f.label :name,'キーワード検索'
           p
-          = f.select :genre_cont, User.genre.options, label: false, :include_blank => true
-        .search-info-pref.text-center.mt-3
-          = f.label :pref1,'地域'
-          p
-          = f.select :pref1_or_pref2_or_pref3_cont, User.pref1.options, label: false, :include_blank => true
-        .search-info-sort.mt-3
-          = f.label :sorts,'並べ替え'
-          p
-          = f.select( :sorts, { '': 'id desc', 'フォロワーの多い順': 'followers_count desc', 'スコアの高い順': 'scores_point desc', '更新の新しい順': 'updated_at desc' } , { selected: params[:q] } )
-        .search-online.mt-3
-          = f.label :online,'オンラインを含む'
-          p
-          = f.select :lessons_online_cont, Lesson.online.options, label: false, :include_blank => true
-        .search-button.text-center.mt-5
-          = f.submit('検索',class: 'btn btn-warning btn-lg text-center')
-  .user-content.my-5
-    - if @users.present?
-      - @users.each do |user|
-        .top-user-section-left.ml-3.mb-0.d-flex
-          .users-image.my-3.mx-3
-            - if user.avatar.present?
-              = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
-            - else
-              i.user-icon.fas.fa-user-circle.fa-9x
-          .user-name.pt-4.pl-3
-            p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold h4'
-            - if user.genre.present?
-              = user.genre.upcase
-            - else
-              |
-            p.mt-1
-            .user-team_name
-              = user.team_name
-            .user-lesson-fee.pt-3.mx-5
-            - if user.lessons.first.present?
-              | レッスン料金:
-              p
-                = user.lessons.max[:fee]
-                | 円〜
-          .user-score-follower.text-center.pl-3.pt-4
-            .score-count
-              = user.scores.all.sum(:point)
-              br
-              | スコア
-            .user-followers.text-center.pt-4
-              = user.followers.count
-              br
-              | フォロワー
-          .user-lesson_comment.pt-4.px-5
-            = user.lesson_comment
-      hr
-    - else
-      p ユーザーがいません
-    .pagi.text-center
-      = paginate @users
+          = f.search_field :name_or_team_name_cont, label: false, placeholder: "ダンサー・チーム名"
+          .search-info-genre.text-center.mt-3
+            = f.label :genre,'ジャンル'
+            p
+            = f.select :genre_cont, User.genre.options, label: false, :include_blank => true
+          .search-info-pref.text-center.mt-3
+            = f.label :pref1,'地域'
+            p
+            = f.select :pref1_or_pref2_or_pref3_cont, User.pref1.options, label: false, :include_blank => true
+          .search-info-sort.mt-3
+            = f.label :sorts,'並べ替え'
+            p
+            = f.select( :sorts, { '': 'id desc', 'フォロワーの多い順': 'followers_count desc', 'スコアの高い順': 'scores_point desc', '更新の新しい順': 'updated_at desc' } , { selected: params[:q] } )
+          .search-online.mt-3
+            = f.label :online,'オンラインを含む'
+            p
+            = f.select :lessons_online_cont, Lesson.online.options, label: false, :include_blank => true
+          .search-button.text-center.mt-5
+            = f.submit('検索',class: 'btn btn-warning btn-lg text-center')
+    .user-content.my-5
+      - if @users.present?
+        - @users.each do |user|
+          .top-user-section-left.ml-3.mb-0.d-flex
+            .users-image.my-3.mx-3
+              - if user.avatar.present?
+                = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
+              - else
+                i.user-icon.fas.fa-user-circle.fa-9x
+            .user-name.pt-4.pl-3
+              p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold h4'
+              - if user.genre.present?
+                = user.genre.upcase
+              - else
+                |
+              p.mt-1
+              .user-team_name
+                = user.team_name
+              .user-lesson-fee.pt-3.mx-5
+              - if user.lessons.first.present?
+                | レッスン料金:
+                p
+                  = user.lessons.max[:fee]
+                  | 円〜
+            .user-score-follower.text-center.pl-3.pt-4
+              .score-count
+                = user.scores.all.sum(:point)
+                br
+                | スコア
+              .user-followers.text-center.pt-4
+                = user.followers.count
+                br
+                | フォロワー
+            .user-lesson_comment.pt-4.px-5
+              = user.lesson_comment
+        hr
+      - else
+        p ユーザーがいません
+      .pagi.text-center
+        = paginate @users

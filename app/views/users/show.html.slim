@@ -1,151 +1,153 @@
-.container.top-margin
-  .row.mt-4
-    .link-title.col-5
-      = link_to ">  戻る", :back
-      .devise-wrapper
-        .devise-header
-        .profile-contents.text-center
-          .profile-image.mt-5
-            - if @user.avatar.present?
-              = image_tag @user.avatar, :size => '140x140', class: "rounded-circle"
-            - else
-              i.user-icon.fas.fa-user-circle.fa-10x
-          .prfile-name.text-center
-            = @user.name
-          .row.mt-3.justify-content-center
-          - if @user.instagram_url.present?
-            =link_to "https://www.instagram.com/#{@user.instagram_url}" do
-              i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
-              i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
-          - if @user.twitter_url.present?
-            =link_to "https://twitter.com/#{@user.twitter_url}" do
-              i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
-              i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
-          p
-            .score-count.h4
-              = @scores
-          p
-            .score-title
-            | スコア
-          p
-            .following-count.h4
-              = @user.followings.count
-          p
-            .following-name.h4
-            | フォロー　
-            .col-xl-6.col-lg-6.col-md-6.col-sm-12.col-xs-12
-              .follower-count.h4
-                = @user.followers.count
-              p
-                .follower-name
-                  | フォロワー
-          p
-            #follow_button.text-center
-              = render "follow_form", user: @user
-      p
-        .score-input.text-center
-          - if current_user != @user
+ 
+.contents-block
+  .container.top-margin
+    .row.mt-4
+      .link-title.col-5
+        = link_to ">  戻る", :back
+        .devise-wrapper
+          .devise-header
+          .profile-contents.text-center
+            .profile-image.mt-5
+              - if @user.avatar.present?
+                = image_tag @user.avatar, :size => '140x140', class: "rounded-circle"
+              - else
+                i.user-icon.fas.fa-user-circle.fa-10x
+            .prfile-name.text-center
+              = @user.name
+            .row.mt-3.justify-content-center
+            - if @user.instagram_url.present?
+              =link_to "https://www.instagram.com/#{@user.instagram_url}" do
+                i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
+                i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
+            - if @user.twitter_url.present?
+              =link_to "https://twitter.com/#{@user.twitter_url}" do
+                i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
+                i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
             p
-              |好きなダンサーにスコアを入れよう！   
-            = form_for [@user, @score] do |p|
-              #star.form-group.field
-                = p.hidden_field :point, id: :review_star
-              p
-                = p.submit "スコア", class: "btn btn-warning text-white"                    
-    .col-7
-      .profile-list.text-left.mt-5
+              .score-count.h4
+                = @scores
+            p
+              .score-title
+              | スコア
+            p
+              .following-count.h4
+                = @user.followings.count
+            p
+              .following-name.h4
+              | フォロー　
+              .col-xl-6.col-lg-6.col-md-6.col-sm-12.col-xs-12
+                .follower-count.h4
+                  = @user.followers.count
+                p
+                  .follower-name
+                    | フォロワー
+            p
+              #follow_button.text-center
+                = render "follow_form", user: @user
         p
-          - if @user.genre
-            | ジャンル : 
+          .score-input.text-center
+            - if current_user != @user
+              p
+                |好きなダンサーにスコアを入れよう！   
+              = form_for [@user, @score] do |p|
+                #star.form-group.field
+                  = p.hidden_field :point, id: :review_star
+                p
+                  = p.submit "スコア", class: "btn btn-warning text-white"                    
+      .col-7
+        .profile-list.text-left.mt-5
+          p
+            - if @user.genre
+              | ジャンル : 
+              .profile-description.mb-5
+                | #{@user.genre.upcase}
+            - else
+              | ジャンル :
+          p
+            | Team : 
             .profile-description.mb-5
-              | #{@user.genre.upcase}
-          - else
-            | ジャンル :
-        p
-          | Team : 
-          .profile-description.mb-5
-            | #{@user.team_name}
-        p
-          | 地域 : 
-          .profile-description.mb-5
-            | #{@user.pref1_text} #{@user.pref2_text} #{@user.pref3_text}
-        p
-          | 経歴 : 
-        p
-          .profile-description.mb-5
-            | #{@user.carrer}
-        p
-          | レッスン :
-        p
-          .profile-description.mb-5
-            - if @lessons.present?
-              - @lessons.each do |lesson|
-                = lesson.title
-                p
-                | #{lesson.fee} 円
-                p
-                = lesson.time
-                p
-                = lesson.level_text
-                p
-                = lesson.place
-                p
-                = link_to "#{lesson.url}"
-                p
-                = lesson.online_text
-                hr
+              | #{@user.team_name}
+          p
+            | 地域 : 
+            .profile-description.mb-5
+              | #{@user.pref1_text} #{@user.pref2_text} #{@user.pref3_text}
+          p
+            | 経歴 : 
+          p
+            .profile-description.mb-5
+              | #{@user.carrer}
+          p
+            | レッスン :
+          p
+            .profile-description.mb-5
+              - if @lessons.present?
+                - @lessons.each do |lesson|
+                  = lesson.title
+                  p
+                  | #{lesson.fee} 円
+                  p
+                  = lesson.time
+                  p
+                  = lesson.level_text
+                  p
+                  = lesson.place
+                  p
+                  = link_to "#{lesson.url}"
+                  p
+                  = lesson.online_text
+                  hr
+              - else
+          p
+            | レッスン紹介 : 
+          p
+            .profile-description.mb-5
+              | #{@user.lesson_comment}
+          p
+            - if @user.movie_url.present?
+              | Youtube :
+              p
+              iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url}" width="560" 
             - else
-        p
-          | レッスン紹介 : 
-        p
-          .profile-description.mb-5
-            | #{@user.lesson_comment}
-        p
-          - if @user.movie_url.present?
-            | Youtube :
-            p
-            iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url}" width="560" 
-          - else
-            | Youtube :
-        p
-          | リンク :
-        p
-          .profile-description.mb-5    
-            = link_to "#{@user.promotion_title}", "#{@user.promotion_url}"
-  .col-12
-    .promotion-title.text-left.mt-5.h4
-      p
-        | ~ プロモーション ~
+              | Youtube :
+          p
+            | リンク :
+          p
+            .profile-description.mb-5    
+              = link_to "#{@user.promotion_title}", "#{@user.promotion_url}"
     .col-12
-      .promotion-post.h4
-        .comments
-          - if @promotions.present?
-            - @promotions.each do |c|
-              .comment-up-content.d-flex.justify-content-between
-                .left-side
-                  - if c.writer.avatar.present?
-                    = image_tag c.writer.avatar, :size => '50x50', class: 'rounded-circle'
-                  - else
-                    i.user-icon.fas.fa-user-circle.fa-3x.mt-1
-                  = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
-                - if c.writer == current_user or current_user == @user
-                  .right-side
-                    = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
-              .comment-down-content.pt-3
-                = simple_format(c.content)
-                hr
-            .promotions-pagi.text-center
-              = paginate @promotions
-          - else
-            .comment-down-content.text-center.py-5.my-5
-              | プロモーションコメントはありません。
-          - if current_user != @user
-            = form_for [@user, @promotion] do |f|
-              h4 ~ プロモーションを送る ~
-              = f.text_area :content, rows: 3, class: "form-control"
-              br
-              .text-right.mb-5
-                = f.submit "投稿する", class: "btn btn-warning text-white"
+      .promotion-title.text-left.mt-5.h4
+        p
+          | ~ プロモーション ~
+      .col-12
+        .promotion-post.h4
+          .comments
+            - if @promotions.present?
+              - @promotions.each do |c|
+                .comment-up-content.d-flex.justify-content-between
+                  .left-side
+                    - if c.writer.avatar.present?
+                      = image_tag c.writer.avatar, :size => '50x50', class: 'rounded-circle'
+                    - else
+                      i.user-icon.fas.fa-user-circle.fa-3x.mt-1
+                    = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
+                  - if c.writer == current_user or current_user == @user
+                    .right-side
+                      = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
+                .comment-down-content.pt-3
+                  = simple_format(c.content)
+                  hr
+              .promotions-pagi.text-center
+                = paginate @promotions
+            - else
+              .comment-down-content.text-center.py-5.my-5
+                | プロモーションコメントはありません。
+            - if current_user != @user
+              = form_for [@user, @promotion] do |f|
+                h4 ~ プロモーションを送る ~
+                = f.text_area :content, rows: 3, class: "form-control"
+                br
+                .text-right.mb-5
+                  = f.submit "投稿する", class: "btn btn-warning text-white"
         
 javascript:
   $("#star").raty({

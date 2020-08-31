@@ -1,58 +1,59 @@
-.container.top-margin
-  .col-3
-    .users-image.text-center.pt-5
-        - if current_user.avatar.present?
-          = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
-        - else
-          i.user-icon.fas.fa-user-circle.fa-8x
-    .user-name.text-center.pt-3
-      = link_to current_user.name, user_path(current_user), class: 'text-warning font-weight-bold h4'
-    .row.mt-3.justify-content-center
-      - if current_user.instagram_url.present?
-        =link_to "https://www.instagram.com/#{current_user.instagram_url}" do
-          i.fab.fa-instagram.fa-2x.mr-5.hidden-xs
-      - if current_user.twitter_url.present?
-        =link_to "https://twitter.com/#{current_user.twitter_url}" do
-          i.fab.fa-twitter.fa-2x.mx-2.hidden-xs
-    .profile-edit-link.text-center.mt-2
-      =link_to 'アカウント編集', edit_user_registration_path, class: 'btn btn-success text-white' 
-  .col-9
-    .announcement-wrapper.ml-3
-      = simple_form_for @announcement do |f|
-        = f.text_area :content, required: false, label:false, rows: 4, placeholder: '今、伝えたいことを発信しよう！'
-        .text-right.mt-3
-          = f.submit "アナウンスする", class: "btn btn-warning text-white"
-  .col-12
-    .bg-white.py-3.px-3.rounded
-      ul.nav.nav-tabs
-        li.nav-item
-          a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  ホーム
-        li.nav-item
-          = link_to 'マイアナウンス', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
-        li.nav-item
-          = link_to '通知', notifications_path, class: 'text-dark font-weight-bold nav-link'
-  - if @feed_items.present?
-    - @feed_items.each do |feed_item|
-      ol id="announcement-#{feed_item.id}" 
-        .feed-image.col-1
-          - if feed_item.user.avatar.present?
-            = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle d-flex align-start'
+.contents-block
+  .container.top-margin
+    .col-3
+      .users-image.text-center.pt-5
+          - if current_user.avatar.present?
+            = image_tag current_user.avatar, :size => '180x180', class: 'rounded-circle'
           - else
-            i.user-icon.fas.fa-user-circle.fa-3x
-        .feed-name.col-11
-          span.user= link_to feed_item.user.name, feed_item.user
-          - if feed_item.user == current_user
-            span.trash= link_to icon("fas", "trash-alt"), announcement_path(feed_item), method: :delete, class: "text-dark"
-          p
-          .announcement-content.pt-3
-            = feed_item.content
-        p
-        .feed-time.text-right
-          | #{time_ago_in_words(feed_item.created_at)}前に投稿
-        hr
-  - else
-    .none-timeline
-     | タイムラインがありません。
-  .pagi.pt-3.text-center
+            i.user-icon.fas.fa-user-circle.fa-8x
+      .user-name.text-center.pt-3
+        = link_to current_user.name, user_path(current_user), class: 'text-warning font-weight-bold h4'
+      .row.mt-3.justify-content-center
+        - if current_user.instagram_url.present?
+          =link_to "https://www.instagram.com/#{current_user.instagram_url}" do
+            i.fab.fa-instagram.fa-2x.mr-5.hidden-xs
+        - if current_user.twitter_url.present?
+          =link_to "https://twitter.com/#{current_user.twitter_url}" do
+            i.fab.fa-twitter.fa-2x.mx-2.hidden-xs
+      .profile-edit-link.text-center.mt-2
+        =link_to 'アカウント編集', edit_user_registration_path, class: 'btn btn-success text-white' 
+    .col-9
+      .announcement-wrapper.ml-3
+        = simple_form_for @announcement do |f|
+          = f.text_area :content, required: false, label:false, rows: 4, placeholder: '今、伝えたいことを発信しよう！'
+          .text-right.mt-3
+            = f.submit "アナウンスする", class: "btn btn-warning text-white"
+    .col-12
+      .bg-white.py-3.px-3.rounded
+        ul.nav.nav-tabs
+          li.nav-item
+            a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  ホーム
+          li.nav-item
+            = link_to 'マイアナウンス', announcement_path(current_user), class: 'text-dark font-weight-bold nav-link'
+          li.nav-item
+            = link_to '通知', notifications_path, class: 'text-dark font-weight-bold nav-link'
     - if @feed_items.present?
-      = paginate @feed_items
+      - @feed_items.each do |feed_item|
+        ol id="announcement-#{feed_item.id}" 
+          .feed-image.col-1
+            - if feed_item.user.avatar.present?
+              = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle d-flex align-start'
+            - else
+              i.user-icon.fas.fa-user-circle.fa-3x
+          .feed-name.col-11
+            span.user= link_to feed_item.user.name, feed_item.user
+            - if feed_item.user == current_user
+              span.trash= link_to icon("fas", "trash-alt"), announcement_path(feed_item), method: :delete, class: "text-dark"
+            p
+            .announcement-content.pt-3
+              = feed_item.content
+          p
+          .feed-time.text-right
+            | #{time_ago_in_words(feed_item.created_at)}前に投稿
+          hr
+    - else
+      .none-timeline
+        | タイムラインがありません。
+    .pagi.pt-3.text-center
+      - if @feed_items.present?
+        = paginate @feed_items

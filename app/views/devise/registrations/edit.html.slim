@@ -1,94 +1,95 @@
-.container.top-margin
-  .row.mt-4
-    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      / = f.error_notification
-      .edit-wrapper.col-4
-        .edit-header
-        .profile-contents.text-center
-          .edit-image.my-5
-            - if current_user.persisted? && current_user.avatar.attached?
-              = image_tag current_user.avatar.variant(combine_options:{gravity: :center, resize:"160x160^", crop:"160x160+0+0"}).processed, class: "rounded-circle mx-auto d-block"
-              label
-                .edit-check
-                  = f.file_field :avatar
-            - else
-              i.user-icon.fas.fa-user-circle.fa-10x  
-              = f.file_field :avatar, label:false
-          
-          .edit-name
-            = f.label :email, "メールアドレス"
-            = f.input :email, required: true, autofocus: true, label:false
-            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+.contents-block  
+  .container.top-margin
+    .row.mt-4
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        / = f.error_notification
+        .edit-wrapper.col-4
+          .edit-header
+          .profile-contents.text-center
+            .edit-image.my-5
+              - if current_user.persisted? && current_user.avatar.attached?
+                = image_tag current_user.avatar.variant(combine_options:{gravity: :center, resize:"160x160^", crop:"160x160+0+0"}).processed, class: "rounded-circle mx-auto d-block"
+                label
+                  .edit-check
+                    = f.file_field :avatar
+              - else
+                i.user-icon.fas.fa-user-circle.fa-10x  
+                = f.file_field :avatar, label:false
+            
+            .edit-name
+              = f.label :email, "メールアドレス"
+              = f.input :email, required: true, autofocus: true, label:false
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                p
+                  | Currently waiting confirmation for: #{resource.unconfirmed_email}
               p
-                | Currently waiting confirmation for: #{resource.unconfirmed_email}
-            p
-            = f.label :name, "ダンサーネーム"
-            = f.input :name, required: true, label:false
-      .col-8
-        = f.label :genre,"ジャンル"
-        = f.input :genre, required: false, label:false
-        p
-        = f.label :team_name,"チーム名"
-        = f.input :team_name, required: false, label:false
-        p
-        = f.label :pref1,"地域"
-        p
-        = f.input :pref1, required: false, label:false
-        = f.input :pref2, required: false, label:false
-        = f.input :pref3, required: false, label:false
-        p
-        = f.label :carrer,"実績"
-        p
-        = f.text_area :carrer, required: false, label:false, rows: 5
-        p
-        .js-project.text-left
-          .field
-            = f.simple_fields_for :lessons do |lesson|
-              = render "lesson_fields", f: lesson
-          .field
-              = link_to_add_association "レッスン項目の追加", f, :lessons
-        p
-        = f.label :lesson_comment,"レッスン紹介"
-        p
-        = f.text_area :lesson_comment, required: false, label:false, rows: 5
-        p
-        = f.label :movie_url,"YouTube"
-        = f.input :movie_url, required: false, label:false
-        p
-        = f.label :promotion_title,"外部リンク(タイトル)"
-        = f.input :promotion_title, required: false, label:false
-        p
-        = f.label :promotion_url,"外部リンク(URL)"
-        = f.input :promotion_url, required: false, label:false
-        p
-        = f.label :twitter_url,"TwitterID"
-        = f.input :twitter_url, required: false, label:false, placeholder: "@example"
-        p
-        = f.label :instagram_url,"InstagramID"
-        = f.input :instagram_url, required: false, label:false, placeholder: "Username"
-        p
-        = f.label :password, "パスワード"
-        = f.input :password,                
-          hint: "　変更しない場合は空白のままにします", 
-          required: false,
-          label: false,                                       
-          input_html: { autocomplete: "new-password" }   
-        p 
-        = f.label :password_confirmation, "パスワード（再入力）"       
-        = f.input :password_confirmation,              
-          required: false,  
-          label: false,                            
-          input_html: { autocomplete: "new-password" } 
-        p
-        = f.label :current_password, "現在のパスワード"
-        = f.input :current_password,                                     
-          hint: "　変更するには、現在のパスワードが必要です", 
-          required: true,
-          label: false,                                                
-          input_html: { autocomplete: "current-password" }
-        p          
-        = f.button :submit, "更新する", class: "btn btn-warning text-white"
-  .col-12
-    h3 退会
-    p
-      = link_to "アカウントを消す", registration_path(resource_name), data: { confirm: "本当によろしいですか?" }, method: :delete
+              = f.label :name, "ダンサーネーム"
+              = f.input :name, required: true, label:false
+        .col-8
+          = f.label :genre,"ジャンル"
+          = f.input :genre, required: false, label:false
+          p
+          = f.label :team_name,"チーム名"
+          = f.input :team_name, required: false, label:false
+          p
+          = f.label :pref1,"地域"
+          p
+          = f.input :pref1, required: false, label:false
+          = f.input :pref2, required: false, label:false
+          = f.input :pref3, required: false, label:false
+          p
+          = f.label :carrer,"実績"
+          p
+          = f.text_area :carrer, required: false, label:false, rows: 5
+          p
+          .js-project.text-left
+            .field
+              = f.simple_fields_for :lessons do |lesson|
+                = render "lesson_fields", f: lesson
+            .field
+                = link_to_add_association "レッスン項目の追加", f, :lessons
+          p
+          = f.label :lesson_comment,"レッスン紹介"
+          p
+          = f.text_area :lesson_comment, required: false, label:false, rows: 5
+          p
+          = f.label :movie_url,"YouTube"
+          = f.input :movie_url, required: false, label:false
+          p
+          = f.label :promotion_title,"外部リンク(タイトル)"
+          = f.input :promotion_title, required: false, label:false
+          p
+          = f.label :promotion_url,"外部リンク(URL)"
+          = f.input :promotion_url, required: false, label:false
+          p
+          = f.label :twitter_url,"TwitterID"
+          = f.input :twitter_url, required: false, label:false, placeholder: "@example"
+          p
+          = f.label :instagram_url,"InstagramID"
+          = f.input :instagram_url, required: false, label:false, placeholder: "Username"
+          p
+          = f.label :password, "パスワード"
+          = f.input :password,                
+            hint: "　変更しない場合は空白のままにします", 
+            required: false,
+            label: false,                                       
+            input_html: { autocomplete: "new-password" }   
+          p 
+          = f.label :password_confirmation, "パスワード（再入力）"       
+          = f.input :password_confirmation,              
+            required: false,  
+            label: false,                            
+            input_html: { autocomplete: "new-password" } 
+          p
+          = f.label :current_password, "現在のパスワード"
+          = f.input :current_password,                                     
+            hint: "　変更するには、現在のパスワードが必要です", 
+            required: true,
+            label: false,                                                
+            input_html: { autocomplete: "current-password" }
+          p          
+          = f.button :submit, "更新する", class: "btn btn-warning text-white"
+    .col-12
+      h3 退会
+      p
+        = link_to "アカウントを消す", registration_path(resource_name), data: { confirm: "本当によろしいですか?" }, method: :delete

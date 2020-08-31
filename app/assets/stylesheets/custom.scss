@@ -201,7 +201,13 @@ nav.navbar.text-center.footer {
   color: white;
 }
 //ログイン
-
+.contents-block {
+  margin: 0;
+  padding: 0 100px;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
 .devise-container {
   width: 550px;
   margin: 30px auto;
@@ -489,7 +495,7 @@ img.rounded-circle {
 .col-3 {
   display: inline-block;
   .btn {
-    width: 80%;
+    width: auto;
 }
 }
 .col-9 {
@@ -512,7 +518,7 @@ img.rounded-circle {
 }
 // アナウンス一覧画面
 .container.top-margin {
-  padding: 50px 100px;
+  padding: 50px 80px;
   .col-5 {
     display: inline-block;
   }

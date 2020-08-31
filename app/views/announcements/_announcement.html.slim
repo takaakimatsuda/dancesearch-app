@@ -1,14 +1,15 @@
 ol id="announcement-#{announcement.id}" 
-  .announcement-image
+  .announcement-image.col-1
     - if announcement.user.avatar.present?
       = image_tag announcement.user.avatar, :size => '50x50', class: 'rounded-circle'
     - else
       i.user-icon.fas.fa-user-circle.fa-3x.mt-1
+  .announcement-name.col-11
     span.user.pl-3= link_to announcement.user.name, announcement.user
     span.trash= link_to icon("fas", "trash-alt"), announcement_path(announcement), method: :delete, class: "text-dark"
-  p
-  .announcement-content.pt-3
-    = announcement.content
+    p
+    .announcement-content.pt-3
+      = announcement.content
   p
   .announcement-time.text-right
     | #{time_ago_in_words(announcement.created_at)}前に投稿

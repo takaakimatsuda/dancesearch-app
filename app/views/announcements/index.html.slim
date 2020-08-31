@@ -34,17 +34,18 @@
   - if @feed_items.present?
     - @feed_items.each do |feed_item|
       ol id="announcement-#{feed_item.id}" 
-        .feed-image
+        .feed-image.col-1
           - if feed_item.user.avatar.present?
-            = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle'
+            = image_tag feed_item.user.avatar, :size => '50x50', class: 'rounded-circle d-flex align-start'
           - else
-            i.user-icon.fas.fa-user-circle.fa-3x.mt-1
-          span.user.pl-3= link_to feed_item.user.name, feed_item.user
+            i.user-icon.fas.fa-user-circle.fa-3x
+        .feed-name.col-11
+          span.user= link_to feed_item.user.name, feed_item.user
           - if feed_item.user == current_user
             span.trash= link_to icon("fas", "trash-alt"), announcement_path(feed_item), method: :delete, class: "text-dark"
-        p
-        .announcement-content.pt-3
-          = feed_item.content
+          p
+          .announcement-content.pt-3
+            = feed_item.content
         p
         .feed-time.text-right
           | #{time_ago_in_words(feed_item.created_at)}前に投稿
@@ -52,4 +53,5 @@
   - else
     p タイムラインがありません。
   .pagi.pt-3.text-center
-    = paginate @feed_items
+    - if @feed_items.present?
+      = paginate @feed_items

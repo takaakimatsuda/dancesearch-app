@@ -4,19 +4,20 @@
   .form-inline
     span
       - if visitor.avatar.present?
-        = image_tag avatar_url(visitor).to_s, class: "icon_mini"
+        = image_tag  visitor.avatar, :size => "50x50", class: "rounded-circle icon_mini"
       - else
         i.user-icon.fas.fa-user-circle.fa-3x.mt-1
-      strong
-        = link_to visitor.name, user_path(visitor)
-      = 'さんが'
+    strong
+      = link_to visitor.name, user_path(visitor)
+    = 'さんが'
 
-      - case notification.action
-      - when 'follow' then
-        = "あなたをフォローしました"
-      - when 'promotion' then
-        = "あなたの投稿にコメントしました"
-        p
+    - case notification.action
+    - when 'follow' then
+      = "あなたをフォローしました"
+    - when 'promotion' then
+      = "あなたの投稿にコメントしました"
+      .notification-promotion
+        - if notification.promotion.present?
           = "「#{notification.promotion[:content]}」"
 
   .small.text-muted.text-right

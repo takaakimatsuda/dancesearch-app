@@ -32,6 +32,12 @@ User.all.each do |user|
   )
 end
 
+User.all.each do |user|
+  user.scores.create!(
+    writer_id: rand(1..50),
+    point: rand(1..1000)
+  )
+end
 users = User.all
 user  = users.first
 followers = users[2..50]

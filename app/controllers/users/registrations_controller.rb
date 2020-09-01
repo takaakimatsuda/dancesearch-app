@@ -2,11 +2,11 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!, only: %i[edit]
-  before_action :check_guest, only: %i[destroy]
+  before_action :check_guest, only: %i[edit destroy]
 
   def check_guest
     if resource.email == 'guest@example.com'
-      redirect_to users_path, notice: 'ゲストユーザーの削除はできません。'
+      redirect_to users_path, notice: 'ゲストユーザーの編集・削除はできません。'
     end
   end
   # before_action :configure_sign_up_params, only: [:create]

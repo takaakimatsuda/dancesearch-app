@@ -17,6 +17,14 @@
     updated_at: '2020-04-30 12:00:01.139093',
   )
 end
+50.times do |n|
+  Lesson.create!(
+    user_id: n + 1,
+    title: "レッスン#{n + 1}",
+    fee: Lesson.fee.values.sample,
+    level: Lesson.level.values.sample
+  )
+end
 
 User.all.each do |user|
   user.announcements.create!(

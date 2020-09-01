@@ -24,23 +24,23 @@
                 i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
                 i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
             p
-              .score-count.h4
+              .score-count.h3
                 = @scores
             p
               .score-title
-              | スコア
+                | スコア
             p
               .following-count.h4
                 = @user.followings.count
             p
-              .following-name.h4
-              | フォロー　
+              .following-name
+                = link_to "フォロー", follows_user_path(@user.id)
               .col-xl-6.col-lg-6.col-md-6.col-sm-12.col-xs-12
                 .follower-count.h4
                   = @user.followers.count
                 p
                   .follower-name
-                    | フォロワー
+                    = link_to "フォロワー", followers_user_path(@user.id)
             p
               #follow_button.text-center
                 = render "follow_form", user: @user

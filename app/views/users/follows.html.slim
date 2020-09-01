@@ -40,7 +40,7 @@
           li.nav-item
             a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  フォロー
           li.nav-item
-            = link_to 'フォロワー', followers_user_path(current_user), class: 'text-dark font-weight-bold nav-link'
+            = link_to 'フォロワー', followers_user_path(@user.id), class: 'text-dark font-weight-bold nav-link'
     - if @users.present?
       - @users.each do |user|
         ol id="announcement-#{user.id}" 

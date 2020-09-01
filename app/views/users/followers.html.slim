@@ -38,7 +38,7 @@
       .bg-white.pt-5.pb-3.px-3.rounded
         ul.nav.nav-tabs
           li.nav-item
-            = link_to 'フォロー', follows_user_path, class: 'text-dark font-weight-bold nav-link'
+            = link_to 'フォロー', follows_user_path(@user.id), class: 'text-dark font-weight-bold nav-link'
           li.nav-item
             a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#articles"  フォロワー
     - if @users.present?

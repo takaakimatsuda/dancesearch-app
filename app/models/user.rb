@@ -108,7 +108,7 @@ class User < ApplicationRecord
   enumerize :pref1, in: PREF_NAMES
   enumerize :pref2, in: PREF_NAMES
   enumerize :pref3, in: PREF_NAMES
-
+  
   def require_unique_pref
     prefs = [pref1, pref2, pref3]
     prefs.each.with_index(1) do |pref, index|

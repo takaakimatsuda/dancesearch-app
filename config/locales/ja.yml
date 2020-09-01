@@ -11,6 +11,9 @@ ja:
       models:
         user:
           attributes:
+            current_password:
+              blank: "現在のパスワードを入力してください。"
+              invalid: "現在のパスワードが違います。"
             name:
               blank: "入力は必須です。"
     attributes:

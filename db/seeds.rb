@@ -1,8 +1,10 @@
 50.times do |n|
   User.create!(
     email: "test#{n + 1}@test.com",
-    name: "ダンサー#{n + 1}",
+    name: Faker::Internet.user_name,
     password: "password",
+    genre: User.genre.values.sample,
+    pref1: User.pref1.values.sample,
     team_name: "ダンスチーム#{n + 1}",
     carrer: "実績#{n + 1}",
     lesson_comment: "レッスンコメント#{n + 1}",

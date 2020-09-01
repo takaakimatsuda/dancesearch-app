@@ -35,7 +35,9 @@ end
 User.all.each do |user|
   user.scores.create!(
     writer_id: rand(1..50),
-    point: rand(1..1000)
+    point: rand(1..1000),
+    created_at: '2020-04-30 12:00:01.139093',
+    updated_at: '2020-04-30 12:00:01.139093'
   )
 end
 users = User.all

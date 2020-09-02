@@ -8,4 +8,9 @@ class Lesson < ApplicationRecord
                        3100,3200,3300,3400,3500,3600,3700,3800,3900,4000,
                        4100,4200,4300,4400,4500,4600,4700,4800,4900,5000]
   enumerize :online, in: [:online]  
+
+  ransacker :lessons_fee do
+    query = '(SELECT MIN(fee) FROM lessons GROUP BY lessons.user_id)'
+    Arel.sql(query)
+  end
 end

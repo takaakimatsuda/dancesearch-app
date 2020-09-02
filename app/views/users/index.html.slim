@@ -17,7 +17,7 @@
           .search-info-sort.mt-3
             = f.label :sorts,'並べ替え'
             p
-            = f.select( :sorts, { '': 'id desc', 'スコアの高い順': 'scores_point desc', '更新の新しい順': 'updated_at desc' } , { selected: params[:q]} )
+            = f.select( :sorts, { '': 'id desc', 'スコアの高い順': 'scores_point desc', '料金の安い順': 'lessons_fee', '料金の高い順': 'lessons_fee desc', '更新の新しい順': 'updated_at desc' } , { selected: params[:q]} )
           .search-online.mt-3
             = f.label :online,'オンラインを含む'
             p

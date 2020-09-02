@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :promotions, dependent: :destroy
+  has_many :writer_promotions, class_name: "Promotion", foreign_key: :writer_id, dependent: :destroy
   has_many :lessons, dependent: :destroy, inverse_of: :user
   has_many :scores, dependent: :destroy
   has_many :writer_scores, class_name: "Score", foreign_key: :writer_id, dependent: :destroy

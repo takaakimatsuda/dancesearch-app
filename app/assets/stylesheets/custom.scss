@@ -402,7 +402,7 @@ label.string.optional {
 }
 // ユーザーエディット画面
 .edit-wrapper.col-4 {
-  height: 70%;
+  height: 600px;
 }
 img.mx-auto.d-block {
   width: 80%;
@@ -420,6 +420,9 @@ form#edit_user {
   height: 70%;
   padding: 0;
   margin: 0;
+  input#user_avatar {
+    margin: auto;
+  }
   .edit-header {
     background: #FF8E26;
     padding: 20px 0;

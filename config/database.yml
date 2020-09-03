@@ -15,11 +15,16 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
+  host: <%= ENV.fetch("DATABASE_HOSTNAME", 'db') %>
+  database: dancesearch_app
   socket: /tmp/mysql.sock
+  port: 3306
+  timeout: 5000
+  charset: utf8mb4
+  collation: utf8mb4_unicode_ci
 
 development:
   <<: *default
-  database: dancesearch_app_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -49,6 +54,7 @@ test:
 #
 production:
   <<: *default
-  database: dancesearch_app_production
-  username: dancesearch_app
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DANCESEARCH_APP_DATABASE_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>

@@ -21,22 +21,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
-    Rails::logger::debug(‘=========‘)
     @promotions = current_user.promotions.page(params[:page]).per(5)
     super
     current_user.lessons.build     
    end
 
   
-   def update
-     Rails::logger::debug(‘+++++++++‘)
-     Rails.logger
-     super
-     if current_user.avatar.attached?
-      current_user.avatar.detach
-      redirect_to user_path(current_user), notice: '画像を削除しました。'
-    end 
-   end
+   # def update
+   #   super
+   # end
 
   # DELETE /resource
   # def destroy

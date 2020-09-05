@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :promotions, only: [:create, :destroy]
     resources :scores, only: [:create, :destroy]
     resources :lessons, only: [:create, :destroy, :update]
+    resource :profile, only: [] do
+      delete :destroy_image
+    end
   end
   resources :home, only: [:index]
   resources :announcements, only: [:index, :show, :create, :destroy]

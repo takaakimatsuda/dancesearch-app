@@ -35,11 +35,10 @@
                     = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
                   - else
                     i.user-icon.fas.fa-user-circle.fa-9x
-                  p.score-point.mt-1
+                  p.score-point
                     = user.scores.all.sum(:point)
-                    br
-                    | スコア
-              .col-3.align-top.mt-5
+                    br スコア
+              .col-2.align-top
                 .card-text.users-name.text-center
                   =user.name
                   br
@@ -60,9 +59,8 @@
                       | 円〜
                   - else
                     |
-              .col-6
-                .card-text.lesson-comment
-                  = user.lesson_comment
+              .col-6.align-top.card-text.lesson-comment
+                = user.lesson_comment
         hr
       - else
         p ユーザーがいません

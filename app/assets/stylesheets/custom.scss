@@ -203,7 +203,7 @@ nav.navbar.text-center.footer {
 //ログイン
 .contents-block {
   margin: 0;
-  padding: 0 12%;
+  padding: 0 10%;
   width: 100%;
   height: 100%;
   max-width: 100%;
@@ -475,7 +475,7 @@ input#user_movie_url,input#user_promotion_url {
       color: black;
       font-size: 1.5rem;
     }
-    p.score-point.mt-1 {
+    p.score-point {
       color: darkorange;
       font-size: 1.6rem;
     }
@@ -487,6 +487,9 @@ input#user_movie_url,input#user_promotion_url {
       bottom: 120px;
       font-family: monospace;
       color: darkorange;
+  }
+  .align-top.card-text.lesson-comment {
+    white-space: pre-wrap;
   }
   }
 }
@@ -508,7 +511,6 @@ input#user_movie_url,input#user_promotion_url {
   border: outset;
   border-color: white;
   border-radius: 50px;
-  width: 700px;
   margin: 10px;
   opacity: 1;
   &:hover {
@@ -527,9 +529,6 @@ select#q_sorts  {
   width: 174px;
 }
 i.user-icon.fas.fa-user-circle.fa-9x {
-  position: relative;
-  top: 5px;
-  left: 1px;
   color: dimgray;
 }
 input#q_name_or_team_name_cont {

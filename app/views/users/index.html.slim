@@ -27,34 +27,37 @@
     .user-content.my-5
       - if @users.present?
         - @users.each do |user|
-          .top-user-section-left.ml-3.mb-0.d-flex
-            .users-image.my-3.mx-3
-              - if user.avatar.present?
-                = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
-              - else
-                i.user-icon.fas.fa-user-circle.fa-9x
-            .user-name.pt-4.pl-3
-              p.mb-0 = link_to user.name, user_path(user), class: 'text-dark font-weight-bold h4'
-              - if user.genre.present?
-                = user.genre.upcase
-              - else
-                |
-              p.mt-1
-              .user-team_name
-                = user.team_name
-              .user-lesson-fee.pt-3.mx-5
-              - if user.lessons.first.present?
-                | レッスン料金:
-                p
-                  = user.lessons.max[:fee]
-                  | 円〜
-            .user-score-follower.text-center.pl-3.my-auto.h5
-              .score-count
-                = user.scores.all.sum(:point)
-                br
-                | スコア
-            .user-lesson_comment.pt-4.px-5
-              = user.lesson_comment
+          a.card.top-user-section-left.ml-3.mb-0.d-flex href="/users/#{user.id}"
+            .card-block
+              .col-3
+                .users-image.mt-1.text-center
+                  - if user.avatar.present?
+                    = image_tag user.avatar, :size => '130x130', class: 'rounded-circle'
+                  - else
+                    i.user-icon.fas.fa-user-circle.fa-9x
+                  p.score-point.mt-1
+                    = user.scores.all.sum(:point)
+                    br
+                    | スコア
+              .col-3
+                .card-text.users-profile.text-center
+                  =user.name
+                  br
+                  - if user.genre.present?
+                    = user.genre.upcase
+                  - else
+                    |
+                  br
+                    = user.team_name
+                  .user-lesson-fee.pt-3.mx-5
+                  - if user.lessons.first.present?
+                    | レッスン料金:
+                    p
+                      = user.lessons.max[:fee]
+                      | 円〜
+              .col-6
+                .card-text.lesson-comment
+                  = user.lesson_comment
         hr
       - else
         p ユーザーがいません

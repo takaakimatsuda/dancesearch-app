@@ -15,10 +15,9 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = current_user.announcements.build(announcement_params)
     if @announcement.save
-      flash[:success] = "announcement created!"
-      redirect_to announcements_path
+      redirect_to announcements_path, notice: "アナウンスを入力しました。"
     else
-      redirect_to announcements_path, notice: "アナウンスを入力してください"
+      redirect_to announcements_path, alert: "アナウンスを入力してください。"
     end
   end
 

@@ -3,6 +3,7 @@ class Promotion < ApplicationRecord
   belongs_to :user
   belongs_to :writer, class_name: 'User', foreign_key: :writer_id
   has_many :notifications, dependent: :destroy
+  validates :content, presence: true
 
   def create_notification_promotion!(current_user, promotion_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る

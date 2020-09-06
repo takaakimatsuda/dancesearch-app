@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  host: <%= ENV.fetch("DATABASE_HOSTNAME", 'db') %>
+  # host: <%= ENV.fetch("DATABASE_HOSTNAME", 'db') %>
   database: dancesearch_app
   socket: /tmp/mysql.sock
   port: 3306

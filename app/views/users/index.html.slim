@@ -39,8 +39,8 @@
                     = user.scores.all.sum(:point)
                     br
                     | スコア
-              .col-3
-                .card-text.users-profile.text-center
+              .col-3.align-top.mt-5
+                .card-text.users-name.text-center
                   =user.name
                   br
                   - if user.genre.present?
@@ -48,13 +48,18 @@
                   - else
                     |
                   br
+                  - if user.team_name.present?
                     = user.team_name
+                  - else
+                    |
                   .user-lesson-fee.pt-3.mx-5
                   - if user.lessons.first.present?
                     | レッスン料金:
                     p
                       = user.lessons.max[:fee]
                       | 円〜
+                  - else
+                    |
               .col-6
                 .card-text.lesson-comment
                   = user.lesson_comment

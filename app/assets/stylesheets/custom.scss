@@ -466,15 +466,21 @@ input#user_movie_url,input#user_promotion_url {
 .card-block {
   .col-2 {
     display: inline-block;
+    padding: 10px 0 0 0;
+    .card-text.users-name.text-left {
+      p {
+        margin: 0;
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      color: black;
+    }
   }
   .col-3 {
     display: inline-block;
-    .card-text.users-profile.text-center {
-      position: relative;
-      bottom: 30px;
-      color: black;
-      font-size: 1.5rem;
-    }
+    padding-right: 0;
     p.score-point {
       color: darkorange;
       font-size: 1.6rem;
@@ -482,15 +488,11 @@ input#user_movie_url,input#user_promotion_url {
   }
   .col-6 {
     display: inline-block;
-    .card-text.lesson-comment {
-      position: absolute;
-      bottom: 120px;
-      font-family: monospace;
+    &.align-top.card-text.lesson-comment {
+      white-space: pre-wrap;
       color: darkorange;
-  }
-  .align-top.card-text.lesson-comment {
-    white-space: pre-wrap;
-  }
+      padding: 10px 0;
+    }
   }
 }
 .users-image.col-2 {
@@ -536,14 +538,6 @@ input#q_name_or_team_name_cont {
 }
 img.rounded-circle {
   object-fit: cover;
-}
-.user-name {
-  p.mb-0 {
-    width: 150px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 // マイプロフィール画面
 .col-3 {

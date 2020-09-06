@@ -39,8 +39,8 @@
                     = user.scores.all.sum(:point)
                     br スコア
               .col-2.align-top
-                .card-text.users-name.text-center
-                  =user.name
+                .card-text.users-name.text-left
+                  p=user.name
                   br
                   - if user.genre.present?
                     = user.genre.upcase

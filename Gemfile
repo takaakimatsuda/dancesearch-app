@@ -29,6 +29,8 @@ gem 'annotate'
 gem 'cocoon'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'config'
+# 環境変数の管理をするもの
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -57,5 +59,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
+group :production, :staging do
+    gem 'unicorn'
+end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

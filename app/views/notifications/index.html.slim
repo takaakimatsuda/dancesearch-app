@@ -10,10 +10,10 @@
         = link_to current_user.name, user_path(current_user), class: 'text-warning font-weight-bold h4'
       .row.mt-3.justify-content-center
         - if current_user.instagram_url.present?
-          =link_to "https://www.instagram.com/#{current_user.instagram_url}" do
+          =link_to "https://www.instagram.com/#{current_user.instagram_url}", target: :_blank do
             i.fab.fa-instagram.fa-2x.mr-5.hidden-xs
         - if current_user.twitter_url.present?
-          =link_to "https://twitter.com/#{current_user.twitter_url}" do
+          =link_to "https://twitter.com/#{current_user.twitter_url}", target: :_blank do
             i.fab.fa-twitter.fa-2x.mx-2.hidden-xs
       - if current_user == current_user
         .profile-edit-link.text-center.mt-2

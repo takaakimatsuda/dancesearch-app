@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = User.ransack(params[:q])
     if @q
-    @users = @q.result(distinct: true).page(params[:page]).per(20)
+      @users = @q.result(distinct: true).page(params[:page]).per(20)
     else
       @users = User.all.page(params[:page]).per(20)
     end

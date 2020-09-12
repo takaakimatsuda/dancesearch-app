@@ -12,8 +12,7 @@ Rails.application.routes.draw do
       get :followers
     end
     resources :promotions, only: [:create, :destroy]
-    resources :scores, only: [:create, :destroy]
-    resources :lessons, only: [:create, :destroy, :update]
+    resources :scores, only: [:create]
     resource :profile, only: [] do
       delete :destroy_image
     end

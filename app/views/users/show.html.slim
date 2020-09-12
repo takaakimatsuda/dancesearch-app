@@ -20,7 +20,7 @@
                 i.fab.fa-instagram.fa-3x.mr-5.hidden-xs
                 i.fab.fa-instagram.fa-2x.mr-5.visible-xs-block
             - if @user.twitter_url.present?
-              =link_to "https://twitter.com/#{@user.twitter_url}", target: :_blank do
+              =link_to "https://twitter.com/#{@user.twitter_url.delete("@")}", target: :_blank do
                 i.fab.fa-twitter.fa-3x.mx-2.hidden-xs
                 i.fab.fa-twitter.fa-2x.mx-2.visible-xs-block
             p
@@ -107,7 +107,7 @@
             - if @user.movie_url.present?
               | Youtube :
               p
-              iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url}" width="560" 
+              iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url.last(11)}" width="560"
             - else
               | Youtube :
           p

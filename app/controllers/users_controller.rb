@@ -5,42 +5,31 @@ class UsersController < ApplicationController
   def index
     @q = User.ransack(params[:q])
     if @q
-    @users = @q.result(distinct: true).page(params[:page]).per(20)
+      @users = @q.result(distinct: true).page(params[:page]).per(20)
     else
       # 検索フォーム以外からアクセスした時の処理
       params[:q] = { sorts: 'id desc' }
-      @q = User.ransack()
       @users = User.all.page(params[:page]).per(20)
     end
   end
 
   def show
-    movie_url = @user[:movie_url]
-    if movie_url.present?
-      movie_url = movie_url.last(11)
-    end
-    @user.movie_url = movie_url
-    twitter_url = @user[:twitter_url]
-    if twitter_url.present?
-      twitter_url = twitter_url.delete("@")
-    end
-    @user.twitter_url = twitter_url
     @promotions = @user.promotions.page(params[:page]).per(5)
     # formで呼び出すときに使う
     @promotion = Promotion.new
-    @scores = @user.scores.all.sum(:point)
+    @scores = @user.total_score
     # formで呼び出すときに使う
     @score = Score.new
     @lessons = @user.lessons.all
   end
 
   def follows
-    @scores = @user.scores.all.sum(:point)
+    @scores = @user.total_score
     @users = @user.followings.page(params[:page]).per(20)
   end
 
   def followers
-    @scores = @user.scores.all.sum(:point)
+    @scores = @user.total_score
     @users = @user.followers.page(params[:page]).per(20)
   end
 

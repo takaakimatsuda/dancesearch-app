@@ -13,8 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch('DB_HOST', 'db') %>
   username: root
-  socket: /tmp/mysql.sock
+  password:
   port: 3306
   timeout: 5000
   charset: utf8mb4

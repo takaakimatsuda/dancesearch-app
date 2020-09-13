@@ -4,7 +4,7 @@ class AnnouncementsController < ApplicationController
 
   def index
     @announcement = Announcement.new
-    @feed_items = current_user.feed.order("created_at DESC").page(params[:page]).per(10)
+    @feed_items = current_user.feed.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -15,14 +15,15 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = current_user.announcements.build(announcement_params)
     if @announcement.save
-      redirect_to announcements_path, notice: "アナウンスを入力しました。"
+      redirect_to announcements_path, notice: 'アナウンスを入力しました。'
     else
-      redirect_to announcements_path, alert: "アナウンスを入力してください。"
+      redirect_to announcements_path, alert: 'アナウンスを入力してください。'
     end
   end
 
   def destroy
-    Announcement.find_by(id: params[:id]).destroy
+    announce_ment = current_user.announcements.find(params[:id])
+    announce_ment.destroy!
     redirect_back(fallback_location: root_path)
   end
 

@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def followed_by?(user)
-    passive_relationships.find_by(following_id: user.id).present?
+    passive_relationships.exists?(following: user)
   end
 
   def feed
@@ -37,8 +37,8 @@ class User < ApplicationRecord
   end
 
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-    if temp.blank?
+    notifications = Notification.where(visitor_id: current_user.id, visited_id: id, action: 'follow')
+    if notifications.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
         action: 'follow'
@@ -47,23 +47,17 @@ class User < ApplicationRecord
     end
   end
 
+  def total_score
+    scores.all.sum(:point)
+  end
+
   def self.guest
     find_or_initialize_by(name: 'テストダンサー', email: 'guest@example.com') do |user|
-    user.password = SecureRandom.urlsafe_base64
+      user.password = SecureRandom.urlsafe_base64
     end
   end
 
-  PREF_NAMES = [:hokkaido,
-                :aomori,
-                :iwate,
-                :miyagi,
-                :akita,
-                :yamagata,
-                :fukushima,
-                :ibaraki,
-                :tochigi,
-                :gunma,
-                :saitama,
+  PREF_NAMES = [:hokkaido, :aomori, :iwate, :miyagi, :akita, :yamagata, :fukushima, :ibaraki, :tochigi, :gunma, :saitama,
                 :chiba,
                 :tokyo,
                 :kanagawa,
@@ -113,7 +107,7 @@ class User < ApplicationRecord
   def require_unique_pref
     prefs = [pref1, pref2, pref3]
     prefs.each.with_index(1) do |pref, index|
-      count = prefs.compact.select { |value| pref == value}.count
+      count = prefs.compact.select { |value| pref == value }.count
       errors.add("pref#{index}", '地域が重複しています') if count >= 2
     end
   end

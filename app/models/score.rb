@@ -1,6 +1,7 @@
 class Score < ApplicationRecord
   belongs_to :user
   belongs_to :writer, class_name: 'User', foreign_key: :writer_id
+  validates :point, presence: true
   validate :check_day_count_of_scores
 
   def check_day_count_of_scores

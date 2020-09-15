@@ -20,6 +20,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :lessons, allow_destroy: true
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  # VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  # validates :movie_url, format: { with: VALID_PASSWORD_REGEX }
 
   def followed_by?(user)
     passive_relationships.exists?(following: user)
@@ -58,42 +60,9 @@ class User < ApplicationRecord
   end
 
   PREF_NAMES = [:hokkaido, :aomori, :iwate, :miyagi, :akita, :yamagata, :fukushima, :ibaraki, :tochigi, :gunma, :saitama,
-                :chiba,
-                :tokyo,
-                :kanagawa,
-                :niigata,
-                :toyama,
-                :ishikawa,
-                :fukui,
-                :yamanashi,
-                :nagano,
-                :gifu,
-                :shizuoka,
-                :aichi,
-                :mie,
-                :shiga,
-                :kyoto,
-                :osaka,
-                :hyogo,
-                :nara,
-                :wakayama,
-                :tottori,
-                :shimane,
-                :okayama,
-                :hiroshima,
-                :yamaguchi,
-                :tokushima,
-                :kagawa,
-                :ehime,
-                :kochi,
-                :fukuoka,
-                :saga,
-                :nagasaki,
-                :kumamoto,
-                :oita,
-                :miyazaki,
-                :kagoshima,
-                :okinawa]
+                :chiba,:tokyo,:kanagawa,:niigata,:toyama,:ishikawa,:fukui,:yamanashi,:nagano,:gifu,:shizuoka,:aichi,
+                :mie,:shiga,:kyoto,:osaka,:hyogo,:nara,:wakayama,:tottori,:shimane,:okayama,:hiroshima,:yamaguchi,
+                :tokushima,:kagawa,:ehime,:kochi,:fukuoka,:saga,:nagasaki,:kumamoto,:oita,:miyazaki,:kagoshima,:okinawa]
   validate :require_unique_pref, on: :update
   validates :name, presence: true #空文字でないこと
   

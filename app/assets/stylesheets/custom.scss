@@ -26,13 +26,18 @@ body {
 }
 .container.mx-auto {
   width: 500px;
-  height: 350px;
+  height: auto;
   background-color: white;
   position: relative;
   top: 80px;
   border-radius: 50px;
   transition: 0.5s;
   opacity: 0.6;
+}
+.wrapper-login {
+  height: 300px;
+  position: relative;
+  top: 40px;
 }
 .container.mx-auto:hover {
   opacity: 1;
@@ -52,6 +57,7 @@ a.btn.btn-success.w-40 {
   width: 60%;
   height: auto;
   font-size: 1.8rem;
+  margin-bottom: 50px;
 }
 h2.about-title.font-weight-bold.text-white {
   margin: 0;
@@ -169,12 +175,9 @@ h2.news-title.font-weight-bold.text-white {
     left: 35px;
 }
 }
-.dropdown.menu.left.show {
-  left:0;
-  right:auto;
-  &::before {right:auto !important; left:9px;}
-  &::after {right:auto !important; left:10px;}
- }
+.dropdown-menu.show {
+  left: -30px !important;
+}
  i.fas.fa-bullhorn.fa-2x.hidden-xs {
   position: relative;
   color: white;
@@ -200,6 +203,7 @@ nav.navbar.text-center.footer {
 .navbar-brand.logo-main {
   color: white;
 }
+
 //ログイン
 .contents-block {
   margin: 0;
@@ -229,16 +233,32 @@ nav.navbar.text-center.footer {
   font-size: 16px;
   width: 200px;
   margin:30px auto;
+  .input.string.required.user_name {
+    margin-bottom: 15px;
+    input#user_name {
+      width: 100%;
+      border: 1px solid #a6a6a6;
+      height: 31px;
+      margin-bottom: 15px;
+    }
+  }
+  span.error {
+    color: red;
+    white-space: pre;
+    position: relative;
+    bottom: 15px;
+  }
 }
 .label-wrapper input[type="email"] {
   border-style: none;
   box-sizing: border-box;
-  width: 100%;
+  width: 130%;
   height: 31px;
   border: 1px solid #a6a6a6;
   box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
   border-radius: 3px;
   padding: 0 7px;
+  margin-bottom: 15px;
 }
 .label-wrapper input[type="password"] {
   border-style: none;
@@ -249,6 +269,7 @@ nav.navbar.text-center.footer {
   box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
   border-radius: 3px;
   padding: 0 7px;
+  margin-bottom: 15px;
 }
 .label-wrapper input[type="checkbox"] {
   position: relative;
@@ -298,9 +319,9 @@ label.string.optional {
       letter-spacing: 3px;
     }  
   }
-  a.btn.btn-outline-primary {
-    border: 1px solid;
+  a.btn.btn-secondary {
     width: 30%;
+    border: 1px solid;
   }
   .login-button {
     text-align: center;
@@ -336,6 +357,10 @@ label.string.optional {
 // 新規登録画面
 
 // ユーザー詳細画面
+.title-back a {
+  color: darkolivegreen;
+  font-weight: bold;
+}
 .devise-wrapper {
   border: solid;
   border-color: #FF8E26;
@@ -400,6 +425,18 @@ label.string.optional {
 .score-input.text-center p{
   color: gold;
 }
+.justify-content-between {
+  -ms-flex-pack: justify!important;
+  justify-content: space-between!important;
+  height: 120px;
+  width: 100%;
+  .right-side {
+    margin-top: 70px;
+  }
+  .col-1 { padding: 0;
+           margin: auto;
+  }
+}
 // ユーザーエディット画面
 .edit-wrapper.col-4 {
   height: 600px;
@@ -435,10 +472,24 @@ form#edit_user {
 }
 .comment-down-content.pt-3 p {
   position: relative;
-  left: 55px;
+  left: 5px;
 }
 textarea#user_carrer,textarea#user_lesson_comment {
   width: 80%;
+}
+input#user_lessons_attributes_0_ {
+  &title, &time, &place, &url { margin-bottom: 15px;
+  }
+}
+select#user_lessons_attributes_0_ {
+  &fee, &level, &online {
+    margin-bottom: 15px;
+  }
+}
+.nested-fields.field {
+  background: gainsboro;
+  border: solid 5px;
+  border-color: white;
 }
 input#user_movie_url,input#user_promotion_url {
   width: 70%;
@@ -522,7 +573,6 @@ input#user_movie_url,input#user_promotion_url {
 .user-lesson_comment.pt-4.px-5 {
   font-family: monospace;
   color: orange;
-  width: 300px;
   display: inline;
 }
 select#q_genre_cont, 
@@ -602,15 +652,17 @@ img.rounded-circle {
 .feed-time.text-right {
   padding-right: 30px;
 }
-.feed-image {
+.feed-name.col-11 {
   span.trash {
-    float: right;
-    padding-right: 60px;
-    padding-top: 10px;
+    padding-right: 20px;
   }
 }
 .none-timeline {
   margin: 10px 0 0 30px;
+}
+.announcement-image.col-1 {
+  padding: 0;
+  margin: auto;
 }
 .announcement-content.pt-3 {
   white-space: pre-wrap;
@@ -627,8 +679,6 @@ a.nav-link.text-dark.font-weight-bold.active {
 }
 span.trash {
   float: right;
-  padding-right: 30px;
-  padding-top: 10px;
 }
 ol.announcements {
   padding-left: 0;
@@ -653,11 +703,17 @@ ol.announcements {
 // ページネーション
 .page-item.active .page-link {
   z-index: 3;
-  color: #fff;
-  background-color: lightseagreen;
-  border-color: lightseagreen;
+  color: white;
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
 }
-
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination 
+> .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
+}
 // フォロー画面
 .follow-list {
   .col-8 {
@@ -742,6 +798,9 @@ ol.announcements {
   -ms-flex-align: center;
   align-items: center;
   margin-left: 25px;
+  a {
+    margin-left: 5px;
+  }
 }
 .notification-promotion {
   padding-left: 10px;
@@ -753,6 +812,10 @@ ol.announcements {
     position: relative;
     font-size: 5.5rem;
   }
+}
+.feed-image.col-1 {
+  padding: 0;
+  margin: auto;
 }
 .none-notification {
   margin: 10px 0 0 30px;
@@ -772,4 +835,10 @@ span.error {
 *:focus {
   outline: none !important;
   box-shadow:none !important;
+}
+// ボタン部分
+.btn:active, .btn.active {
+  background-image: none;
+  outline: 0;
+  box-shadow: none;
 }

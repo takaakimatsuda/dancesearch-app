@@ -6,7 +6,8 @@ ol id="announcement-#{announcement.id}"
       i.user-icon.fas.fa-user-circle.fa-3x.mt-1
   .announcement-name.col-11
     span.user.pl-3= link_to announcement.user.name, announcement.user
-    span.trash= link_to icon("fas", "trash-alt"), announcement_path(announcement), method: :delete, class: "text-dark"
+    - if @user == current_user
+      span.trash= link_to icon("fas", "trash-alt"), announcement_path(announcement), method: :delete, class: "text-dark"
     p
     .announcement-content.pt-3
       = announcement.content

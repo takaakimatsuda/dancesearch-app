@@ -3,7 +3,8 @@
   .container.top-margin
     .row.mt-4
       .link-title.col-5
-        = link_to ">  戻る", :back
+        .title-back
+          = link_to ">  戻る", :back
         .devise-wrapper
           .devise-header
           .profile-contents.text-center
@@ -80,8 +81,8 @@
             | レッスン :
           p
             .profile-description.mb-5
-              - if @lessons.present?
-                - @lessons.each do |lesson|
+              - if @user.lessons.all.present?
+                - @user.lessons.all.each do |lesson|
                   = lesson.title
                   p
                   | #{lesson.fee} 円
@@ -104,12 +105,20 @@
             .profile-description.mb-5
               | #{@user.lesson_comment}
           p
-            - if @user.movie_url.present?
-              | Youtube :
+            | アナウンス :　
+          p
+            .profile-announcements.mb-3
+              | #{@user.announcements.first[:content]}
+          br
+            = link_to '（一覧を見る）', announcement_path(@user)
+            .profile-movie.mt-5
               p
-              iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url.last(11)}" width="560"
-            - else
-              | Youtube :
+                - if @user.movie_url.present?
+                  | Youtube :
+                  p
+                  iframe allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/#{@user.movie_url.last(11)}" width="560"
+                - else
+                  | Youtube :
           p
             | リンク :
           p
@@ -125,18 +134,23 @@
             - if @promotions.present?
               - @promotions.each do |c|
                 .comment-up-content.d-flex.justify-content-between
-                  .left-side
-                    - if c.writer.avatar.present?
-                      = image_tag c.writer.avatar, :size => '50x50', class: 'rounded-circle'
-                    - else
-                      i.user-icon.fas.fa-user-circle.fa-3x.mt-1
-                    = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
-                  - if c.writer == current_user or current_user == @user
-                    .right-side
-                      = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
-                .comment-down-content.pt-3
-                  = simple_format(c.content)
-                  hr
+                  .col-1
+                    .left-side.text-center
+                      - if c.writer.avatar.present?
+                        = image_tag c.writer.avatar, :size => '50x50', class: 'rounded-circle'
+                      - else
+                        i.user-icon.fas.fa-user-circle.fa-3x.mt-1
+                  .col-9      
+                      = link_to c.writer.name, user_path(c.writer), class: "text-dark ml-2"
+                      .comment-down-content.pt-3.text-left
+                        = simple_format(c.content)
+                  .col-2
+                    .comment-delete.text-right
+                      - if c.writer == current_user or current_user == @user
+                        = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
+                      .right-side
+                          = c.created_at.strftime("%Y-%m-%d %H:%M")
+                hr
               .promotions-pagi.text-center
                 = paginate @promotions
             - else

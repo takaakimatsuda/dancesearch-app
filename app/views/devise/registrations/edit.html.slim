@@ -2,7 +2,6 @@
   .container.top-margin
     .row.mt-4
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-        / = f.error_notification
         .edit-wrapper.col-4
           .edit-header
           .profile-contents.text-center
@@ -20,13 +19,13 @@
                 = f.file_field :avatar, label:false
             
             .edit-name
-              = f.label :email, "メールアドレス"
+              = f.label :email, "メールアドレス(必須)"
               = f.input :email, required: true, autofocus: true, label:false
               - if devise_mapping.confirmable? && resource.pending_reconfirmation?
                 p
                   | Currently waiting confirmation for: #{resource.unconfirmed_email}
               p
-              = f.label :name, "ダンサーネーム"
+              = f.label :name, "ダンサーネーム(必須)"
               = f.input :name, required: true, label:false
         .col-8
           = f.label :genre,"ジャンル"
@@ -56,7 +55,7 @@
           p
           = f.text_area :lesson_comment, required: false, label:false, rows: 5
           p
-          = f.label :movie_url,"YouTube"
+          = f.label :movie_url,"YouTube(URL)"
           = f.input :movie_url, required: false, label:false
           p
           = f.label :promotion_title,"外部リンク(タイトル)"

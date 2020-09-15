@@ -8,13 +8,13 @@
           h4.card-header__title.text-center 新規登録
         .card-content
           .label-wrapper
-            = f.label :email,'メールアドレス'
+            = f.label :email,'メールアドレス（必須）'
             = f.input :email, 
               label:false,                      
               required: true,                       
               autofocus: true,                      
               input_html: { autocomplete: 'email' }
-            = f.label :password,'パスワード'
+            = f.label :password,'パスワード（必須）'
             = f.input :password,
               label: false,                                                                     
               required: true,                                                                        
@@ -24,7 +24,7 @@
               label: false,               
               required: true,                              
               input_html: { autocomplete: 'new-password' }
-            = f.label :name,'ダンサーネーム' 
+            = f.label :name,'ダンサーネーム（必須）' 
             = f.input :name, 
               required: true, 
               autofocus: true, 

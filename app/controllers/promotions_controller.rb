@@ -6,7 +6,7 @@ class PromotionsController < ApplicationController
     @promotion.writer = current_user
     if @promotion.save
       @promotion.create_notification_promotion!(current_user, @promotion.id)
-      redirect_back(fallback_location: root_path)
+      redirect_to user_path(user), notice: "プロモーションを入力しました。"
     else
       redirect_to user_path(user), alert: "プロモーションを入力してください。"
     end

@@ -9,6 +9,10 @@ ja:
   activerecord:
     errors:
       models:
+        score:
+          attributes:
+            point:
+              blank: "が入力されていません。"
         user:
           attributes:
             current_password:
@@ -16,6 +20,8 @@ ja:
               invalid: "現在のパスワードが違います。"
             name:
               blank: "入力は必須です。"
+            password_confirmation:
+              confirmation: "パスワードが一致しません。"
     attributes:
       score:
         point: スコア

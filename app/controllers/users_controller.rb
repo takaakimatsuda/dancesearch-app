@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     @scores = @user.total_score
     # formで呼び出すときに使う
     @score = Score.new
-    @lessons = @user.lessons.all
   end
 
   def follows

@@ -12,7 +12,7 @@ class Score < ApplicationRecord
   end
 
   ransacker :scores_point do
-    query = '(SELECT SUM(point) FROM scores GROUP BY scores.user_id)'
+    query = 'SELECT SUM(point) FROM scores GROUP BY scores.user_id'
     Arel.sql(query)
   end
 end

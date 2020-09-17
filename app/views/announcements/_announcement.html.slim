@@ -5,7 +5,7 @@ ol id="announcement-#{announcement.id}"
     - else
       i.user-icon.fas.fa-user-circle.fa-3x.mt-1
   .announcement-name.col-11
-    span.user.pl-3= link_to announcement.user.name, announcement.user
+    span.user= link_to announcement.user.name, announcement.user
     - if @user == current_user
       span.trash= link_to icon("fas", "trash-alt"), announcement_path(announcement), method: :delete, class: "text-dark"
     p

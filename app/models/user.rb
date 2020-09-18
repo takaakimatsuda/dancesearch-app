@@ -53,11 +53,6 @@ class User < ApplicationRecord
     scores.all.sum(:point)
   end
 
-  ransacker :scores_point do
-    query = 'SELECT SUM(point) FROM scores where scores.user_id = users.id GROUP BY scores.user_id'
-    Arel.sql(query)
-  end
-
   def self.guest
     find_or_initialize_by(name: 'テストダンサー', email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

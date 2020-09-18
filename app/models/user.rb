@@ -80,4 +80,10 @@ class User < ApplicationRecord
       errors.add("pref#{index}", '地域が重複しています') if count >= 2
     end
   end
+
+  ransacker :scores_point do
+    query = '(SELECT SUM(point) FROM scores WHERE scores.user_id = users.id GROUP BY scores.user_id)'
+    Arel.sql(query)
+  end
+  
 end

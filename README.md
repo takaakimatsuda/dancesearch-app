@@ -70,7 +70,7 @@ https://quip.com/LBJiA1LrPf0W
 
 ## 環境構築
 
-- takaakimatsuda/dancesearch-app リポジトリをforkしてください。
+- takaakimatsuda/dancesearch-app リポジトリをcloneしてください。
 
 ### インストール
 - [Docker for Mac](https://www.docker.com/docker-mac) or [Docker for Windows](https://docs.docker.com/docker-for-windows/)
@@ -97,14 +97,4 @@ $ docker-compose run web bundle exec rails db:seed
 
 ```
 $ docker-compose up
-```
-
-### 終了
-Ctrl+C
-たまにゴミが残るので、  rm tmp/pid/server.pid を削除する必要があるかも
-
-### DBにmigration
-必要なら以下を実行
-```
-$ docker-compose run web bundle exec rails db:migrate
 ```

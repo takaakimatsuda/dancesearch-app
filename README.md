@@ -27,7 +27,7 @@
 - docker
 - MySQL
 
-### テスト環境
+### テスト環境（実装予定）
 
 - RSpec
 - CircleCI(自動テスト)
@@ -72,30 +72,39 @@ https://quip.com/LBJiA1LrPf0W
 
 - takaakimatsuda/dancesearch-app リポジトリをforkしてください。
 
-### Bundlerの導入
+### インストール
+- [Docker for Mac](https://www.docker.com/docker-mac) or [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
+### アプリ初期設定
 ```
-$ gem install bundler
-```
-
-### gem のインストール
-
-```
-$ bundle install
-$ yarn install --check-files
-$ bundle update
-```
-### データベースの設定
-
-```
-$ bundle exec rails db:create
-$ bundle exec rails db:migrate
+$ docker-compose build
+$ docker-compose run web bundle install
 ```
 
-### localhost:3000にアクセス
+### データベース初期設定
+```
+$ docker-compose run web bundle exec rails db:create
+$ docker-compose run web bundle exec rails db:migrate
+$ docker-compose run web bundle exec rails db:seed
+```
+
+## 起動・終了
+
+### 起動コマンド
+
+以下のコマンドで起動します。
 
 ```
-$ bundle exec rails s
+$ docker-compose up
 ```
 
-[localhost:3000](http://localhost:3000)でログイン画面が出ていればOK
+### 終了
+Ctrl+C
+たまにゴミが残るので、  rm tmp/pid/server.pid を削除する必要があるかも
+
+### DBにmigration
+必要なら以下を実行
+```
+$ docker-compose run web bundle exec rails db:migrate
+```

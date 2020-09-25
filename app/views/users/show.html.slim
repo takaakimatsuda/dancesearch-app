@@ -98,7 +98,6 @@
                   p
                   = lesson.online_text
                   hr
-              - else
           p
             | レッスン紹介 : 
           p
@@ -107,8 +106,9 @@
           p
             | アナウンス :　
           p
-            .profile-announcements.mb-3
-              | #{@user.announcements.first[:content]}
+            - if @user.announcements.present?
+              .profile-announcements.mb-3
+                | #{@user.announcements.first[:content]}
           br
             = link_to '（一覧を見る）', announcement_path(@user)
             .profile-movie.mt-5

@@ -8,7 +8,7 @@ class PromotionsController < ApplicationController
       @promotion.create_notification_promotion!(current_user, @promotion.id)
       redirect_to user_path(user), notice: "プロモーションを入力しました。"
     else
-      redirect_to user_path(user), alert: "プロモーションを入力してください。"
+      redirect_to user_path(user), alert: "プロモーションが空か、500文字を超えています。"
     end
   end
 

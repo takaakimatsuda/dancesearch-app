@@ -17,7 +17,7 @@ class AnnouncementsController < ApplicationController
     if @announcement.save
       redirect_to announcements_path, notice: 'アナウンスを入力しました。'
     else
-      redirect_to announcements_path, alert: 'アナウンスを入力してください。'
+      redirect_to announcements_path, alert: 'アナウンスが空か、140文字を超えています。'
     end
   end
 

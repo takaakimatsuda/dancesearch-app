@@ -3,7 +3,7 @@ class Promotion < ApplicationRecord
   belongs_to :user
   belongs_to :writer, class_name: 'User', foreign_key: :writer_id
   has_many :notifications, dependent: :destroy
-  validates :content, presence: true
+  validates :content, presence: true, length: { maximum: 500 }
 
   def create_notification_promotion!(current_user, promotion_id)
     notifications = Notification.where(visitor_id: current_user.id, visited_id: promotion_id, action: 'promotion')

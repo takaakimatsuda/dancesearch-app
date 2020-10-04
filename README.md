@@ -66,7 +66,7 @@ https://quip.com/LBJiA1LrPf0W
 
 ### テーブル設計(ER 図)
 
-<img width="1424" alt="スクリーンショット 2020-09-11 00 16 30" src="https://user-images.githubusercontent.com/56643466/92887801-b7b66880-f44f-11ea-9d96-57473e8f4580.png">
+<img width="1424" alt="スクリーンショット 2020-09-11 00 16 30" src="https://user-images.githubusercontent.com/56643466/95005141-496c5c80-062f-11eb-8283-41a3ceeea8f7.png">
 
 ## その他
 

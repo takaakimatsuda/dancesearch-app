@@ -55,6 +55,11 @@
 
 ## 設計
 
+### インフラ構成図
+
+<img width="1424" alt="スクリーンショット 2020-10-04 00 16 30" src="https://user-images.githubusercontent.com/56643466/95005046-41f88380-062e-11eb-87e0-15b2ecfe07fd.png">
+
+
 ### 要件定義書
 
 https://quip.com/LBJiA1LrPf0W

@@ -14,7 +14,7 @@
           p.top_text.font-weight-bold
             | ステキなダンサーが、きっと見つかる。
         .btn-box.text-center.d-flex.flex-column
-          div = link_to '新規登録', new_user_registration_path, class: 'btn btn-warning w-40 mb-5'
+          div = link_to '新規登録', new_user_registration_path, class: 'btn btn-warning registration-button w-40 mb-5'
           div = link_to 'ログイン', user_session_path, class: 'btn btn-warning w-40 mb-5'
           div = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-success w-40'
 .index.my-5.text-center.col-12

@@ -147,7 +147,7 @@
                   .col-2
                     .comment-delete.text-right
                       - if c.writer == current_user or current_user == @user
-                        = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "text-dark"
+                        = link_to icon("fas", "trash-alt"), user_promotion_path(c.user.id, c.id), method: :delete, class: "trash text-dark"
                       .right-side
                           = c.created_at.strftime("%Y-%m-%d %H:%M")
                 hr

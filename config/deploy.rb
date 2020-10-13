@@ -5,7 +5,7 @@ lock '3.4.0'
 set :application, 'dancesearch-app'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'ghttps://github.com/takaakimatsuda/dancesearch-app.git'
+set :repo_url, 'https://github.com/takaakimatsuda/dancesearch-app.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'

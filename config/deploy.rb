@@ -5,13 +5,13 @@ lock '3.4.0'
 set :application, 'dancesearch-app'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'https://github.com/takaakimatsuda/dancesearch-app.git'
+set :repo_url, 'git@github.com:takaakimatsuda/dancesearch-app.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
 
 # deploy先のディレクトリ。 
-set :deploy_to, '/var/www/rails/dancesearch-app'
+set :deploy_to, '/var/www/dancesearch-app'
 
 # シンボリックリンクをはるファイル。
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key')

@@ -33,6 +33,9 @@ jobs:
             - bundle-cache-{{ checksum "Gemfile.lock" }}
             - bundle-cache-
       - run:
+          name: bundler install
+          comand: gem install bundler
+      - run:
           name: bundle install
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       # bundle installされたものcacheする

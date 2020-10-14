@@ -10,7 +10,7 @@ jobs:
           RAILS_ENV: test
           DATABASE_HOSTNAME: "127.0.0.1"
           TZ: UTC
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.6.46
         environment:
           TZ: UTC
     steps:

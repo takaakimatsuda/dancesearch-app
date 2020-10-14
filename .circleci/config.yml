@@ -1,16 +1,13 @@
 version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2 
-
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/ruby:2.6.5-stretch-node
         environment:
           RAILS_ENV: test
           DATABASE_HOSTNAME: "127.0.0.1"
           TZ: UTC
-      - image: circleci/mysql:5.6
+      - image: circleci/mysql:5.6-ram
         environment:
           TZ: UTC
     steps:
@@ -45,11 +42,17 @@ jobs:
             - vendor/bundle
       - run:
           name: Wait for DB
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+
+      - run: mv ./config/database.yml.ci ./config/database.yml
 
       - run:
           name: setup db
           command: bundle exec rails db:create db:migrate
+      - run:
+          name: yarn Install
+          command: yarn install
+      - run: bundle exec bin/webpack
 
       - run:
           name: Run Rspec

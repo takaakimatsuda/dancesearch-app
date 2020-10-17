@@ -8,7 +8,7 @@ set :application, 'dancesearch-app'
 set :repo_url, 'git@github.com:takaakimatsuda/dancesearch-app.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
-set :branch, 'master'
+set :branch, 'capistrano-setting'
 
 # deploy先のディレクトリ。 
 set :deploy_to, '/var/www/dancesearch-app'

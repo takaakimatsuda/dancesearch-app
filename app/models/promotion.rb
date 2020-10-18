@@ -16,16 +16,4 @@ class Promotion < ApplicationRecord
       notification.save! if notification.valid?
     end
   end
-  # def save_notification_promotion!(current_user)
-  #   notification = current_user.active_notifications.new(
-  #     promotion_id: self.id,
-  #     visited_id: user_id,
-  #     action: "promotion"
-  #   )
-  #   # 自分の投稿に対するコメントの場合は、通知済みとする
-  #   if notification.visitor_id == notification.visited_id
-  #     notification.checked = true
-  #   end
-  #   notification.save if notification.valid?
-  # end
 end

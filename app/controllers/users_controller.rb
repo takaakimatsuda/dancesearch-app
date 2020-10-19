@@ -32,21 +32,7 @@ class UsersController < ApplicationController
     @users = @user.followers.page(params[:page]).per(20)
   end
 
-  # def search
-  #   if params[:q].present?
-  #   # 検索フォームからアクセスした時の処理
-  #     @q = User.ransack(search_params)
-  #     @users = @q.result
-  #   else
-  #   # 検索フォーム以外からアクセスした時の処理
-  #     params[:q] = { sorts: 'id desc' }
-  #     @q = User.ransack()
-  #     @users = User.all
-  #   end
-  # end
-
-  def edit
-  end
+  def edit;end
 
   private
 

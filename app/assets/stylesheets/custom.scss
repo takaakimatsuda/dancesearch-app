@@ -181,9 +181,11 @@ h2.news-title.font-weight-bold.text-white {
     left: 35px;
 }
 }
+div#dropdown1 {
+  -webkit-appearance: none;
+}
 .dropdown-menu.show {
   left: -30px !important;
-  -webkit-appearance: none;
 }
 div#dropdown1:hover {
   opacity: 100;

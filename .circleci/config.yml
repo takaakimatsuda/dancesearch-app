@@ -71,7 +71,7 @@ jobs:
       - deploy:
           name: capistrano deploy
           command: |
-            if [ "${CIRCLE_BRANCH}" != "ci-capistrano" ]; then
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
               exit 0
             fi
             ./deploy.sh

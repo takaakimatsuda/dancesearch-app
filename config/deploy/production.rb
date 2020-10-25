@@ -1,5 +1,7 @@
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '18.180.92.199', user: 'takaaki', roles: %w{app db web} 
+server ENV['SERVICE_NAME_PRODUCTION_IP'], user: 'takaaki', port: 22, roles: %w{app db web}, primary: true
 
-#デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/dancesearch-app_key_rsa' 
+set :ssh_options, {
+  forward_agent: true,
+  keys: "#{ENV['SERVICE_NAME_PRODUCTION_SSH_KEY']}"
+}

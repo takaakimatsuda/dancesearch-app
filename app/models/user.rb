@@ -20,8 +20,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :lessons, allow_destroy: true
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-  VALID_PASSWORD_REGEX = /[-\w?&]/
-  validates :movie_url, format: { with: VALID_PASSWORD_REGEX }
+  # VALID_PASSWORD_REGEX = /[-\w?&]/
+  # validates :movie_url, format: { with: VALID_PASSWORD_REGEX }
 
   def followed_by?(user)
     passive_relationships.exists?(following: user)

@@ -9,8 +9,8 @@
 
 ## URL
 
-- AWS：（現在停止中）
-  https://www.dancesearch-app.com/
+- AWS：
+  https://www.dancesearch-app.com/ （現在停止中）
 
 - Heroku：
   https://dance-search.herokuapp.com/

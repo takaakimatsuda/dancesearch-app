@@ -9,7 +9,7 @@
 
 ## URL
 
-- AWS：
+- AWS：（現在停止中）
   https://www.dancesearch-app.com/
 
 - Heroku：
@@ -67,11 +67,6 @@ https://quip.com/LBJiA1LrPf0W
 ### テーブル設計(ER 図)
 
 <img width="1424" alt="スクリーンショット 2020-09-11 00 16 30" src="https://user-images.githubusercontent.com/56643466/95005141-496c5c80-062f-11eb-8283-41a3ceeea8f7.png">
-
-## その他
-
-- レスポンシブ未対応(今後、実装予定)
-
 
 ## 環境構築
 
